@@ -1,0 +1,233 @@
+# show-changes
+
+```json
+{
+  "command": "show-changes",
+  "description": "Show changes between two sessions.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/show-changes",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "from-date",
+        "description": "The date from which tracking changes is to be performed. ISO 8601. If timezone isn't specified in the input, the Management server's timezone is used.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "from-session",
+        "description": "The session UID from which tracking changes is to be performed.",
+        "type": "string",
+        "required": false,
+        "default": "The session before to-session"
+      },
+      {
+        "name": "limit",
+        "description": "Maximum number of sessions to analyze.",
+        "type": "integer",
+        "required": false,
+        "default": "10"
+      },
+      {
+        "name": "offset",
+        "description": "Number of sessions to skip (beginning with from-session).",
+        "type": "integer",
+        "required": false,
+        "default": "0"
+      },
+      {
+        "name": "to-date",
+        "description": "The date until which tracking changes is to be performed. ISO 8601. If timezone isn't specified in the input, the Management server's timezone is used.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "to-session",
+        "description": "The session UID until which tracking changes is to be performed.",
+        "type": "string",
+        "required": false,
+        "default": "The last published session"
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "task-id",
+        "description": "Diff task UID. Use show-task command to check the progress of the task.",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "show-changes between the dates": {
+      "description": "Request for changes by start and end date. Use the show-task command to check the progress of the task. Output below is the output of the show-task command.",
+      "request": "POST {{server}}/show-changes\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"from-date\" : \"2017-02-01T08:20:50\",\n  \"to-date\" : \"2017-02-21\"\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"Show Changes\",\n    \"task-id\" : \"abcdef01-2345-6789-bd5e-98e9d5b89d9b\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"progress-description\" : \"Operation Complete\",\n    \"suppressed\" : false,\n    \"task-details\" : [ {\n      \"changes\" : [ {\n        \"session\" : {\n          \"session-uid\" : \"40b969d3-6b3c-48a0-a4d7-7cfeeea1bc5a\",\n          \"user-name\" : \"aa\",\n          \"publish-time\" : {\n            \"posix\" : 1485930056333,\n            \"iso-8601\" : \"2017-02-01T08:20+0200\"\n          },\n          \"domain-info\" : {\n            \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n            \"name\" : \"SMC User\",\n            \"domain-type\" : \"domain\"\n          }\n        },\n        \"operations\" : {\n          \"added-objects\" : [ {\n            \"uid\" : \"408c7054-eb6d-4557-8a15-cb1b6160b80b\",\n            \"name\" : \"MyRule3\",\n            \"type\" : \"access-rule\",\n            \"domain\" : {\n              \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n              \"name\" : \"SMC User\",\n              \"domain-type\" : \"domain\"\n            }\n          } ],\n          \"modified-objects\" : [ {\n            \"old-object\" : {\n              \"uid\" : \"fad17be7-6b4e-4033-b27f-b7769520e0a1\",\n              \"name\" : \"MyRule2\",\n              \"type\" : \"access-rule\",\n              \"domain\" : {\n                \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n                \"name\" : \"SMC User\",\n                \"domain-type\" : \"domain\"\n              }\n            },\n            \"new-object\" : {\n              \"uid\" : \"fad17be7-6b4e-4033-b27f-b7769520e0a1\",\n              \"name\" : \"MyRule4\",\n              \"type\" : \"access-rule\",\n              \"domain\" : {\n                \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n                \"name\" : \"SMC User\",\n                \"domain-type\" : \"domain\"\n              }\n            }\n          } ],\n          \"deleted-objects\" : [ {\n            \"uid\" : \"7bded5dc-ad1d-4300-8405-12f9afdbdba3\",\n            \"name\" : \"MyRule1\",\n            \"type\" : \"access-rule\",\n            \"domain\" : {\n              \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n              \"name\" : \"SMC User\",\n              \"domain-type\" : \"domain\"\n            }\n          } ]\n        }\n      } ],\n      \"limit\" : 10,\n      \"offset\" : 0\n    } ]\n  } ]\n}"
+    },
+    "show-changes by session identifiers": {
+      "description": "Request for changes by start session and end session. Use the show-task command to check the progress of the task. Output below is the output of the show-task command.",
+      "request": "POST {{server}}/show-changes\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"from-session\" : \"0ca1c8ad-88e1-46ee-aece-ff5774e5abee\",\n  \"to-session\" : \"40b969d3-6b3c-48a0-a4d7-7cfeeea1bc5a\"\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"Show Changes\",\n    \"task-id\" : \"abcdef01-2345-6789-8ce9-363a54ca2d74\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"progress-description\" : \"Operation Complete\",\n    \"suppressed\" : false,\n    \"task-details\" : [ {\n      \"changes\" : [ {\n        \"session\" : {\n          \"session-uid\" : \"f769407d-4bce-4b1b-aaf5-f7f6727525be\",\n          \"user-name\" : \"aa\",\n          \"publish-time\" : {\n            \"posix\" : 1485930043334,\n            \"iso-8601\" : \"2017-02-01T08:20+0200\"\n          },\n          \"domain-info\" : {\n            \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n            \"name\" : \"SMC User\",\n            \"domain-type\" : \"domain\"\n          }\n        },\n        \"operations\" : {\n          \"added-objects\" : [ {\n            \"uid\" : \"408c7054-eb6d-4557-8a15-cb1b6160b80b\",\n            \"name\" : \"MyRule3\",\n            \"type\" : \"access-rule\",\n            \"domain\" : {\n              \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n              \"name\" : \"SMC User\",\n              \"domain-type\" : \"domain\"\n            }\n          } ],\n          \"modified-objects\" : [ {\n            \"old-object\" : {\n              \"uid\" : \"fad17be7-6b4e-4033-b27f-b7769520e0a1\",\n              \"name\" : \"MyRule2\",\n              \"type\" : \"access-rule\",\n              \"domain\" : {\n                \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n                \"name\" : \"SMC User\",\n                \"domain-type\" : \"domain\"\n              }\n            },\n            \"new-object\" : {\n              \"uid\" : \"fad17be7-6b4e-4033-b27f-b7769520e0a1\",\n              \"name\" : \"MyRule4\",\n              \"type\" : \"access-rule\",\n              \"domain\" : {\n                \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n                \"name\" : \"SMC User\",\n                \"domain-type\" : \"domain\"\n              }\n            }\n          } ],\n          \"deleted-objects\" : [ {\n            \"uid\" : \"7bded5dc-ad1d-4300-8405-12f9afdbdba3\",\n            \"name\" : \"MyRule1\",\n            \"type\" : \"access-rule\",\n            \"domain\" : {\n              \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n              \"name\" : \"SMC User\",\n              \"domain-type\" : \"domain\"\n            }\n          } ]\n        }\n      }, {\n        \"session\" : {\n          \"session-uid\" : \"0ca1c8ad-88e1-46ee-aece-ff5774e5abee\",\n          \"user-name\" : \"aa\",\n          \"publish-time\" : {\n            \"posix\" : 1485929993764,\n            \"iso-8601\" : \"2017-02-01T08:19+0200\"\n          },\n          \"domain-info\" : {\n            \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n            \"name\" : \"SMC User\",\n            \"domain-type\" : \"domain\"\n          }\n        },\n        \"operations\" : {\n          \"added-objects\" : [ ],\n          \"modified-objects\" : [ {\n            \"old-object\" : {\n              \"uid\" : \"fad17be7-6b4e-4033-b27f-b7769520e0a1\",\n              \"name\" : \"MyRule1\",\n              \"type\" : \"access-rule\",\n              \"domain\" : {\n                \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n                \"name\" : \"SMC User\",\n                \"domain-type\" : \"domain\"\n              }\n            },\n            \"new-object\" : {\n              \"uid\" : \"fad17be7-6b4e-4033-b27f-b7769520e0a1\",\n              \"name\" : \"MyRule2\",\n              \"type\" : \"access-rule\",\n              \"domain\" : {\n                \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n                \"name\" : \"SMC User\",\n                \"domain-type\" : \"domain\"\n              }\n            }\n          } ],\n          \"deleted-objects\" : [ ]\n        }\n      } ],\n      \"limit\" : 10,\n      \"offset\" : 0\n    } ]\n  } ]\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:23.192221",
+    "source_file": "show-changes.html"
+  }
+}
+```

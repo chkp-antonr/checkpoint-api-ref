@@ -1,0 +1,516 @@
+# show-data-center-content
+
+```json
+{
+  "command": "show-data-center-content",
+  "description": "Retrieve Data Center Objects from a Data Center Server.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/show-data-center-content",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "data-center-name",
+        "description": "Name of the Data Center Server where to search for objects.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "limit",
+        "description": "The maximal number of returned results.",
+        "type": "integer",
+        "required": false,
+        "default": "50"
+      },
+      {
+        "name": "offset",
+        "description": "Number of the results to initially skip.",
+        "type": "integer",
+        "required": false,
+        "default": "0"
+      },
+      {
+        "name": "order",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "name"
+        ]
+      },
+      {
+        "name": "ASC",
+        "description": "Sorts results by the given field in ascending order.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "name"
+        ]
+      },
+      {
+        "name": "uid-in-data-center",
+        "description": "Return result matching the unique identifier of the object on the Data Center Server.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "text",
+        "description": "Return results containing the specified text value.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uri",
+        "description": "Return results under the specified Data Center Object (identified by URI).",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "from",
+        "description": "From which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "last-successful-scan",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "iso-8601",
+        "description": "Date and time represented in international ISO 8601 format.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "posix",
+        "description": "Number of milliseconds that have elapsed since 00:00:00, 1 January 1970.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "objects",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name-in-data-center",
+        "description": "Object name in the Data Center.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid-in-data-center",
+        "description": "Unique identifier of the object in the Data Center.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "data-center-object",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "name",
+        "description": "Object management name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type-in-data-center",
+        "description": "Object type in Data Center.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "additional-properties",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "name",
+        "description": "N/A",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "N/A",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "to",
+        "description": "To which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "total",
+        "description": "Total number of elements returned by the query.",
+        "type": "integer",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "show-data-center-content": {
+      "description": "",
+      "request": "POST {{server}}/show-data-center-content\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"data-center-name\" : \"vCenter 1\"\n}",
+      "response": "{\n  \"objects\" : [ {\n    \"name\" : \"VM1 mgmt name\",\n    \"name-in-data-center\" : \"My VM1\",\n    \"uid-in-data-center\" : \"vm-1\",\n    \"type-in-data-center\" : \"VirtualMachine\",\n    \"data-center-object\" : {\n      \"uid\" : \"2ecbde51-0b30-4318-8ddd-bec3310540a2\",\n      \"name\" : \"VM1 mgmt name\",\n      \"type\" : \"data-center-object\",\n      \"domain\" : {\n        \"name\" : \"SMC User\",\n        \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n        \"domain-type\" : \"domain\"\n      }\n    },\n    \"additional-properties\" : [ {\n      \"name\" : \"IP\",\n      \"value\" : \"10.0.0.1\"\n    }, {\n      \"name\" : \"Path\",\n      \"value\" : \"/Datacenters/VMs\"\n    } ]\n  }, {\n    \"name\" : \"My VM2\",\n    \"name-in-data-center\" : \"My VM2\",\n    \"uid-in-data-center\" : \"vm-2\",\n    \"type-in-data-center\" : \"VirtualMachine\",\n    \"additional-properties\" : [ {\n      \"name\" : \"IP\",\n      \"value\" : \"10.0.0.2\"\n    }, {\n      \"name\" : \"Path\",\n      \"value\" : \"/Datacenters/VMs\"\n    } ]\n  }, {\n    \"name\" : \"My VM3\",\n    \"name-in-data-center\" : \"My VM3\",\n    \"uid-in-data-center\" : \"vm-3\",\n    \"type-in-data-center\" : \"VirtualMachine\",\n    \"additional-properties\" : [ {\n      \"name\" : \"Path\",\n      \"value\" : \"/Datacenters/VMs\"\n    } ]\n  } ],\n  \"from\" : 1,\n  \"to\" : 3,\n  \"total\" : 3\n}"
+    },
+    "show-data-center-content with filter": {
+      "description": "Returns the results under the URI \"/Datacenters/VMs\" which also contain the text \"VM1 mgmt\"",
+      "request": "POST {{server}}/show-data-center-content\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"data-center-name\" : \"vCenter 1\",\n  \"filter\" : {\n    \"text\" : \"VM1 mgmt\",\n    \"uri\" : \"/Datacenters/VMs\"\n  }\n}",
+      "response": "{\n  \"from\" : 4,\n  \"to\" : 5,\n  \"total\" : 95,\n  \"objects\" : [ {\n    \"name\" : \"My VM1\",\n    \"type-in-data-center\" : \"VirtualMachine\",\n    \"name-in-data-center\" : \"My VM1\",\n    \"uid-in-data-center\" : \"vm-1\",\n    \"additional-properties\" : [ {\n      \"name\" : \"IP\",\n      \"value\" : \"192.168.0.100\"\n    }, {\n      \"name\" : \"Path\",\n      \"value\" : \"/Datacenters/VMs\"\n    } ]\n  }, {\n    \"name\" : \"My VM2\",\n    \"type-in-data-center\" : \"VirtualMachine\",\n    \"name-in-data-center\" : \"My VM2\",\n    \"uid-in-data-center\" : \"vm-2\",\n    \"additional-properties\" : [ {\n      \"name\" : \"IP\",\n      \"value\" : \"192.168.0.200\"\n    }, {\n      \"name\" : \"Path\",\n      \"value\" : \"/Datacenters/VMs\"\n    } ]\n  } ]\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:23.539742",
+    "source_file": "show-data-center-content.html"
+  }
+}
+```

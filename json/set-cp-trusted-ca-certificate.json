@@ -1,0 +1,282 @@
+{
+  "command": "set-cp-trusted-ca-certificate",
+  "description": "Edit existing Check Point trusted CA certificate using name or uid. By default all CP trusted CA certificates are enabled.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/set-cp-trusted-ca-certificate",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "description": "Indicates whether the trusted CP CA certificate is enabled/disabled.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "enabled",
+          "disabled"
+        ]
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "name",
+        "description": "Trusted CA certificate name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "added-by",
+        "description": "By whom the certificate was added.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "base64-certificate",
+        "description": "The certificate in base64.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "issued-by",
+        "description": "Trusted CA certificate issued by.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "issued-to",
+        "description": "Trusted CA certificate issued to.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "status",
+        "description": "Indicates whether the trusted CP CA certificate is enabled/disabled.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "enabled",
+          "disabled"
+        ]
+      },
+      {
+        "name": "valid-from",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "iso-8601",
+        "description": "Date and time represented in international ISO 8601 format.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "posix",
+        "description": "Number of milliseconds that have elapsed since 00:00:00, 1 January 1970.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "valid-to",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "iso-8601",
+        "description": "Date and time represented in international ISO 8601 format.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "posix",
+        "description": "Number of milliseconds that have elapsed since 00:00:00, 1 January 1970.",
+        "type": "integer",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "set-cp-trusted-ca-certificate": {
+      "description": "",
+      "request": "POST {{server}}/set-cp-trusted-ca-certificate\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"uid\" : \"c7253c5f-5881-4d4a-b82b-f111b2182403\",\n  \"status\" : \"disabled\"\n}",
+      "response": "{\n  \"uid\" : \"c7253c5f-5881-4d4a-b82b-f111b2182403\",\n  \"name\" : \"CA_0090EA36_7A7C_42DF_93EE_CFE97D542FFB\",\n  \"type\" : \"custom-trusted-ca-certificate\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"meta-info\" : {\n    \"lock\" : \"unlocked\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1690179340137,\n      \"iso-8601\" : \"2023-07-24T09:15+0300\"\n    },\n    \"last-modifier\" : \"System\",\n    \"creation-time\" : {\n      \"posix\" : 1690179340137,\n      \"iso-8601\" : \"2023-07-24T09:15+0300\"\n    },\n    \"creator\" : \"System\"\n  },\n  \"available-actions\" : {\n    \"edit\" : \"true\",\n    \"delete\" : \"true\",\n    \"clone\" : \"false\"\n  },\n  \"tags\" : [ ],\n  \"read-only\" : false,\n  \"issued-to\" : \"CN=GeoTrust Universal CA 2, O=GeoTrust Inc., C=US\",\n  \"issued-by\" : \"CN=GeoTrust Universal CA 2, O=GeoTrust Inc., C=US\",\n  \"valid-from\" : {\n    \"posix\" : 1678665600000,\n    \"iso-8601\" : \"2023-03-13T02:00+0200\"\n  },\n  \"valid-to\" : {\n    \"posix\" : 1686527999000,\n    \"iso-8601\" : \"2023-06-12T02:59+0300\"\n  },\n  \"added-by\" : \"Check Point\",\n  \"base64-certificate\" : \"-----BEGIN CERTIFICATE-----\\nMIIFbDCCA1SgAwIBAgIBATANBgkqhkiG9w0BAQUFADBHMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNR2VvVHJ1c3QgSW5jLjEgMB4GA1UEAxMXR2VvVHJ1c3QgVW5pdmVyc2FsIENBIDIwHhcNMDQwMzA0MDUwMDAwWhcNMjkwMzA0MDUwMDAwWjBHMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNR2VvVHJ1c3QgSW5jLjEgMB4GA1UEAxMXR2VvVHJ1c3QgVW5pdmVyc2FsIENBIDIwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQCzVFLByT7y2dyxUxpZKeexw0Uo5dfR7cXFS6GqdHtXr0om/Nj1XqduGdt0DE81WzILAePb63p3NeqqWuDW6KFXlPCQo3RWlEQwAx5cTiuFJnSCegx2oG9NzkEtoBUGFF+3Qs17j1hhNNwqCPkuwwGmIkQcTAeC5lvO0Ep8BNMZcyfwqph/Lq9O64ceJHdqXbboW0W63MOhBW9Wjo8QJqVJwy7XQYci4E+GymC16qFjwAGXEHm9ADwSbSsVsaxLse4YuU6W3Nx2/zu+z18DwPw76L5GG//aQMJS9/7jOvdqdzXQ2o3rXhhqMcceujwbKNZrVMaqW9eiLBsZzKIC9ptZvTdrhrVtgrrY6slWvKk2WP0+GfPtDCapkzj4T8FdIgbQl+rhrcZV4IErKIM6+vR7IVEAvlI4zs1meaj0gVbi0IMJR1FbUGrP20gaXT73y/Zl92zxlfgCOzJWgjl6W70viRu/obTo/3+NjN8D8WBOWBFM66M/ECuDmgFz2ZRthAAnZqzwcEAJQpKtT5MNYQlRJNiS1QuUYbKHsu3/mjX/hVTK7URDrBs8FmtISgocQIgfksILAAX/8sgCSqSqqcyZlpwvWOB94b67B9xfBHJcMTTD7F8t4D1kkCLm0ey4Lt1ZrtmhN79UNdxzMk+MBB4zsslG8dhcyFVQyWi9qLo2CQIDAQABo2MwYTAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBR281Xh+qQ2+/CfXGJx7Tz0RzgQKzAfBgNVHSMEGDAWgBR281Xh+qQ2+/CfXGJx7Tz0RzgQKzAOBgNVHQ8BAf8EBAMCAYYwDQYJKoZIhvcNAQEFBQADggIBAGbBxiPz2eAubl/oz66wsCVNK/g7WJtAJDday6sWSf+zdXkzoS9tcBc0kf5nfo/sm+VegqlVHy/c1FEHEv6sFj4sNcZj/NwQ6w2jqtB8zNHQL1EuxBRa3ugZ4T7GzKQp5y6EqgYweHZUcyiYWTjgAA1i00J9IZ+uPTqM1fp3DRgrFg5fNuH8KrUwJM/gYwx7WBr+mbpCErGR9Hxo4sjoryzqyX6uuyo9DRXcNJW2GHSoag/HtPQTxORb7QrSpJdMKu0vbBKJPfEncKpqA1Ihn0CoZ1Dy81of398j9tx4TuaYT1U6U+Pv8vSfx3zYWK8pIpe44L2RLrB27FcRz+8pRPPphXpgY+RdM4kX2TGq2tbzGDVyz4crL2MjhF2EjD9XoIj8mZEoJmmZ1I+XRL6O1UixpCgp8RW04eWe3fiPpm8m1wk8OhwRDqZsN/etRIcsKMfYdIKz0G9KV7s1KSegi+ghp4dkNl3M2Basx7InQJJVOCiNUW7dFGdTbHFcJoRNdVq2fmBWqU2t+5sel/MN2dKXVHfaPRK34B7vCAas+YWH6aLcr34YEoP9VhdBLtUpgn2Z9DH2canPLAEnpQW5qrJITirvn5NSUZU8UnOOVkwXQMAJKOSLakhT2+zNVVXxxvjpoixMptEmX36vWkzaH6byHCx+rgIW0lbQL1dTR+iS\\r\\n-----END CERTIFICATE-----\\n\",\n  \"status\" : \"disabled\"\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:16.313916",
+    "source_file": "set-cp-trusted-ca-certificate.html"
+  }
+}

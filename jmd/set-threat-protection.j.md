@@ -1,0 +1,581 @@
+# set-threat-protection
+
+```json
+{
+  "command": "set-threat-protection",
+  "description": "Edit existing object using object name or uid.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/set-threat-protection",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "comments",
+        "description": "Protection comments.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "follow-up",
+        "description": "Tag the protection with pre-defined follow-up flag.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "overrides",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "remove",
+        "description": "Removes from collection of values",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "action",
+        "description": "Protection action.",
+        "type": "string",
+        "required": true,
+        "valid_values": [
+          "Threat Cloud: Inactive",
+          "Detect",
+          "Prevent Core: Drop",
+          "Inactive",
+          "Accept"
+        ]
+      },
+      {
+        "name": "profile",
+        "description": "Profile name.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "capture-packets",
+        "description": "Capture packets.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "track",
+        "description": "Tracking method for protection.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "alert",
+          "mail",
+          "snmp trap",
+          "user alert 1",
+          "user alert 2",
+          "user alert 3"
+        ]
+      },
+      {
+        "name": "action",
+        "description": "Protection action.",
+        "type": "string",
+        "required": true,
+        "valid_values": [
+          "Threat Cloud: Inactive",
+          "Detect",
+          "Prevent Core: Drop",
+          "Inactive",
+          "Accept"
+        ]
+      },
+      {
+        "name": "profile",
+        "description": "Profile name.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "capture-packets",
+        "description": "Capture packets.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "track",
+        "description": "Tracking method for protection.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "alert",
+          "mail",
+          "snmp trap",
+          "user alert 1",
+          "user alert 2",
+          "user alert 3"
+        ]
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "comments",
+        "description": "Protection comments.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "confidence-level",
+        "description": "How confident IPS is that recognized attacks are actually undesirable traffic.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "follow-up",
+        "description": "Tag the protection with pre-defined follow-up flag.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "industry-reference",
+        "description": "International CVE or CVE candidate name for attack.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "ipsAdditionalProperties",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "values",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "performance-impact",
+        "description": "How much this protection affects the performance of a Security Gateway.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "profiles",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "Inactive",
+          "Detect",
+          "Prevent",
+          "Drop",
+          "Accept"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "default",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "Inactive",
+          "Detect",
+          "Prevent",
+          "Drop",
+          "Accept"
+        ]
+      },
+      {
+        "name": "action",
+        "description": "Protection action.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "Inactive",
+          "Detect",
+          "Prevent",
+          "Drop",
+          "Accept"
+        ]
+      },
+      {
+        "name": "capture-packets",
+        "description": "Capture packets.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "track",
+        "description": "Tracking method for protection.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "alert",
+          "mail",
+          "snmp trap",
+          "user alert 1",
+          "user alert 2",
+          "user alert 3"
+        ]
+      },
+      {
+        "name": "final",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "Inactive",
+          "Detect",
+          "Prevent",
+          "Drop",
+          "Accept"
+        ]
+      },
+      {
+        "name": "action",
+        "description": "Protection action.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "Inactive",
+          "Detect",
+          "Prevent",
+          "Drop",
+          "Accept"
+        ]
+      },
+      {
+        "name": "capture-packets",
+        "description": "Capture packets.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "track",
+        "description": "Tracking method for protection.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "alert",
+          "mail",
+          "snmp trap",
+          "user alert 1",
+          "user alert 2",
+          "user alert 3"
+        ]
+      },
+      {
+        "name": "override",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "Inactive",
+          "Detect",
+          "Prevent",
+          "Drop",
+          "Accept"
+        ]
+      },
+      {
+        "name": "action",
+        "description": "Protection action.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "Inactive",
+          "Detect",
+          "Prevent",
+          "Drop",
+          "Accept"
+        ]
+      },
+      {
+        "name": "capture-packets",
+        "description": "Capture packets.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "track",
+        "description": "Tracking method for protection.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "alert",
+          "mail",
+          "snmp trap",
+          "user alert 1",
+          "user alert 2",
+          "user alert 3"
+        ]
+      },
+      {
+        "name": "protection-type",
+        "description": "The protection's type (Core or Threat Cloud).",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "release-date",
+        "description": "The date in which the protection was releases by Check Point.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "severity",
+        "description": "The intrusion severity.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "update-date",
+        "description": "The date in which the protection was updated by Check Point.",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "set-threat-protection": {
+      "description": "Sets an override to an existing profile for a specific protection.In the example below, one override will be set for \"New Profile 1\".",
+      "request": "POST {{server}}/set-threat-protection\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"FTP Commands\",\n  \"overrides\" : [ {\n    \"profile\" : \"New Profile 1\",\n    \"action\" : \"inactive\",\n    \"track\" : \"None\",\n    \"capture-packets\" : true\n  } ]\n}",
+      "response": ""
+    },
+    "set-threat-protection (multiple overrides)": {
+      "description": "Sets overrides to existing profiles for a specific protection.In the example below, two overrides will be set, one for \"New Profile 1\" and a second one for \"New Profile 2\".",
+      "request": "POST {{server}}/set-threat-protection\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"FTP Commands\",\n  \"overrides\" : [ {\n    \"profile\" : \"New Profile 1\",\n    \"action\" : \"inactive\",\n    \"track\" : \"Log\",\n    \"capture-packets\" : true\n  }, {\n    \"profile\" : \"New Profile 2\",\n    \"action\" : \"inactive\",\n    \"track\" : \"Log\",\n    \"capture-packets\" : true\n  } ]\n}",
+      "response": ""
+    },
+    "set-threat-protection (remove override)": {
+      "description": "Remove an override from an existing profile for a specific protection. Profiles that are mentioned in the command will return to their default values.In the example below, the override for \"New Profile 1\" is removed and returns to its default value.",
+      "request": "POST {{server}}/set-threat-protection\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"FTP Commands\",\n  \"overrides\" : {\n    \"remove\" : [ \"New profile 1\" ]\n  }\n}",
+      "response": ""
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:20.914523",
+    "source_file": "set-threat-protection.html"
+  }
+}
+```

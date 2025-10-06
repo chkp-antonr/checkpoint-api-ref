@@ -1,0 +1,406 @@
+# set-content-awareness-advanced-settings
+
+```json
+{
+  "command": "set-content-awareness-advanced-settings",
+  "description": "Edit Content Awareness Blades' Settings.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/set-content-awareness-advanced-settings",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "internal-error-fail-mode",
+        "description": "In case of internal system error, allow or block all connections.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "allow connections",
+          "block connections"
+        ]
+      },
+      {
+        "name": "supported-services",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "add",
+        "description": "Adds to collection of values",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "remove",
+        "description": "Removes from collection of values",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "httpi-non-standard-ports",
+        "description": "Servers usually send HTTP traffic on TCP port 80. Some servers send HTTP traffic on other ports also. By default, this setting is enabled and Content Awareness inspects HTTP traffic on non-standard ports. You can disable this setting and configure Content Awareness to inspect HTTP traffic only on port 80.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "inspect-archives",
+        "description": "Examine the content of archive files. For example, files with the extension .zip, .gz, .tgz, .tar.Z, .tar, .lzma, .tlz, 7z, .rar.",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "internal-error-fail-mode",
+        "description": "In case of internal system error, allow or block all connections.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "allow connections",
+          "block connections"
+        ]
+      },
+      {
+        "name": "supported-services",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "httpi-non-standard-ports",
+        "description": "Servers usually send HTTP traffic on TCP port 80. Some servers send HTTP traffic on other ports also. By default, this setting is enabled and Content Awareness inspects HTTP traffic on non-standard ports. You can disable this setting and configure Content Awareness to inspect HTTP traffic only on port 80.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "inspect-archives",
+        "description": "Examine the content of archive files. For example, files with the extension .zip, .gz, .tgz, .tar.Z, .tar, .lzma, .tlz, 7z, .rar.",
+        "type": "boolean",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "set-content-awarenesss-advanced-settings": {
+      "description": "",
+      "request": "POST {{server}}/set-content-awarenesss-advanced-settings\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"internal-error-fail-mode\" : \"block connections\",\n  \"httpi-non-standard-ports\" : \"false\",\n  \"inspect-archives\" : \"false\",\n  \"supported-services.add.1\" : \"Squid_NTLM\"\n}",
+      "response": "{\n  \"uid\" : \"b086052c-8ef5-4646-bcb0-0512413d10e1\",\n  \"type\" : \"content-awareness-advanced-settings\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"meta-info\" : {\n    \"lock\" : \"unlocked\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1678784132584,\n      \"iso-8601\" : \"2023-03-14T10:55+0200\"\n    },\n    \"last-modifier\" : \"WEB_API\",\n    \"creation-time\" : {\n      \"posix\" : 1675750869050,\n      \"iso-8601\" : \"2023-02-07T08:21+0200\"\n    },\n    \"creator\" : \"System\"\n  },\n  \"available-actions\" : { },\n  \"read-only\" : true,\n  \"internal-error-fail-mode\" : \"block connections\",\n  \"supported-services\" : [ {\n    \"uid\" : \"97aeb3d9-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"smtp\",\n    \"type\" : \"service-tcp\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    },\n    \"icon\" : \"Protocols/MailProtocolEnvelope\",\n    \"color\" : \"magenta\",\n    \"port\" : \"25\"\n  }, {\n    \"uid\" : \"97aeb3d0-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"ftp\",\n    \"type\" : \"service-tcp\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    },\n    \"icon\" : \"Protocols/FTP\",\n    \"color\" : \"forest green\",\n    \"port\" : \"21\"\n  }, {\n    \"uid\" : \"8eddeaa0-259d-448f-95b6-490a39f55962\",\n    \"name\" : \"HTTP_proxy\",\n    \"type\" : \"service-tcp\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    },\n    \"icon\" : \"Protocols/HTTP\",\n    \"color\" : \"orange\",\n    \"port\" : \"8080\"\n  }, {\n    \"uid\" : \"704fbf04-1714-49a1-a750-38c0e4139a11\",\n    \"name\" : \"HTTPS_proxy\",\n    \"type\" : \"service-tcp\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    },\n    \"icon\" : \"Protocols/HTTP\",\n    \"color\" : \"navy blue\",\n    \"port\" : \"8080\"\n  }, {\n    \"uid\" : \"97aeb3d4-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"http\",\n    \"type\" : \"service-tcp\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    },\n    \"icon\" : \"Protocols/HTTP\",\n    \"color\" : \"forest green\",\n    \"port\" : \"80\"\n  }, {\n    \"uid\" : \"528c3168-ac1a-407f-ae71-01263a53d52b\",\n    \"name\" : \"Squid_NTLM\",\n    \"type\" : \"service-tcp\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    },\n    \"icon\" : \"Protocols/HTTP\",\n    \"color\" : \"black\",\n    \"port\" : \"3128\"\n  } ],\n  \"httpi-non-standard-ports\" : false,\n  \"inspect-archives\" : false\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:16.298574",
+    "source_file": "set-content-awareness-advanced-settings.html"
+  }
+}
+```

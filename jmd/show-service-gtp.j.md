@@ -1,0 +1,1164 @@
+# show-service-gtp
+
+```json
+{
+  "command": "show-service-gtp",
+  "description": "Retrieve existing GTP service object using object name or uid.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/show-service-gtp",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": true
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "version",
+        "description": "GTP version.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "V0",
+          "V1",
+          "V2"
+        ]
+      },
+      {
+        "name": "access-point-name",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "enable",
+        "description": "",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "apn",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "allow-usage-of-static-ip",
+        "description": "Allow usage of static IP addresses.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "apply-access-policy-on-user-traffic",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "enable",
+        "description": "",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "add-imsi-field-to-log",
+        "description": "Add IMSI field to logs generated by user traffic.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "cs-fallback-and-srvcc",
+        "description": "CS Fallback and SRVCC (Relevant for V2 only).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "imsi-prefix",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "enable",
+        "description": "",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "prefix",
+        "description": "The IMSI prefix.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "interface-profile",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "profile",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "custom-message-types",
+        "description": "The messages types to match on them for this service. To specify a range, add a hyphen between the lowest and the highest numbers, for example: 32-35. Multiple Ranges can be chosen when separated with comma. This field relevant only when the Interface profile is set to 'Custom'.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ldap-group",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "enable",
+        "description": "",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "group",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "according-to",
+        "description": "According to MS-ISDN or according to IMSI.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "MS-ISDN",
+          "IMSI"
+        ]
+      },
+      {
+        "name": "ms-isdn",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "enable",
+        "description": "",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "ms-isdn",
+        "description": "The MS-ISDN.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "radio-access-technology",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "utran",
+        "description": "(1).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "geran",
+        "description": "(2).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "wlan",
+        "description": "(3).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "gan",
+        "description": "(4).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "hspa-evolution",
+        "description": "(5).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "eutran",
+        "description": "(6).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "virtual",
+        "description": "(7).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "nb-iot",
+        "description": "(8).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "other-types-range",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "enable",
+        "description": "",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "types",
+        "description": "Other RAT Types. To specify other RAT ranges, add a hyphen between the lowest and the highest numbers, for example: 11-15. Multiple Ranges can be chosen when separated with comma.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "restoration-and-recovery",
+        "description": "Restoration and Recovery (Relevant for V2 only).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "reverse-service",
+        "description": "Accept PDUs from the GGSN/PGW to the SGSN/SGW on a previously established PDP context, even if different ports are used.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "selection-mode",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      {
+        "name": "enable",
+        "description": "",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "mode",
+        "description": "The mode as integer. [0 - Verified, 1 - MS - Not verified, 2 - Network - Not verified].",
+        "type": "integer",
+        "required": false,
+        "valid_values": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      {
+        "name": "trace-management",
+        "description": "Trace Management (Relevant for V2 only).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "groups",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "show-service-gtp": {
+      "description": "",
+      "request": "POST {{server}}/show-service-gtp\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"New_gtp_Service_1\"\n}",
+      "response": "{\n  \"uid\" : \"70e390d7-b070-4d6e-b8d7-53b7f6cc7fe6\",\n  \"name\" : \"New_gtp_Service_1\",\n  \"type\" : \"service-gtp\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"meta-info\" : {\n    \"lock\" : \"locked by current session\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1587897335598,\n      \"iso-8601\" : \"2020-04-26T13:35+0300\"\n    },\n    \"last-modifier\" : \"aa\",\n    \"creation-time\" : {\n      \"posix\" : 1587897335598,\n      \"iso-8601\" : \"2020-04-26T13:35+0300\"\n    },\n    \"creator\" : \"aa\"\n  },\n  \"tags\" : [ ],\n  \"read-only\" : false,\n  \"comments\" : \"\",\n  \"color\" : \"black\",\n  \"icon\" : \"Services/GTPService\",\n  \"groups\" : [ ],\n  \"version\" : \"v2\",\n  \"reverse-service\" : false,\n  \"interface-profile\" : {\n    \"profile\" : {\n      \"uid\" : \"b458696d-8967-469c-91cc-c6162c14cb27\",\n      \"name\" : \"Any\",\n      \"type\" : \"GTPInterfaceProfile\",\n      \"domain\" : {\n        \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n        \"name\" : \"Check Point Data\",\n        \"domain-type\" : \"data domain\"\n      }\n    }\n  },\n  \"allow-usage-of-static-ip\" : true,\n  \"apply-access-policy-on-user-traffic\" : {\n    \"enable\" : false,\n    \"add-imsi-field-to-log\" : false\n  },\n  \"imsi-prefix\" : {\n    \"enable\" : true,\n    \"prefix\" : \"313460000000001\"\n  },\n  \"access-point-name\" : {\n    \"enable\" : false\n  },\n  \"selection-mode\" : {\n    \"enable\" : true,\n    \"mode\" : 2\n  },\n  \"ms-isdn\" : {\n    \"enable\" : false,\n    \"ms-isdn\" : \"1\"\n  },\n  \"ldap-group\" : {\n    \"enable\" : false,\n    \"according-to\" : \"MS-ISDN\"\n  },\n  \"radio-access-technology\" : {\n    \"utran\" : false,\n    \"geran\" : false,\n    \"wlan\" : false,\n    \"gan\" : false,\n    \"hspa-evolution\" : false,\n    \"eutran\" : false,\n    \"virtual\" : false,\n    \"nb-iot\" : false,\n    \"other-types-range\" : {\n      \"enable\" : false,\n      \"types\" : \"\"\n    }\n  },\n  \"trace-management\" : true,\n  \"cs-fallback-and-srvcc\" : false,\n  \"restoration-and-recovery\" : false\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:27.489386",
+    "source_file": "show-service-gtp.html"
+  }
+}
+```

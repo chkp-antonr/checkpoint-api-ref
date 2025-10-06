@@ -1,0 +1,388 @@
+# show-threat-ioc-feeds
+
+```json
+{
+  "command": "show-threat-ioc-feeds",
+  "description": "Retrieve all objects.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/show-threat-ioc-feeds",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "filter",
+        "description": "Search expression to filter objects by. The provided text should be exactly the same as it would be given in SmartConsole Object Explorer. The logical operators in the expression ('AND', 'OR') should be provided in capital letters. The search involves both a IP search and a textual search in name, comment, tags etc.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "limit",
+        "description": "The maximal number of returned results.",
+        "type": "integer",
+        "required": false,
+        "default": "50"
+      },
+      {
+        "name": "offset",
+        "description": "Number of the results to initially skip.",
+        "type": "integer",
+        "required": false,
+        "default": "0"
+      },
+      {
+        "name": "order",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "name"
+        ]
+      },
+      {
+        "name": "ASC",
+        "description": "Sorts results by the given field in ascending order.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "name"
+        ]
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "from",
+        "description": "From which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "objects",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "to",
+        "description": "To which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "total",
+        "description": "Total number of elements returned by the query.",
+        "type": "integer",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "show-threat-ioc-feeds": {
+      "description": "Showing a list of threat IOC feeds",
+      "request": "POST {{server}}/show-threat-ioc-feeds\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{ }",
+      "response": "{\n  \"from\" : 1,\n  \"to\" : 11,\n  \"total\" : 11,\n  \"objects\" : [ {\n    \"uid\" : \"04bec96b-0e24-48af-81f8-a9f0ed1142ca\",\n    \"name\" : \"Cheese6\",\n    \"type\" : \"threat-ioc-feed\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    }\n  }, {\n    \"uid\" : \"a78db3b2-0030-4152-9fbe-fffb117b616c\",\n    \"name\" : \"Cheese6\",\n    \"type\" : \"threat-ioc-feed\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    }\n  }, {\n    \"uid\" : \"b4386e63-78f1-412a-9cad-4ee6f7b2445a\",\n    \"name\" : \"Cheese7\",\n    \"type\" : \"threat-ioc-feed\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    }\n  }, {\n    \"uid\" : \"8dc499b0-a939-4800-93f5-fcfbba1d69d6\",\n    \"name\" : \"Cheese8\",\n    \"type\" : \"threat-ioc-feed\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    }\n  }, {\n    \"uid\" : \"b55cd1d4-98a6-45b3-8b09-00d803f2ceef\",\n    \"name\" : \"Cheese8\",\n    \"type\" : \"threat-ioc-feed\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    }\n  }, {\n    \"uid\" : \"cf9ce11d-ee79-4020-8c02-ecada00f908c\",\n    \"name\" : \"flaf2\",\n    \"type\" : \"threat-ioc-feed\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    }\n  }, {\n    \"uid\" : \"5a916ffc-0c2e-4011-9e8d-de827c830cac\",\n    \"name\" : \"flaf2\",\n    \"type\" : \"threat-ioc-feed\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    }\n  }, {\n    \"uid\" : \"398986f2-ee71-4c35-b7dd-b8dd5f720451\",\n    \"name\" : \"ioc_feed\",\n    \"type\" : \"threat-ioc-feed\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    }\n  }, {\n    \"uid\" : \"0d8b0e0e-bdfc-4512-a161-131a21260ea5\",\n    \"name\" : \"ioc_feed3\",\n    \"type\" : \"threat-ioc-feed\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    }\n  }, {\n    \"uid\" : \"7fb9b4a3-7384-4063-9b63-d2ff2f1831d0\",\n    \"name\" : \"ioc_feed4\",\n    \"type\" : \"threat-ioc-feed\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    }\n  }, {\n    \"uid\" : \"6dc0bfc0-1e12-4400-a093-84511bc2a702\",\n    \"name\" : \"ioc_feed5\",\n    \"type\" : \"threat-ioc-feed\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    }\n  } ]\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:28.838914",
+    "source_file": "show-threat-ioc-feeds.html"
+  }
+}
+```

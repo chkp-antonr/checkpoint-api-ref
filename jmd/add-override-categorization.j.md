@@ -1,0 +1,565 @@
+# add-override-categorization
+
+```json
+{
+  "command": "add-override-categorization",
+  "description": "Create new object.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/add-override-categorization",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "url",
+        "description": "The URL for which we want to update the category and risk definitions, the URL and the object name are the same for Override Categorization.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "url-defined-as-regular-expression",
+        "description": "States whether the URL is defined as a Regular Expression or not.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "new-primary-category",
+        "description": "Uid or name of the primary category based on its most defining aspect.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "risk",
+        "description": "States the override categorization risk.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "unknown",
+          "very_low",
+          "low",
+          "medium",
+          "high",
+          "critical"
+        ]
+      },
+      {
+        "name": "additional-categories",
+        "description": "Uid or name of the categories to override in the Application and URL Filtering or Threat Prevention.",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "url",
+        "description": "The URL for which we want to update the category and risk definitions, the URL and the object name are the same for Override Categorization.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "url-defined-as-regular-expression",
+        "description": "States whether the URL is defined as a Regular Expression or not.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "new-primary-category",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "risk",
+        "description": "States the override categorization risk.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "unknown",
+          "very_low",
+          "low",
+          "medium",
+          "high",
+          "critical"
+        ]
+      },
+      {
+        "name": "additional-categories",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "tags",
+        "description": "Collection of tag objects identified by the name or UID.",
+        "type": "array",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "add-override-categorization": {
+      "description": "",
+      "request": "POST {{server}}/add-override-categorization\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"url\" : \"newOverride\",\n  \"new-primary-category\" : \"Botnets\",\n  \"risk\" : \"low\"\n}",
+      "response": "{\n  \"uid\" : \"70c17128-5e5c-485e-ab4d-fb932816d2fd\",\n  \"url\" : \"newOverride\",\n  \"type\" : \"override-categorization\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"meta-info\" : {\n    \"lock\" : \"unlocked\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1661342747270,\n      \"iso-8601\" : \"2022-08-24T15:05+0300\"\n    },\n    \"last-modifier\" : \"aa\",\n    \"creation-time\" : {\n      \"posix\" : 1661342747270,\n      \"iso-8601\" : \"2022-08-24T15:05+0300\"\n    },\n    \"creator\" : \"aa\"\n  },\n  \"available-actions\" : { },\n  \"tags\" : [ ],\n  \"read-only\" : true,\n  \"comment\" : \"\",\n  \"color\" : \"black\",\n  \"icon\" : \"Objects/application\",\n  \"new-primary-category\" : {\n    \"uid\" : \"00fa9e44-40b0-0f65-e053-08241dc22da2\",\n    \"name\" : \"Botnets\",\n    \"type\" : \"application-site-category\",\n    \"domain\" : {\n      \"uid\" : \"8bf4ac51-2df7-40e1-9bce-bedbedbedbed\",\n      \"name\" : \"APPI Data\",\n      \"domain-type\" : \"data domain\"\n    },\n    \"icon\" : \"Objects/category\",\n    \"color\" : \"black\"\n  },\n  \"risk\" : \"low\",\n  \"url-defined-as-regular-expression\" : false\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:08.237322",
+    "source_file": "add-override-categorization.html"
+  }
+}
+```

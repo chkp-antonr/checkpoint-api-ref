@@ -1,0 +1,498 @@
+# show-updatable-objects-repository-content
+
+```json
+{
+  "command": "show-updatable-objects-repository-content",
+  "description": "Shows the content of the available updatable objects from the Check Point User Center.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/show-updatable-objects-repository-content",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "uid-in-updatable-objects-repository",
+        "description": "The object's unique identifier in the Updatable Objects repository.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "text",
+        "description": "Return results containing the specified text value.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uri",
+        "description": "Return results under the specified uri value.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "limit",
+        "description": "The maximal number of returned results.",
+        "type": "integer",
+        "required": false,
+        "default": "50"
+      },
+      {
+        "name": "offset",
+        "description": "Number of the results to initially skip.",
+        "type": "integer",
+        "required": false,
+        "default": "0"
+      },
+      {
+        "name": "order",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "name"
+        ]
+      },
+      {
+        "name": "ASC",
+        "description": "Sorts results by the given field in ascending order.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "name"
+        ]
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "from",
+        "description": "From which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "objects",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name-in-updatable-objects-repository",
+        "description": "Object name in the Updatable Objects Repository.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid-in-updatable-objects-repository",
+        "description": "Unique identifier of the object in the Updatable Objects Repository.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "additional-properties",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "description",
+        "description": "Description of retrieved Updatable Object.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "info-text",
+        "description": "Information about the Updatable Object IP ranges source.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "info-url",
+        "description": "URL of the Updatable Object IP ranges source.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uri",
+        "description": "URI of the Updatable Object under the Updatable Objects Repository.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "updatable-object",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "to",
+        "description": "To which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "total",
+        "description": "Total number of elements returned by the query.",
+        "type": "integer",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "show-updatable-objects-repository-content": {
+      "description": "Show the content of the Updatable Objects Repository",
+      "request": "POST {{server}}/show-updatable-objects-repository-content\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"limit\" : 1\n}",
+      "response": "{\n  \"from\" : 1,\n  \"to\" : 1,\n  \"total\" : 123,\n  \"objects\" : [ {\n    \"name-in-updatable-objects-repository\" : \"Amazon\",\n    \"uid-in-updatable-objects-repository\" : \"9f838ccf-4376-11e7-948e-005056c0000c\",\n    \"additional-properties\" : {\n      \"description\" : \"Amazon Web Services (abbreviated AWS) is a collection of remote computing services (also called web services) that together make up a cloud computing platform, offered over the Internet by Amazon.com.\",\n      \"info-text\" : \"Amazon Web Services IP address ranges info page\",\n      \"info-url\" : \"http://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html\",\n      \"uri\" : \"/Updatable Objects/Amazon Web Services\"\n    }\n  } ]\n}"
+    },
+    "show-updatable-objects-repository-content with filter": {
+      "description": "Show objects of the Updatable Objects Repository with \"Amazon\" in their name",
+      "request": "POST {{server}}/show-updatable-objects-repository-content\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"filter\" : {\n    \"text\" : \"Amazon\"\n  }\n}",
+      "response": "{\n  \"from\" : 1,\n  \"to\" : 3,\n  \"total\" : 3,\n  \"objects\" : [ {\n    \"name-in-updatable-objects-repository\" : \"Amazon AP North-East 1 Servers\",\n    \"uid-in-updatable-objects-repository\" : \"aeef181e-72c8-11e7-9248-54a52c295409\",\n    \"additional-properties\" : {\n      \"description\" : \"This is an Amazon object, derived from a link listed below, and all its content is subject to Amazon IPs. Amazon CloudFront is a content delivery network (CDN) that delivers content through a worldwide network of data centers.\",\n      \"info-text\" : \"Amazon Web Services IP address ranges info page\",\n      \"info-url\" : \"http://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html\",\n      \"uri\" : \"/ Updatable Objects/Amazon Web Services Servers/CloudFront Servers\"\n    }\n  }, {\n    \"name-in-updatable-objects-repository\" : \"CodeBuild AP North-East 1 Servers\",\n    \"uid-in-updatable-objects-repository\" : \"d9eeaf01-965f-365d-8400-9e8ebb45a5cb\",\n    \"additional-properties\" : {\n      \"description\" : \"This is an Amazon object, derived from a link listed below, and all its content is subject to Amazon IPs. AWS CodeBuild is a build service that compiles source code, runs tests, and produces software packages.\",\n      \"info-text\" : \"Amazon Web Services IP address ranges info page\",\n      \"info-url\" : \"http://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html\",\n      \"uri\" : \"/ Updatable Objects/Amazon Web Services Servers/CodeBuild Servers\"\n    }\n  }, {\n    \"name-in-updatable-objects-repository\" : \"CodeBuild AP North-East 2 Servers\",\n    \"uid-in-updatable-objects-repository\" : \"455b99e2-383c-3702-9bdd-54dab06bbbdf\",\n    \"additional-properties\" : {\n      \"description\" : \"This is an Amazon object, derived from a link listed below, and all its content is subject to Amazon IPs. AWS CodeBuild is a build service that compiles source code, runs tests, and produces software packages.\",\n      \"info-text\" : \"Amazon Web Services IP address ranges info page\",\n      \"info-url\" : \"http://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html\",\n      \"uri\" : \"/ Updatable Objects/Amazon Web Services Servers/CodeBuild Servers\"\n    }\n  } ]\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:29.193507",
+    "source_file": "show-updatable-objects-repository-content.html"
+  }
+}
+```

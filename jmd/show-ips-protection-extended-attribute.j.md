@@ -1,0 +1,236 @@
+# show-ips-protection-extended-attribute
+
+```json
+{
+  "command": "show-ips-protection-extended-attribute",
+  "description": "Retrieve existing object using object name or uid.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/show-ips-protection-extended-attribute",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": true
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "object",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "values",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "show-ips-protection-extended-attribute": {
+      "description": "Show IPS protection extended Attribute",
+      "request": "POST {{server}}/show-ips-protection-extended-attribute\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"Vulnerability Effect\"\n}",
+      "response": "{\n  \"object\" : {\n    \"name\" : \"Vulnerability Effect\",\n    \"uid\" : \"cc35627d-e1ad-d04c-bbc4-87da80602869\",\n    \"values\" : [ {\n      \"name\" : \"Privilege Escalation\",\n      \"uid\" : \"e23b95b3-4c4b-d046-8868-7c514f7c0856\"\n    }, {\n      \"name\" : \"Variable Manipulation\",\n      \"uid\" : \"74488737-f644-af44-976f-d553da34f8c6\"\n    }, {\n      \"name\" : \"Cross-Site Scripting\",\n      \"uid\" : \"5c2a9b1d-16c2-0d47-a807-2c0bc58eb200\"\n    }, {\n      \"name\" : \"Boot Code Dump\",\n      \"uid\" : \"b760d74f-11c8-2641-b35b-ecd4b3d1354e\"\n    }, {\n      \"name\" : \"Information Disclosure\",\n      \"uid\" : \"bae691cd-0d3e-824a-8ab5-d10b7cdeff42\"\n    }, {\n      \"name\" : \"File Upload / Access / Execution\",\n      \"uid\" : \"ca6a3a33-3b7d-df40-9105-478aaa459b9c\"\n    }, {\n      \"name\" : \"Code Execution\",\n      \"uid\" : \"a9e0c4f4-4557-f740-899e-bbec6f856098\"\n    }, {\n      \"name\" : \"Memory Corruption\",\n      \"uid\" : \"9b1526d3-14d2-0041-87bb-b2758d326f2f\"\n    }, {\n      \"name\" : \"Directory Traversal\",\n      \"uid\" : \"7a2af117-0e26-4548-8be4-348e25407101\"\n    }, {\n      \"name\" : \"Authentication Bypass\",\n      \"uid\" : \"d0e79192-9f67-fd4c-93ff-62d6bbee7f8b\"\n    }, {\n      \"name\" : \"Denial of Service\",\n      \"uid\" : \"4378886a-9163-f640-bfba-feae3b8ea235\"\n    }, {\n      \"name\" : \"Command Execution\",\n      \"uid\" : \"422221ba-4294-6b47-8b6b-7ecce8b6ed60\"\n    }, {\n      \"name\" : \"Shell Upload\",\n      \"uid\" : \"7147fd4f-73a4-6c48-b543-0c399b9b9c9d\"\n    }, {\n      \"name\" : \"Stack Corruption\",\n      \"uid\" : \"8e221b61-439b-724b-9536-2c6b7cb3cdeb\"\n    }, {\n      \"name\" : \"File Deletion and Overwriting\",\n      \"uid\" : \"23d10a6b-ae0e-484d-a03f-24408ceb33b1\"\n    }, {\n      \"name\" : \"Cross-Site Request Forgery\",\n      \"uid\" : \"c38c3bed-aef9-0240-9900-a0173608d883\"\n    } ]\n  }\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:25.607109",
+    "source_file": "show-ips-protection-extended-attribute.html"
+  }
+}
+```

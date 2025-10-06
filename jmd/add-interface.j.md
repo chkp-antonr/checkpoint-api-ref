@@ -1,0 +1,997 @@
+# add-interface
+
+```json
+{
+  "command": "add-interface",
+  "description": "Add network interface.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/add-interface",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "name",
+        "description": "Network interface name. Must be unique per gateway or cluster.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "gateway-uid",
+        "description": "Gateway or cluster object uid that the interface belongs to.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "anti-spoofing",
+        "description": "Enable anti-spoofing.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "anti-spoofing-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "default": "prevent",
+        "valid_values": [
+          "prevent",
+          "detect"
+        ]
+      },
+      {
+        "name": "action",
+        "description": "If packets will be rejected (the Prevent option) or whether the packets will be monitored (the Detect option).",
+        "type": "string",
+        "required": false,
+        "default": "prevent",
+        "valid_values": [
+          "prevent",
+          "detect"
+        ]
+      },
+      {
+        "name": "exclude-packets",
+        "description": "Don't check packets from excluded network.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "excluded-network-name",
+        "description": "Excluded network name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "excluded-network-uid",
+        "description": "Excluded network UID.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "spoof-tracking",
+        "description": "Spoof tracking.",
+        "type": "string",
+        "required": false,
+        "default": "log",
+        "valid_values": [
+          "none",
+          "log",
+          "alert"
+        ]
+      },
+      {
+        "name": "cluster-members",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "default": "black",
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Cluster member network interface name.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "member-uid",
+        "description": "Cluster member object uid.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "ip-address",
+        "description": "IPv4 or IPv6 address. If both addresses are required use ipv4-address and ipv6-address fields explicitly.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "network-mask",
+        "description": "IPv4 or IPv6 network mask. If both masks are required use ipv4-network-mask and ipv6-network-mask fields explicitly. Instead of providing mask itself it is possible to specify IPv4 or IPv6 mask length in mask-length field. If both masks length are required use ipv4-mask-length and ipv6-mask-length fields explicitly.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "default": "black",
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow"
+        ]
+      },
+      {
+        "name": "comments",
+        "description": "Comments string.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "details-level",
+        "description": "The level of detail for some of the fields in the response can vary from showing only the UID value of the object to a fully detailed representation of the object.",
+        "type": "string",
+        "required": false,
+        "default": "standard",
+        "valid_values": [
+          "uid",
+          "standard",
+          "full"
+        ]
+      },
+      {
+        "name": "tags",
+        "description": "Collection of tag identifiers.",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "ignore-warnings",
+        "description": "Apply changes ignoring warnings.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "ignore-errors",
+        "description": "Apply changes ignoring errors. You won't be able to publish such a changes. If ignore-warnings flag was omitted - warnings will also be ignored.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "cluster-network-type",
+        "description": "Cluster interface type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "cluster",
+          "sync",
+          "cluster + sync",
+          "private"
+        ]
+      },
+      {
+        "name": "dynamic-ip",
+        "description": "Enable dynamic interface.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "ipv4-address",
+        "description": "IPv4 network address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv4-mask-length",
+        "description": "IPv4 mask length.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "ipv4-network-mask",
+        "description": "IPv4 network mask.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv6-address",
+        "description": "IPv6 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv6-mask-length",
+        "description": "IPv6 mask length.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "ipv6-network-mask",
+        "description": "IPv6 network mask.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "monitored-by-cluster",
+        "description": "When Private is selected as the Cluster interface type, cluster can monitor or not monitor the interface.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "network-interface-type",
+        "description": "Network Interface Type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "alias",
+          "bond",
+          "bridge",
+          "bridge member",
+          "ethernet",
+          "loopback",
+          "6 in 4 tunnel",
+          "pppoe",
+          "vpn tunnel",
+          "vlan"
+        ]
+      },
+      {
+        "name": "security-zone-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "auto-calculated",
+        "description": "Security Zone is calculated according to where the interface leads to.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "topology",
+        "description": "Topology configuration.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "automatic",
+          "external",
+          "internal"
+        ]
+      },
+      {
+        "name": "topology-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "default": "not defined",
+        "valid_values": [
+          "not defined",
+          "network defined by the interface ip and net mask",
+          "network defined by routing",
+          "specific"
+        ]
+      },
+      {
+        "name": "interface-leads-to-dmz",
+        "description": "Whether this interface leads to demilitarized zone (perimeter network).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "ip-address-behind-this-interface",
+        "description": "Network settings behind this interface.",
+        "type": "string",
+        "required": false,
+        "default": "not defined",
+        "valid_values": [
+          "not defined",
+          "network defined by the interface ip and net mask",
+          "network defined by routing",
+          "specific"
+        ]
+      },
+      {
+        "name": "specific-network",
+        "description": "Network behind this interface.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "specific-network-uid",
+        "description": "N/A",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "name",
+        "description": "Network interface name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "gateway",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "name",
+        "description": "Gateway or cluster name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Gateway or cluster type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Gateway or cluster object uid.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "anti-spoofing",
+        "description": "Enable anti-spoofing.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "anti-spoofing-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "prevent",
+          "detect"
+        ]
+      },
+      {
+        "name": "action",
+        "description": "If packets will be rejected (the Prevent option) or whether the packets will be monitored (the Detect option).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "prevent",
+          "detect"
+        ]
+      },
+      {
+        "name": "exclude-packets",
+        "description": "Don't check packets from excluded network.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "excluded-network-name",
+        "description": "Excluded network name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "excluded-network-uid",
+        "description": "Excluded network UID.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "spoof-tracking",
+        "description": "Spoof tracking.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "alert"
+        ]
+      },
+      {
+        "name": "cluster-members",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "ipv4-address",
+        "description": "IPv4 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv4-mask-length",
+        "description": "IPv4 network mask length.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "ipv4-network-mask",
+        "description": "IPv4 network mask.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "name",
+        "description": "Cluster member interface name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv6-address",
+        "description": "IPv6 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv6-mask-length",
+        "description": "IPv6 network mask length.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "ipv6-network-mask",
+        "description": "IPv6 network mask.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Cluster member interface object UID.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "member-name",
+        "description": "Cluster member object name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "member-uid",
+        "description": "Cluster member object uid.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "cluster-network-type",
+        "description": "Cluster interface type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "cluster",
+          "sync",
+          "cluster + sync",
+          "private"
+        ]
+      },
+      {
+        "name": "dynamic-ip",
+        "description": "Enable dynamic interface.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "ipv4-address",
+        "description": "IPv4 network address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv4-mask-length",
+        "description": "IPv4 mask length.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "ipv4-network-mask",
+        "description": "IPv4 network mask.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv6-address",
+        "description": "IPv6 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv6-mask-length",
+        "description": "IPv6 mask length.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "ipv6-network-mask",
+        "description": "IPv6 network mask.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "monitored-by-cluster",
+        "description": "When Private is selected as the Cluster interface type, cluster can monitor or not monitor the interface.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "network-interface-type",
+        "description": "Network Interface Type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "alias",
+          "bond",
+          "bridge",
+          "bridge member",
+          "ethernet",
+          "loopback",
+          "6 in 4 tunnel",
+          "pppoe",
+          "vpn tunnel",
+          "vlan"
+        ]
+      },
+      {
+        "name": "security-zone-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "auto-calculated",
+        "description": "Security Zone is calculated according to where the interface leads to.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "auto-calculated-zone",
+        "description": "N/A",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "auto-calculated-zone-uid",
+        "description": "N/A",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "specific-security-zone-enabled",
+        "description": "N/A",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "specific-zone",
+        "description": "Security Zone specified manually.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "specific-zone-uid",
+        "description": "N/A",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "topology",
+        "description": "Topology configuration.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "automatic",
+          "external",
+          "internal"
+        ]
+      },
+      {
+        "name": "topology-automatic",
+        "description": "Topology configuration automatically calculated by get-interfaces command.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "external",
+          "internal"
+        ]
+      },
+      {
+        "name": "topology-manual",
+        "description": "Topology configuration manually defined.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "automatic",
+          "external",
+          "internal"
+        ]
+      },
+      {
+        "name": "topology-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "not defined",
+          "network defined by the interface ip and net mask",
+          "network defined by routing",
+          "specific"
+        ]
+      },
+      {
+        "name": "interface-leads-to-dmz",
+        "description": "Whether this interface leads to demilitarized zone (perimeter network).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "ip-address-behind-this-interface",
+        "description": "Network settings behind this interface.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "not defined",
+          "network defined by the interface ip and net mask",
+          "network defined by routing",
+          "specific"
+        ]
+      },
+      {
+        "name": "specific-network",
+        "description": "Network behind this interface.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "specific-network-uid",
+        "description": "N/A",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "topology-settings-automatic",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "not defined",
+          "network defined by the interface ip and net mask",
+          "network defined by routing",
+          "specific"
+        ]
+      },
+      {
+        "name": "interface-leads-to-dmz",
+        "description": "Whether this interface leads to demilitarized zone (perimeter network).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "ip-address-behind-this-interface",
+        "description": "Network settings behind this interface.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "not defined",
+          "network defined by the interface ip and net mask",
+          "network defined by routing",
+          "specific"
+        ]
+      },
+      {
+        "name": "specific-network",
+        "description": "Network behind this interface.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "specific-network-uid",
+        "description": "N/A",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "topology-settings-manual",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "not defined",
+          "network defined by the interface ip and net mask",
+          "network defined by routing",
+          "specific"
+        ]
+      },
+      {
+        "name": "interface-leads-to-dmz",
+        "description": "Whether this interface leads to demilitarized zone (perimeter network).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "ip-address-behind-this-interface",
+        "description": "Network settings behind this interface.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "not defined",
+          "network defined by the interface ip and net mask",
+          "network defined by routing",
+          "specific"
+        ]
+      },
+      {
+        "name": "specific-network",
+        "description": "Network behind this interface.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "specific-network-uid",
+        "description": "N/A",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "add interface to cluster": {
+      "description": "Add network interface to cluster with two members.",
+      "request": "POST {{server}}/add-interface\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"gateway-uid\" : \"20ec49e8-8cd8-4ad4-b204-0de8ae4e0e17\",\n  \"ipv4-address\" : \"1.1.1.111\",\n  \"ipv4-mask-length\" : 24,\n  \"name\" : \"eth0\",\n  \"anti-spoofing-settings\" : {\n    \"action\" : \"detect\",\n    \"exclude-packets\" : false,\n    \"spoof-tracking\" : \"log\"\n  },\n  \"security-zone-settings\" : {\n    \"auto-calculated\" : false,\n    \"specific-zone\" : \"InternalZone\",\n    \"auto-calculated-zone\" : \"InternalZone\",\n    \"specific-security-zone-enabled\" : true\n  },\n  \"topology-settings\" : {\n    \"interface-leads-to-dmz\" : false,\n    \"ip-address-behind-this-interface\" : \"network defined by routing\"\n  },\n  \"topology\" : \"internal\",\n  \"cluster-network-type\" : \"cluster\",\n  \"cluster-members\" : [ {\n    \"name\" : \"eth4\",\n    \"member-name\" : \"member1\",\n    \"member-uid\" : \"5cba00d6-fb5f-42f6-b53e-ad0ce0391398\",\n    \"ipv4-address\" : \"2.2.2.1\",\n    \"ipv4-network-mask\" : \"255.255.255.0\",\n    \"ipv4-mask-length\" : 24\n  }, {\n    \"name\" : \"eth4\",\n    \"member-name\" : \"member2\",\n    \"member-uid\" : \"a02c65d7-a224-4dd5-8f5b-873ee7660aef\",\n    \"ipv4-address\" : \"2.2.2.2\",\n    \"ipv4-network-mask\" : \"255.255.255.0\",\n    \"ipv4-mask-length\" : 24\n  } ],\n  \"anti-spoofing\" : true,\n  \"ignore-warnings\" : false\n}",
+      "response": "{\n  \"uid\" : \"23865dbe-5a58-4902-abcb-36e894ad6f54\",\n  \"name\" : \"eth0\",\n  \"type\" : \"interface\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"topology-settings-automatic\" : {\n    \"ip-address-behind-this-interface\" : \"not defined\",\n    \"interface-leads-to-dmz\" : false\n  },\n  \"topology-automatic\" : \"internal\",\n  \"topology-manual\" : \"internal\",\n  \"topology-settings-manual\" : {\n    \"ip-address-behind-this-interface\" : \"network defined by routing\",\n    \"interface-leads-to-dmz\" : false\n  },\n  \"anti-spoofing-settings\" : {\n    \"action\" : \"detect\",\n    \"exclude-packets\" : false,\n    \"spoof-tracking\" : \"log\"\n  },\n  \"network-interface-type\" : \"ethernet\",\n  \"security-zone-settings\" : {\n    \"auto-calculated-zone\" : \"InternalZone\",\n    \"auto-calculated-zone-uid\" : \"e8131db2-8388-42a5-924a-82de32db20f7\",\n    \"specific-zone-uid\" : \"e8131db2-8388-42a5-924a-82de32db20f7\",\n    \"specific-security-zone-enabled\" : true,\n    \"auto-calculated\" : false,\n    \"specific-zone\" : \"InternalZone\"\n  },\n  \"cluster-members\" : [ {\n    \"uid\" : \"5e08c7a4-9686-49fb-a911-450099a07def\",\n    \"name\" : \"eth4\",\n    \"member-uid\" : \"5cba00d6-fb5f-42f6-b53e-ad0ce0391398\",\n    \"member-name\" : \"member1\",\n    \"ipv4-address\" : \"2.2.2.1\",\n    \"ipv4-network-mask\" : \"255.255.255.0\",\n    \"ipv4-mask-length\" : 24,\n    \"ipv6-address\" : \"\"\n  }, {\n    \"uid\" : \"38358bbe-f165-46ae-ae9a-3677a4c0d2d8\",\n    \"name\" : \"eth4\",\n    \"member-uid\" : \"a02c65d7-a224-4dd5-8f5b-873ee7660aef\",\n    \"member-name\" : \"member2\",\n    \"ipv4-address\" : \"2.2.2.2\",\n    \"ipv4-network-mask\" : \"255.255.255.0\",\n    \"ipv4-mask-length\" : 24,\n    \"ipv6-address\" : \"\"\n  } ],\n  \"anti-spoofing\" : true,\n  \"ipv4-address\" : \"1.1.1.111\",\n  \"ipv4-mask-length\" : 24,\n  \"cluster-network-type\" : \"cluster\",\n  \"gateway\" : {\n    \"type\" : \"simple-cluster\",\n    \"name\" : \"dummy-cluster-1\",\n    \"uid\" : \"20ec49e8-8cd8-4ad4-b204-0de8ae4e0e17\"\n  },\n  \"comments\" : \"\",\n  \"color\" : \"black\",\n  \"tags\" : [ ],\n  \"meta-info\" : {\n    \"lock\" : \"unlocked\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1685343309622,\n      \"iso-8601\" : \"2023-05-29T09:55+0300\"\n    },\n    \"last-modifier\" : \"aa\",\n    \"creation-time\" : {\n      \"posix\" : 1685343308962,\n      \"iso-8601\" : \"2023-05-29T09:55+0300\"\n    },\n    \"creator\" : \"aa\"\n  },\n  \"read-only\" : true,\n  \"available-actions\" : { }\n}"
+    },
+    "add interface to gateway": {
+      "description": "Add network interface to gateway.",
+      "request": "POST {{server}}/add-interface\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"gateway-uid\" : \"ff918e85-98c4-4b17-bcac-417aab863d87\",\n  \"ipv4-address\" : \"11.1.1.1\",\n  \"ipv4-mask-length\" : 24,\n  \"name\" : \"eth0\",\n  \"anti-spoofing-settings\" : {\n    \"action\" : \"prevent\",\n    \"exclude-packets\" : false,\n    \"spoof-tracking\" : \"log\"\n  },\n  \"security-zone-settings\" : {\n    \"auto-calculated\" : false,\n    \"specific-zone\" : \"ExternalZone\",\n    \"auto-calculated-zone\" : \"InternalZone\",\n    \"specific-security-zone-enabled\" : true\n  },\n  \"topology-settings\" : {\n    \"interface-leads-to-dmz\" : false,\n    \"ip-address-behind-this-interface\" : \"not defined\"\n  },\n  \"topology\" : \"external\",\n  \"anti-spoofing\" : true\n}",
+      "response": "{\n  \"uid\" : \"f400bd09-381f-4435-b8f4-9e13338c6ad6\",\n  \"name\" : \"eth0\",\n  \"type\" : \"interface\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"topology-settings-automatic\" : {\n    \"ip-address-behind-this-interface\" : \"not defined\",\n    \"interface-leads-to-dmz\" : false\n  },\n  \"topology-automatic\" : \"internal\",\n  \"topology-manual\" : \"external\",\n  \"topology-settings-manual\" : {\n    \"ip-address-behind-this-interface\" : \"not defined\",\n    \"interface-leads-to-dmz\" : false\n  },\n  \"anti-spoofing-settings\" : {\n    \"action\" : \"prevent\",\n    \"exclude-packets\" : false,\n    \"spoof-tracking\" : \"log\"\n  },\n  \"network-interface-type\" : \"ethernet\",\n  \"security-zone-settings\" : {\n    \"auto-calculated-zone\" : \"InternalZone\",\n    \"auto-calculated-zone-uid\" : \"e8131db2-8388-42a5-924a-82de32db20f7\",\n    \"specific-zone-uid\" : \"237a4cbc-7fb6-4d50-872a-4904468271c4\",\n    \"specific-security-zone-enabled\" : true,\n    \"auto-calculated\" : false,\n    \"specific-zone\" : \"ExternalZone\"\n  },\n  \"anti-spoofing\" : true,\n  \"ipv4-address\" : \"11.1.1.1\",\n  \"ipv4-mask-length\" : 24,\n  \"gateway\" : {\n    \"type\" : \"simple-gateway\",\n    \"name\" : \"dummy-gw-1\",\n    \"uid\" : \"ff918e85-98c4-4b17-bcac-417aab863d87\"\n  },\n  \"comments\" : \"\",\n  \"color\" : \"black\",\n  \"tags\" : [ ],\n  \"meta-info\" : {\n    \"lock\" : \"unlocked\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1685343305437,\n      \"iso-8601\" : \"2023-05-29T09:55+0300\"\n    },\n    \"last-modifier\" : \"aa\",\n    \"creation-time\" : {\n      \"posix\" : 1685343305189,\n      \"iso-8601\" : \"2023-05-29T09:55+0300\"\n    },\n    \"creator\" : \"aa\"\n  },\n  \"read-only\" : true,\n  \"available-actions\" : { }\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:07.522995",
+    "source_file": "add-interface.html"
+  }
+}
+```

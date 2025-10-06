@@ -1,0 +1,284 @@
+{
+  "command": "set-outbound-inspection-certificate",
+  "description": "Edit existing Outbound Certificate using object name or uid. If an Identifier wasn't given, the default Outbound Certificate is edited if it exists.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/set-outbound-inspection-certificate",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "issued-by",
+        "description": "The DN (Distinguished Name) of the certificate.Required only if one of the following parameters is given: base64-password, valid-from, valid-to.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "base64-password",
+        "description": "Password (encoded in Base64 with padding) for the certificate file.Required only if one of the following parameters is given: issued-by, valid-from, valid-to.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "valid-from",
+        "description": "The date, from which the certificate is valid. Format: YYYY-MM-DD.Required only if one of the following parameters is given: issued-by, base64-password, valid-to.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "valid-to",
+        "description": "The certificate expiration date. Format: YYYY-MM-DD.Required only if one of the following parameters is given: issued-by, base64-password, valid-from.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "new-name",
+        "description": "New name of the object.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "is-default",
+        "description": "Is the certificate the default certificate.",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "base64-certificate",
+        "description": "Certificate file encoded in base64.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "base64-public-certificate",
+        "description": "Public Certificate file encoded in base64 (pem format).",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "issued-by",
+        "description": "The DN (Distinguished Name) of the certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "valid-from",
+        "description": "Outbound certificate valid from date.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "valid-to",
+        "description": "Outbound certificate valid up to date.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "is-default",
+        "description": "Is the certificate the default certificate.",
+        "type": "boolean",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "set-outbound-inspection-certificate": {
+      "description": "",
+      "request": "POST {{server}}/set-outbound-inspection-certificate\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"OutboundCertificate\",\n  \"new-name\" : \"OutboundCertificate1\",\n  \"issued-by\" : \"www.checkpoint.com\",\n  \"base64-password\" : \"bXlfcGFzc3dvcmQ=\",\n  \"valid-from\" : \"2021-05-17\",\n  \"valid-to\" : \"2028-05-17\",\n  \"is-default\" : \"false\"\n}",
+      "response": "{\n  \"uid\" : \"17cfb93c-c1a2-46c7-ad26-5f183becf1cb\",\n  \"name\" : \"OutboundCertificate1\",\n  \"type\" : \"outbound-inspection-certificate\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"meta-info\" : {\n    \"lock\" : \"unlocked\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1679907451970,\n      \"iso-8601\" : \"2023-03-27T11:57+0300\"\n    },\n    \"last-modifier\" : \"aa\",\n    \"creation-time\" : {\n      \"posix\" : 1679907451970,\n      \"iso-8601\" : \"2023-03-27T11:57+0300\"\n    },\n    \"creator\" : \"aa\"\n  },\n  \"available-actions\" : { },\n  \"tags\" : [ ],\n  \"read-only\" : true,\n  \"comments\" : \"\",\n  \"icon\" : \"subject_user_certificate\",\n  \"issued-by\" : \"CN=www.checkpoint.com\",\n  \"valid-from\" : \"17-May-21\",\n  \"valid-to\" : \"17-May-28\",\n  \"base64-certificate\" : \"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\",\n  \"public-certificate\" : \"-----BEGIN CERTIFICATE-----\\nMIIC2DCCAcCgAwIBAgIEL0zULjANBgkqhkiG9w0BAQsFADAdMRswGQYDVQQDExJ3\\r\\nd3cuY2hlY2twb2ludC5jb20wHhcNMjEwNTE2MjEwMDAwWhcNMjgwNTE2MjEwMDAw\\r\\nWjAdMRswGQYDVQQDExJ3d3cuY2hlY2twb2ludC5jb20wggEiMA0GCSqGSIb3DQEB\\r\\nAQUAA4IBDwAwggEKAoIBAQCxyCWt4sZKMxQEsVv1uB1T55aOkdTGEiqFTbA7TH7M\\r\\n8REqqLA0UPresOk8s7m06fuWC6jxeUjUqxGx/392CX3cZebYsQyeYqPZzS7rn3MO\\r\\nHfEY3Fq3Zpa57eJGG7lzjMetnCzOgG7YXgosTNIGT0C/W1RgLwMqghk9giJwuq5N\\r\\nYBeIa3z4bpVUULRT5EYu7SQ5fzYDmMgFsJ0hVt2eUKSTbZW4SMO+a1IoiPx+ESAB\\r\\nb5u4gv2+Jo3xd8FME8uoGPMNDoEU/Q/jjJWNtQsetrmlNGrHXKMLq/1/3h3s78AQ\\r\\nc5mKkb3WmLrPAi1jOifF9qwxkFYmBVaubmA5dxi0n2C3AgMBAAGjIDAeMA8GA1Ud\\r\\nEwEB/wQFMAMBAf8wCwYDVR0PBAQDAgGGMA0GCSqGSIb3DQEBCwUAA4IBAQA/R1DI\\r\\nhc1PHzEjsW9KxIf7ZcfZP6KL0g70emB6PsV+EGzIzXQySFv7d/FX52kvHndrLOMI\\r\\nUNspN+uwXd8xsWCV1Gp88A5xm35l+n2gRoBX0111V58Lj66m8Il+/6OsQDHTo+Ec\\r\\niFZhTfOpUmUTIPi3Xut/biIoqGJHPGTFE4Ofu1snNmPnsOhsq2c7FN99f++dFIyG\\r\\nIHJ2HyvPty8AuxV8RSbbiMcvvnceeXCa6NVpt6WTGeJwsbZXAkO39HgLrr8vflRv\\r\\nB9J0HISc3bYHc5yCtk/z0z+Dr+o7jYj+RfTXtgYBPikbJUsCJepF8kq8qNZWLkCZ\\r\\nSDFOf0seaSkqW2Dv\\r\\n-----END CERTIFICATE-----\\n\",\n  \"is-default\" : false\n}"
+    },
+    "set-outbound-inspection-certificate-to-default": {
+      "description": "",
+      "request": "POST {{server}}/set-outbound-inspection-certificate\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"OutboundCertificate\",\n  \"new-name\" : \"OutboundCertificate1\",\n  \"issued-by\" : \"www.checkpoint.com\",\n  \"base64-password\" : \"bXlfcGFzc3dvcmQ=\",\n  \"valid-from\" : \"2021-05-17\",\n  \"valid-to\" : \"2028-05-17\",\n  \"is-default\" : \"true\"\n}",
+      "response": "{\n  \"code\" : \"err_outbound_inspection_certificate_operation_failed\",\n  \"message\" : \"Default outbound certificate: c118da24-a234-4c27-80f9-aa53c0b55cef is about to be replaced\"\n}"
+    },
+    "set-outbound-inspection-certificate-to-default-with-ignore-warnings": {
+      "description": "",
+      "request": "POST {{server}}/set-outbound-inspection-certificate\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"OutboundCertificate\",\n  \"new-name\" : \"OutboundCertificate1\",\n  \"issued-by\" : \"www.checkpoint.com\",\n  \"base64-password\" : \"bXlfcGFzc3dvcmQ=\",\n  \"valid-from\" : \"2021-05-17\",\n  \"valid-to\" : \"2028-05-17\",\n  \"is-default\" : \"true\",\n  \"ignore-warnings\" : \"true\"\n}",
+      "response": "{\n  \"uid\" : \"17cfb93c-c1a2-46c7-ad26-5f183becf1cb\",\n  \"name\" : \"OutboundCertificate1\",\n  \"type\" : \"outbound-inspection-certificate\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"meta-info\" : {\n    \"lock\" : \"unlocked\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1679907451970,\n      \"iso-8601\" : \"2023-03-27T11:57+0300\"\n    },\n    \"last-modifier\" : \"aa\",\n    \"creation-time\" : {\n      \"posix\" : 1679907451970,\n      \"iso-8601\" : \"2023-03-27T11:57+0300\"\n    },\n    \"creator\" : \"aa\"\n  },\n  \"available-actions\" : { },\n  \"tags\" : [ ],\n  \"read-only\" : true,\n  \"comments\" : \"\",\n  \"icon\" : \"subject_user_certificate\",\n  \"issued-by\" : \"CN=www.checkpoint.com\",\n  \"valid-from\" : \"17-May-21\",\n  \"valid-to\" : \"17-May-28\",\n  \"base64-certificate\" : \"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\",\n  \"public-certificate\" : \"-----BEGIN CERTIFICATE-----\\nMIIC2DCCAcCgAwIBAgIEL0zULjANBgkqhkiG9w0BAQsFADAdMRswGQYDVQQDExJ3\\r\\nd3cuY2hlY2twb2ludC5jb20wHhcNMjEwNTE2MjEwMDAwWhcNMjgwNTE2MjEwMDAw\\r\\nWjAdMRswGQYDVQQDExJ3d3cuY2hlY2twb2ludC5jb20wggEiMA0GCSqGSIb3DQEB\\r\\nAQUAA4IBDwAwggEKAoIBAQCxyCWt4sZKMxQEsVv1uB1T55aOkdTGEiqFTbA7TH7M\\r\\n8REqqLA0UPresOk8s7m06fuWC6jxeUjUqxGx/392CX3cZebYsQyeYqPZzS7rn3MO\\r\\nHfEY3Fq3Zpa57eJGG7lzjMetnCzOgG7YXgosTNIGT0C/W1RgLwMqghk9giJwuq5N\\r\\nYBeIa3z4bpVUULRT5EYu7SQ5fzYDmMgFsJ0hVt2eUKSTbZW4SMO+a1IoiPx+ESAB\\r\\nb5u4gv2+Jo3xd8FME8uoGPMNDoEU/Q/jjJWNtQsetrmlNGrHXKMLq/1/3h3s78AQ\\r\\nc5mKkb3WmLrPAi1jOifF9qwxkFYmBVaubmA5dxi0n2C3AgMBAAGjIDAeMA8GA1Ud\\r\\nEwEB/wQFMAMBAf8wCwYDVR0PBAQDAgGGMA0GCSqGSIb3DQEBCwUAA4IBAQA/R1DI\\r\\nhc1PHzEjsW9KxIf7ZcfZP6KL0g70emB6PsV+EGzIzXQySFv7d/FX52kvHndrLOMI\\r\\nUNspN+uwXd8xsWCV1Gp88A5xm35l+n2gRoBX0111V58Lj66m8Il+/6OsQDHTo+Ec\\r\\niFZhTfOpUmUTIPi3Xut/biIoqGJHPGTFE4Ofu1snNmPnsOhsq2c7FN99f++dFIyG\\r\\nIHJ2HyvPty8AuxV8RSbbiMcvvnceeXCa6NVpt6WTGeJwsbZXAkO39HgLrr8vflRv\\r\\nB9J0HISc3bYHc5yCtk/z0z+Dr+o7jYj+RfTXtgYBPikbJUsCJepF8kq8qNZWLkCZ\\r\\nSDFOf0seaSkqW2Dv\\r\\n-----END CERTIFICATE-----\\n\",\n  \"is-default\" : true\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:18.663264",
+    "source_file": "set-outbound-inspection-certificate.html"
+  }
+}

@@ -1,0 +1,564 @@
+{
+  "command": "show-access-rulebase",
+  "description": "Shows the entire Access Rules layer. This layer is divided into sections. An Access Rule may be within a section, or independent of a section (in which case it is said to be under the \"global\" section). The reply features a list of objects. Each object may be a section of the layer, with all its rules in, or a rule itself, for the case of rules which are under the global section. An optional \"filter\" field may be added in order to filter out only those rules that match a search criteria.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/show-access-rulebase",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "filter",
+        "description": "Search expression to filter the rulebase. The provided text should be exactly the same as it would be given in Smart Console. The logical operators in the expression ('AND', 'OR') should be provided in capital letters. If an operator is not used, the default OR operator applies.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "filter-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "default": "general",
+        "valid_values": [
+          "general",
+          "packet"
+        ]
+      },
+      {
+        "name": "search-mode",
+        "description": "When set to 'general', both the Full Text Search and Packet Search are enabled. In this mode, Packet Search will not match on 'Any' object, a negated cell or a group-with-exclusion. When the search-mode is set to 'packet', by default, the match on 'Any' object, a negated cell or a group-with-exclusion are enabled. packet-search-settings may be provided to change the default behavior.",
+        "type": "string",
+        "required": false,
+        "default": "general",
+        "valid_values": [
+          "general",
+          "packet"
+        ]
+      },
+      {
+        "name": "packet-search-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "expand-group-members",
+        "description": "When true, if the search expression contains a UID or a name of a group object, results will include rules that match on at least one member of the group.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "expand-group-with-exclusion-members",
+        "description": "When true, if the search expression contains a UID or a name of a group-with-exclusion object, results will include rules that match at least one member of the \"include\" part and is not a member of the \"except\" part.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "match-on-any",
+        "description": "Whether to match on 'Any' object.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "match-on-group-with-exclusion",
+        "description": "Whether to match on a group-with-exclusion.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "match-on-negate",
+        "description": "Whether to match on a negated cell.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "limit",
+        "description": "The maximal number of returned results.",
+        "type": "integer",
+        "required": false,
+        "default": "50"
+      },
+      {
+        "name": "offset",
+        "description": "Number of the results to initially skip.",
+        "type": "integer",
+        "required": false,
+        "default": "0"
+      },
+      {
+        "name": "order",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "name"
+        ]
+      },
+      {
+        "name": "ASC",
+        "description": "Sorts results by the given field in ascending order.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "name"
+        ]
+      },
+      {
+        "name": "package",
+        "description": "Name of the package.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "show-as-ranges",
+        "description": "When true, the source, destination and services & applications parameters are displayed as ranges of IP addresses and port numbers rather than network objects. Objects that are not represented using IP addresses or port numbers are presented as objects. In addition, the response of each rule does not contain the parameters: source, source-negate, destination, destination-negate, service and service-negate, but instead it contains the parameters: source-ranges, destination-ranges and service-ranges. Note: Requesting to show rules as ranges is limited up to 20 rules per request, otherwise an error is returned. If you wish to request more rules, use the offset and limit parameters to limit your request.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "show-expiration-settings",
+        "description": "Indicates whether to calculate and show \"expiration date settings\" field in reply.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "show-hits",
+        "description": "Show hitcount data.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "use-object-dictionary",
+        "description": "N/A",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "hits-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "from-date",
+        "description": "Format: YYYY-MM-DD, YYYY-mm-ddThh:mm:ss.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "target",
+        "description": "Target gateway name or UID.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "to-date",
+        "description": "Format: YYYY-MM-DD, YYYY-mm-ddThh:mm:ss.",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "from",
+        "description": "From which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "objects-dictionary",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "rulebase",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Rules type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "to",
+        "description": "To which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "total",
+        "description": "Total number of elements returned by the query.",
+        "type": "integer",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "show-access-rulebase": {
+      "description": "Shows the entire Access Rules Rulebase.",
+      "request": "POST {{server}}/show-access-rulebase\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"offset\" : 0,\n  \"limit\" : 20,\n  \"name\" : \"Network\",\n  \"details-level\" : \"standard\",\n  \"use-object-dictionary\" : true\n}",
+      "response": "{\n  \"from\" : 1,\n  \"to\" : 3,\n  \"total\" : 3,\n  \"name\" : \"Network\",\n  \"uid\" : \"21127e7c-d19b-4c65-b9c3-8e20e66ea1ae\",\n  \"rulebase\" : [ {\n    \"from\" : 1,\n    \"to\" : 1,\n    \"rulebase\" : [ {\n      \"uid\" : \"cb20e1cc-0343-4e22-a6bb-30b92e97675c\",\n      \"enabled\" : true,\n      \"comments\" : \"\",\n      \"domain\" : {\n        \"domain-type\" : \"domain\",\n        \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n        \"name\" : \"SMC User\"\n      },\n      \"meta-info\" : {\n        \"lock\" : \"unlocked\",\n        \"validation-state\" : \"ok\",\n        \"read-only\" : false,\n        \"last-modify-time\" : {\n          \"posix\" : 1445504073840,\n          \"iso-8601\" : \"2015-10-22T11:54+0300\"\n        },\n        \"last-modifier\" : \"aa\",\n        \"creation-time\" : {\n          \"posix\" : 1445245489542,\n          \"iso-8601\" : \"2015-10-19T12:04+0300\"\n        },\n        \"creator\" : \"aa\"\n      },\n      \"install-on\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"none\",\n        \"xmlType\" : \"Global\",\n        \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c476\",\n        \"folder\" : {\n          \"uid\" : \"a7a569db-cd04-4f1c-bc8d-94dbfc22b150\",\n          \"name\" : \"Check Point Settings\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711969368,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711969368,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Policy Targets\",\n        \"icon\" : \"General/globalsAny\",\n        \"comments\" : \"The policy target gateways\"\n      } ],\n      \"name\" : \"Rule1\",\n      \"source\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"red\",\n        \"xmlType\" : \"dynamic-object\",\n        \"uid\" : \"fe9b9103-f1c0-499e-985a-d15ccc7ebaab\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711955857,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711955857,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"CPDShield\",\n        \"icon\" : \"NetworkObjects/dynamicObject\",\n        \"comments\" : \"DSHIELD IP blocklist\",\n        \"display-name\" : \"\"\n      } ],\n      \"source-negate\" : false,\n      \"destination\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"CpmiAnyObject\",\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Any\",\n        \"icon\" : \"General/globalsAny\",\n        \"display-name\" : \"\"\n      } ],\n      \"destination-negate\" : false,\n      \"service\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"CpmiAnyObject\",\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Any\",\n        \"icon\" : \"General/globalsAny\",\n        \"display-name\" : \"\"\n      } ],\n      \"service-negate\" : false,\n      \"vpn\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"CpmiAnyObject\",\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Any\",\n        \"icon\" : \"General/globalsAny\",\n        \"display-name\" : \"\"\n      } ],\n      \"action\" : {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"none\",\n        \"xmlType\" : \"RulebaseAction\",\n        \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c473\",\n        \"folder\" : {\n          \"uid\" : \"a7a569db-cd04-4f1c-bc8d-94dbfc22b150\",\n          \"name\" : \"Check Point Settings\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711969650,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711969650,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Drop\",\n        \"icon\" : \"Actions/actionsDrop\",\n        \"comments\" : \"Drop\",\n        \"display-name\" : \"Drop\"\n      },\n      \"action-settings\" : {\n        \"enable-identity-captive-portal\" : false\n      },\n      \"data\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"CpmiAnyObject\",\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Any\",\n        \"icon\" : \"General/globalsAny\",\n        \"display-name\" : \"\"\n      } ],\n      \"data-negate\" : false,\n      \"data-direction\" : \"any\",\n      \"track\" : {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"none\",\n        \"xmlType\" : \"Track\",\n        \"uid\" : \"29e53e3d-23bf-48fe-b6b1-d59bd88036f9\",\n        \"folder\" : {\n          \"uid\" : \"a7a569db-cd04-4f1c-bc8d-94dbfc22b150\",\n          \"name\" : \"Check Point Settings\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711969451,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711969451,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"None\",\n        \"icon\" : \"General/globalsNone\",\n        \"comments\" : \"Extended Log used in Application Site rulebase\"\n      },\n      \"track-alert\" : \"none\",\n      \"time\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"CpmiAnyObject\",\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Any\",\n        \"icon\" : \"General/globalsAny\",\n        \"display-name\" : \"\"\n      } ],\n      \"custom-fields\" : {\n        \"field-1\" : \"\",\n        \"field-2\" : \"\",\n        \"field-3\" : \"\"\n      },\n      \"rule-number\" : 1,\n      \"type\" : \"rule\"\n    } ],\n    \"name\" : \"Section1\",\n    \"uid\" : \"c53d4aac-6c1b-4c75-aea2-3105612c302c\",\n    \"type\" : \"section\"\n  }, {\n    \"from\" : 2,\n    \"to\" : 3,\n    \"rulebase\" : [ {\n      \"uid\" : \"ae36ddad-4a82-456b-93aa-a97320ff47df\",\n      \"enabled\" : true,\n      \"comments\" : \"\",\n      \"domain\" : {\n        \"domain-type\" : \"domain\",\n        \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n        \"name\" : \"SMC User\"\n      },\n      \"meta-info\" : {\n        \"lock\" : \"unlocked\",\n        \"validation-state\" : \"ok\",\n        \"read-only\" : false,\n        \"last-modify-time\" : {\n          \"posix\" : 1445504129222,\n          \"iso-8601\" : \"2015-10-22T11:55+0300\"\n        },\n        \"last-modifier\" : \"aa\",\n        \"creation-time\" : {\n          \"posix\" : 1445504082424,\n          \"iso-8601\" : \"2015-10-22T11:54+0300\"\n        },\n        \"creator\" : \"aa\"\n      },\n      \"install-on\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"none\",\n        \"xmlType\" : \"Global\",\n        \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c476\",\n        \"folder\" : {\n          \"uid\" : \"a7a569db-cd04-4f1c-bc8d-94dbfc22b150\",\n          \"name\" : \"Check Point Settings\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711969368,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711969368,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Policy Targets\",\n        \"icon\" : \"General/globalsAny\",\n        \"comments\" : \"The policy target gateways\"\n      } ],\n      \"name\" : \"Rule2\",\n      \"source\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"CpmiAnyObject\",\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Any\",\n        \"icon\" : \"General/globalsAny\",\n        \"display-name\" : \"\"\n      } ],\n      \"source-negate\" : false,\n      \"destination\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"red\",\n        \"xmlType\" : \"dynamic-object\",\n        \"uid\" : \"fe9b9103-f1c0-499e-985a-d15ccc7ebaab\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711955857,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711955857,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"CPDShield\",\n        \"icon\" : \"NetworkObjects/dynamicObject\",\n        \"comments\" : \"DSHIELD IP blocklist\",\n        \"display-name\" : \"\"\n      } ],\n      \"destination-negate\" : false,\n      \"service\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"CpmiAnyObject\",\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Any\",\n        \"icon\" : \"General/globalsAny\",\n        \"display-name\" : \"\"\n      } ],\n      \"service-negate\" : false,\n      \"vpn\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"CpmiAnyObject\",\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Any\",\n        \"icon\" : \"General/globalsAny\",\n        \"display-name\" : \"\"\n      } ],\n      \"action\" : {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"none\",\n        \"xmlType\" : \"RulebaseAction\",\n        \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c473\",\n        \"folder\" : {\n          \"uid\" : \"a7a569db-cd04-4f1c-bc8d-94dbfc22b150\",\n          \"name\" : \"Check Point Settings\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711969650,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711969650,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Drop\",\n        \"icon\" : \"Actions/actionsDrop\",\n        \"comments\" : \"Drop\",\n        \"display-name\" : \"Drop\"\n      },\n      \"action-settings\" : {\n        \"enable-identity-captive-portal\" : false\n      },\n      \"data\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"CpmiAnyObject\",\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Any\",\n        \"icon\" : \"General/globalsAny\",\n        \"display-name\" : \"\"\n      } ],\n      \"data-negate\" : false,\n      \"data-direction\" : \"any\",\n      \"track\" : {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"none\",\n        \"xmlType\" : \"Track\",\n        \"uid\" : \"29e53e3d-23bf-48fe-b6b1-d59bd88036f9\",\n        \"folder\" : {\n          \"uid\" : \"a7a569db-cd04-4f1c-bc8d-94dbfc22b150\",\n          \"name\" : \"Check Point Settings\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711969451,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711969451,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"None\",\n        \"icon\" : \"General/globalsNone\",\n        \"comments\" : \"Extended Log used in Application Site rulebase\"\n      },\n      \"track-alert\" : \"none\",\n      \"time\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"CpmiAnyObject\",\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Any\",\n        \"icon\" : \"General/globalsAny\",\n        \"display-name\" : \"\"\n      } ],\n      \"custom-fields\" : {\n        \"field-1\" : \"\",\n        \"field-2\" : \"\",\n        \"field-3\" : \"\"\n      },\n      \"rule-number\" : 2,\n      \"type\" : \"rule\"\n    }, {\n      \"uid\" : \"88e09e3a-a935-4b33-94f4-1f62b2d8b78a\",\n      \"enabled\" : true,\n      \"comments\" : \"\",\n      \"domain\" : {\n        \"domain-type\" : \"domain\",\n        \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n        \"name\" : \"SMC User\"\n      },\n      \"meta-info\" : {\n        \"lock\" : \"unlocked\",\n        \"validation-state\" : \"ok\",\n        \"read-only\" : false,\n        \"last-modify-time\" : {\n          \"posix\" : 1445504138184,\n          \"iso-8601\" : \"2015-10-22T11:55+0300\"\n        },\n        \"last-modifier\" : \"aa\",\n        \"creation-time\" : {\n          \"posix\" : 1445504082982,\n          \"iso-8601\" : \"2015-10-22T11:54+0300\"\n        },\n        \"creator\" : \"aa\"\n      },\n      \"install-on\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"none\",\n        \"xmlType\" : \"Global\",\n        \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c476\",\n        \"folder\" : {\n          \"uid\" : \"a7a569db-cd04-4f1c-bc8d-94dbfc22b150\",\n          \"name\" : \"Check Point Settings\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711969368,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711969368,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Policy Targets\",\n        \"icon\" : \"General/globalsAny\",\n        \"comments\" : \"The policy target gateways\"\n      } ],\n      \"name\" : \"Rule3\",\n      \"source\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"security-zone\",\n        \"uid\" : \"e8131db2-8388-42a5-924a-82de32db20f7\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711955871,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711955871,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"InternalZone\",\n        \"icon\" : \"NetworkObjects/zone\",\n        \"comments\" : \"\",\n        \"display-name\" : \"\"\n      } ],\n      \"source-negate\" : false,\n      \"destination\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"dynamic-object\",\n        \"uid\" : \"cac127fb-24f5-4079-9404-be5c00d11393\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711955855,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711955855,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"AuxiliaryNet\",\n        \"icon\" : \"NetworkObjects/dynamicObject\",\n        \"comments\" : \"\",\n        \"display-name\" : \"\"\n      } ],\n      \"destination-negate\" : false,\n      \"service\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"CpmiAnyObject\",\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Any\",\n        \"icon\" : \"General/globalsAny\",\n        \"display-name\" : \"\"\n      } ],\n      \"service-negate\" : false,\n      \"vpn\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"CpmiAnyObject\",\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Any\",\n        \"icon\" : \"General/globalsAny\",\n        \"display-name\" : \"\"\n      } ],\n      \"action\" : {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"none\",\n        \"xmlType\" : \"RulebaseAction\",\n        \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c473\",\n        \"folder\" : {\n          \"uid\" : \"a7a569db-cd04-4f1c-bc8d-94dbfc22b150\",\n          \"name\" : \"Check Point Settings\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711969650,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711969650,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Drop\",\n        \"icon\" : \"Actions/actionsDrop\",\n        \"comments\" : \"Drop\",\n        \"display-name\" : \"Drop\"\n      },\n      \"action-settings\" : {\n        \"enable-identity-captive-portal\" : false\n      },\n      \"data\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"CpmiAnyObject\",\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Any\",\n        \"icon\" : \"General/globalsAny\",\n        \"display-name\" : \"\"\n      } ],\n      \"data-negate\" : false,\n      \"data-direction\" : \"any\",\n      \"track\" : {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"none\",\n        \"xmlType\" : \"Track\",\n        \"uid\" : \"29e53e3d-23bf-48fe-b6b1-d59bd88036f9\",\n        \"folder\" : {\n          \"uid\" : \"a7a569db-cd04-4f1c-bc8d-94dbfc22b150\",\n          \"name\" : \"Check Point Settings\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711969451,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711969451,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"None\",\n        \"icon\" : \"General/globalsNone\",\n        \"comments\" : \"Extended Log used in Application Site rulebase\"\n      },\n      \"track-alert\" : \"none\",\n      \"time\" : [ {\n        \"domainId\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"type\" : \"data domain\"\n        },\n        \"color\" : \"black\",\n        \"xmlType\" : \"CpmiAnyObject\",\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"folder\" : {\n          \"uid\" : \"a3a104fc-3987-4d22-9bf1-3fdbec0af39b\",\n          \"name\" : \"Global Objects\"\n        },\n        \"meta-info\" : {\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1444711951589,\n            \"iso-8601\" : \"2015-10-13T07:52+0300\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"tags\" : [ ],\n        \"name\" : \"Any\",\n        \"icon\" : \"General/globalsAny\",\n        \"display-name\" : \"\"\n      } ],\n      \"custom-fields\" : {\n        \"field-1\" : \"\",\n        \"field-2\" : \"\",\n        \"field-3\" : \"\"\n      },\n      \"rule-number\" : 3,\n      \"type\" : \"rule\"\n    } ],\n    \"name\" : \"Seciton2\",\n    \"uid\" : \"58a00921-65a7-4258-9182-2340a203e4ee\",\n    \"type\" : \"section\"\n  } ]\n}"
+    },
+    "show-access-rulebase with rules displayed as ranges": {
+      "description": "Shows the Access Rules with their members displayed as ranges, and not as Check Point Objects. This is limited to maximum 20 rules at a time.",
+      "request": "POST {{server}}/show-access-rulebase\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"offset\" : 0,\n  \"limit\" : 20,\n  \"name\" : \"Network\",\n  \"show-as-ranges\" : \"true\"\n}",
+      "response": "{\n  \"uid\" : \"7f7308f0-7540-4631-832c-503de7b27c3d\",\n  \"name\" : \"Network\",\n  \"from\" : 1,\n  \"to\" : 1,\n  \"total\" : 1,\n  \"rulebase\" : [ {\n    \"uid\" : \"0f83bd2b-7d7c-4063-920b-c160779437e1\",\n    \"name\" : \"Stealth Rules\",\n    \"type\" : \"access-section\",\n    \"from\" : 1,\n    \"to\" : 1,\n    \"rulebase\" : [ {\n      \"uid\" : \"36e2e7fd-e2af-4b6c-8692-6aa77f8f4913\",\n      \"name\" : \"Admin access to the Gateways\",\n      \"type\" : \"access-rule\",\n      \"domain\" : {\n        \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n        \"name\" : \"SMC User\",\n        \"domain-type\" : \"domain\"\n      },\n      \"enabled\" : true,\n      \"comments\" : \"\",\n      \"meta-info\" : {\n        \"lock\" : \"unlocked\",\n        \"validation-state\" : \"ok\",\n        \"last-modify-time\" : {\n          \"posix\" : 1527405735252,\n          \"iso-8601\" : \"2018-05-27T10:22+0300\"\n        },\n        \"last-modifier\" : \"aa\",\n        \"creation-time\" : {\n          \"posix\" : 1527405608448,\n          \"iso-8601\" : \"2018-05-27T10:20+0300\"\n        },\n        \"creator\" : \"aa\"\n      },\n      \"install-on\" : [ \"6c488338-8eec-4103-ad21-cd461ac2c476\" ],\n      \"source-ranges\" : {\n        \"ipv4\" : [ {\n          \"start\" : \"192.168.200.133\",\n          \"end\" : \"192.168.200.133\"\n        }, {\n          \"start\" : \"192.168.20.132\",\n          \"end\" : \"192.168.20.132\"\n        }, {\n          \"start\" : \"192.168.200.131\",\n          \"end\" : \"192.168.200.131\"\n        } ],\n        \"ipv6\" : [ ],\n        \"others\" : [ ],\n        \"excluded-others\" : [ ]\n      },\n      \"destination-ranges\" : {\n        \"ipv4\" : [ {\n          \"start\" : \"172.23.26.177\",\n          \"end\" : \"172.23.26.177\"\n        } ],\n        \"ipv6\" : [ ],\n        \"others\" : [ ],\n        \"excluded-others\" : [ ]\n      },\n      \"service-ranges\" : {\n        \"tcp\" : [ {\n          \"start\" : \"22\",\n          \"end\" : \"22\"\n        } ],\n        \"udp\" : [ ],\n        \"others\" : [ \"97aeb40f-9aea-11d5-bd16-0090272ccb30\", \"97aeb40a-9aea-11d5-bd16-0090272ccb30\", \"97aeb40d-9aea-11d5-bd16-0090272ccb30\", \"97aeb411-9aea-11d5-bd16-0090272ccb30\" ],\n        \"excluded-others\" : [ ]\n      },\n      \"vpn\" : [ \"97aeb369-9aea-11d5-bd16-0090272ccb30\" ],\n      \"action\" : \"6c488338-8eec-4103-ad21-cd461ac2c472\",\n      \"action-settings\" : {\n        \"enable-identity-captive-portal\" : false\n      },\n      \"content\" : [ \"97aeb369-9aea-11d5-bd16-0090272ccb30\" ],\n      \"content-negate\" : false,\n      \"content-direction\" : \"any\",\n      \"time\" : [ \"97aeb369-9aea-11d5-bd16-0090272ccb30\" ],\n      \"custom-fields\" : {\n        \"field-1\" : \"\",\n        \"field-2\" : \"\",\n        \"field-3\" : \"\"\n      },\n      \"rule-number\" : 1,\n      \"track\" : {\n        \"type\" : \"598ead32-aa42-4615-90ed-f51a5928d41d\",\n        \"per-session\" : false,\n        \"per-connection\" : true,\n        \"accounting\" : false,\n        \"alert\" : \"none\"\n      }\n    } ]\n  } ],\n  \"objects-dictionary\" : [ {\n    \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c472\",\n    \"name\" : \"Accept\",\n    \"type\" : \"RulebaseAction\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    }\n  }, {\n    \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"Any\",\n    \"type\" : \"CpmiAnyObject\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    }\n  }, {\n    \"uid\" : \"ac661e37-6f77-0a41-97aa-59d8f5fb585e\",\n    \"name\" : \"halo-270-smx-take-29\",\n    \"type\" : \"CpmiHostCkp\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    }\n  }, {\n    \"uid\" : \"598ead32-aa42-4615-90ed-f51a5928d41d\",\n    \"name\" : \"Log\",\n    \"type\" : \"Track\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    }\n  }, {\n    \"uid\" : \"bfacd5ee-86bb-4da5-8366-b5de4a753229\",\n    \"name\" : \"Manage-Services\",\n    \"type\" : \"service-group\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    }\n  }, {\n    \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c476\",\n    \"name\" : \"Policy Targets\",\n    \"type\" : \"Global\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    }\n  }, {\n    \"uid\" : \"7727af92-2ee9-4afc-965e-5411cb3129e3\",\n    \"name\" : \"Support-Specialists\",\n    \"type\" : \"group\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    }\n  } ]\n}"
+    },
+    "show-access-rulebase-with-filter": {
+      "description": "Shows the entire Access Rules Rulebase.",
+      "request": "POST {{server}}/show-access-rulebase\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"offset\" : 0,\n  \"limit\" : 20,\n  \"name\" : \"Network\",\n  \"details-level\" : \"standard\",\n  \"use-object-dictionary\" : true,\n  \"filter\" : \"CPDShield\"\n}",
+      "response": "{\n  \"uid\" : \"aa7b850a-db90-4e5e-91c1-cb21bced1a93\",\n  \"name\" : \"Network\",\n  \"from\" : 1,\n  \"to\" : 1,\n  \"total\" : 1,\n  \"rulebase\" : [ {\n    \"uid\" : \"76b830c8-e43f-4c9a-9722-8353829ff7b1\",\n    \"name\" : \"Rule1\",\n    \"type\" : \"access-rule\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    },\n    \"enabled\" : true,\n    \"comments\" : \"\",\n    \"meta-info\" : {\n      \"lock\" : \"unlocked\",\n      \"validation-state\" : \"ok\",\n      \"last-modify-time\" : {\n        \"posix\" : 1482658663305,\n        \"iso-8601\" : \"2016-12-25T11:37+0200\"\n      },\n      \"last-modifier\" : \"aa\",\n      \"creation-time\" : {\n        \"posix\" : 1482150758417,\n        \"iso-8601\" : \"2016-12-19T14:32+0200\"\n      },\n      \"creator\" : \"aa\"\n    },\n    \"install-on\" : [ \"6c488338-8eec-4103-ad21-cd461ac2c476\" ],\n    \"source\" : [ \"237a4cbc-7fb6-4d50-872a-4904468271c4\" ],\n    \"source-negate\" : false,\n    \"destination\" : [ \"97aeb369-9aea-11d5-bd16-0090272ccb30\" ],\n    \"destination-negate\" : false,\n    \"service\" : [ \"97aeb369-9aea-11d5-bd16-0090272ccb30\" ],\n    \"service-negate\" : false,\n    \"vpn\" : [ \"97aeb369-9aea-11d5-bd16-0090272ccb30\" ],\n    \"action\" : \"6c488338-8eec-4103-ad21-cd461ac2c472\",\n    \"action-settings\" : {\n      \"enable-identity-captive-portal\" : false\n    },\n    \"content\" : [ \"97aeb369-9aea-11d5-bd16-0090272ccb30\" ],\n    \"content-negate\" : false,\n    \"content-direction\" : \"any\",\n    \"track\" : \"29e53e3d-23bf-48fe-b6b1-d59bd88036f9\",\n    \"track-alert\" : \"none\",\n    \"time\" : [ \"97aeb369-9aea-11d5-bd16-0090272ccb30\" ],\n    \"custom-fields\" : {\n      \"field-1\" : \"\",\n      \"field-2\" : \"\",\n      \"field-3\" : \"\"\n    },\n    \"rule-number\" : 1\n  } ],\n  \"objects-dictionary\" : [ {\n    \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c472\",\n    \"name\" : \"Accept\",\n    \"type\" : \"RulebaseAction\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    }\n  }, {\n    \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"Any\",\n    \"type\" : \"CpmiAnyObject\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    }\n  }, {\n    \"uid\" : \"237a4cbc-7fb6-4d50-872a-4904468271c4\",\n    \"name\" : \"ExternalZone\",\n    \"type\" : \"security-zone\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    }\n  }, {\n    \"uid\" : \"29e53e3d-23bf-48fe-b6b1-d59bd88036f9\",\n    \"name\" : \"None\",\n    \"type\" : \"Track\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    }\n  }, {\n    \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c476\",\n    \"name\" : \"Policy Targets\",\n    \"type\" : \"Global\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    }\n  } ]\n}"
+    },
+    "show-access-rulebase with filter by rule UID": {
+      "description": "Shows an Access Control Rulebase filtered by a predefined list of rule UID's.Note: this filter is supported with API version 1.4 and above.",
+      "request": "POST {{server}}/show-access-rulebase\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"offset\" : 0,\n  \"limit\" : 20,\n  \"name\" : \"Network\",\n  \"details-level\" : \"standard\",\n  \"use-object-dictionary\" : true,\n  \"filter\" : \"uid:be146170-a996-47c8-acfd-2b7dfb9e6d0f OR uid:f35e49c9-1032-41ab-babb-40ccc95b3df4 OR uid:8ed702b5-4f0f-4539-9e0e-264a22de9149\"\n}",
+      "response": "{\n  \"uid\" : \"aa7b850a-db90-4e5e-91c1-cb21bced1a93\",\n  \"name\" : \"Network\",\n  \"from\" : 1,\n  \"to\" : 1,\n  \"total\" : 1,\n  \"rulebase\" : [ {\n    \"uid\" : \"be146170-a996-47c8-acfd-2b7dfb9e6d0f\",\n    \"name\" : \"Rule1\",\n    \"type\" : \"access-rule\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    },\n    \"enabled\" : true,\n    \"comments\" : \"\",\n    \"meta-info\" : {\n      \"lock\" : \"unlocked\",\n      \"validation-state\" : \"ok\",\n      \"last-modify-time\" : {\n        \"posix\" : 1482658663305,\n        \"iso-8601\" : \"2016-12-25T11:37+0200\"\n      },\n      \"last-modifier\" : \"aa\",\n      \"creation-time\" : {\n        \"posix\" : 1482150758417,\n        \"iso-8601\" : \"2016-12-19T14:32+0200\"\n      },\n      \"creator\" : \"aa\"\n    },\n    \"install-on\" : [ \"6c488338-8eec-4103-ad21-cd461ac2c476\" ],\n    \"source\" : [ \"237a4cbc-7fb6-4d50-872a-4904468271c4\" ],\n    \"source-negate\" : false,\n    \"destination\" : [ \"97aeb369-9aea-11d5-bd16-0090272ccb30\" ],\n    \"destination-negate\" : false,\n    \"service\" : [ \"97aeb369-9aea-11d5-bd16-0090272ccb30\" ],\n    \"service-negate\" : false,\n    \"vpn\" : [ \"97aeb369-9aea-11d5-bd16-0090272ccb30\" ],\n    \"action\" : \"6c488338-8eec-4103-ad21-cd461ac2c472\",\n    \"action-settings\" : {\n      \"enable-identity-captive-portal\" : false\n    },\n    \"content\" : [ \"97aeb369-9aea-11d5-bd16-0090272ccb30\" ],\n    \"content-negate\" : false,\n    \"content-direction\" : \"any\",\n    \"track\" : \"29e53e3d-23bf-48fe-b6b1-d59bd88036f9\",\n    \"track-alert\" : \"none\",\n    \"time\" : [ \"97aeb369-9aea-11d5-bd16-0090272ccb30\" ],\n    \"custom-fields\" : {\n      \"field-1\" : \"\",\n      \"field-2\" : \"\",\n      \"field-3\" : \"\"\n    },\n    \"rule-number\" : 1\n  } ],\n  \"objects-dictionary\" : [ {\n    \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c472\",\n    \"name\" : \"Accept\",\n    \"type\" : \"RulebaseAction\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    }\n  }, {\n    \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"Any\",\n    \"type\" : \"CpmiAnyObject\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    }\n  }, {\n    \"uid\" : \"237a4cbc-7fb6-4d50-872a-4904468271c4\",\n    \"name\" : \"ExternalZone\",\n    \"type\" : \"security-zone\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    }\n  }, {\n    \"uid\" : \"29e53e3d-23bf-48fe-b6b1-d59bd88036f9\",\n    \"name\" : \"None\",\n    \"type\" : \"Track\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    }\n  }, {\n    \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c476\",\n    \"name\" : \"Policy Targets\",\n    \"type\" : \"Global\",\n    \"domain\" : {\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\",\n      \"domain-type\" : \"data domain\"\n    }\n  } ]\n}"
+    },
+    "show-access-rulebase-with-filter-expand-group-members": {
+      "description": "For a given group, finds the Access Control Rules that match at least one member of the group. In this example, \"HR-Managers-Server\" object is a member of the \"HR\" group, and therefore rules which contain this object will not be matched.",
+      "request": "POST {{server}}/show-access-rulebase\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"Network\",\n  \"filter\" : \"dst:HR\",\n  \"filter-settings\" : {\n    \"search-mode\" : \"packet\",\n    \"packet-search-settings\" : {\n      \"expand-group-members\" : \"true\"\n    }\n  }\n}",
+      "response": "{\n  \"uid\" : \"7f7308f0-7540-4631-832c-503de7b27c3d\",\n  \"name\" : \"Network\",\n  \"from\" : 1,\n  \"to\" : 3,\n  \"total\" : 3,\n  \"rulebase\" : [ {\n    \"uid\" : \"fcb7d62b-b499-4b64-94ae-bfc9f4a0a15a\",\n    \"name\" : \"HR Access\",\n    \"type\" : \"access-section\",\n    \"from\" : 2,\n    \"to\" : 2,\n    \"rulebase\" : [ {\n      \"uid\" : \"723030ba-a33f-44d7-813d-9afa2b7177fb\",\n      \"type\" : \"access-rule\",\n      \"domain\" : {\n        \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n        \"name\" : \"SMC User\",\n        \"domain-type\" : \"domain\"\n      },\n      \"enabled\" : true,\n      \"comments\" : \"\",\n      \"meta-info\" : {\n        \"lock\" : \"locked by current session\",\n        \"validation-state\" : \"ok\",\n        \"last-modify-time\" : {\n          \"posix\" : 1527523152630,\n          \"iso-8601\" : \"2018-05-28T18:59+0300\"\n        },\n        \"last-modifier\" : \"aa\",\n        \"creation-time\" : {\n          \"posix\" : 1527523116888,\n          \"iso-8601\" : \"2018-05-28T18:58+0300\"\n        },\n        \"creator\" : \"aa\"\n      },\n      \"install-on\" : [ {\n        \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c476\",\n        \"name\" : \"Policy Targets\",\n        \"type\" : \"Global\",\n        \"domain\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"domain-type\" : \"data domain\"\n        }\n      } ],\n      \"source\" : [ {\n        \"uid\" : \"c9f1f3dd-fd13-4c18-8145-2c752f1487ef\",\n        \"name\" : \"HR-Recruiters\",\n        \"type\" : \"group\",\n        \"domain\" : {\n          \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n          \"name\" : \"SMC User\",\n          \"domain-type\" : \"domain\"\n        }\n      } ],\n      \"source-negate\" : false,\n      \"destination\" : [ {\n        \"uid\" : \"04d80be4-1a1f-4802-bba9-c659479cfe47\",\n        \"name\" : \"HR-Managers-Server\",\n        \"type\" : \"host\",\n        \"domain\" : {\n          \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n          \"name\" : \"SMC User\",\n          \"domain-type\" : \"domain\"\n        },\n        \"ipv4-address\" : \"192.168.200.51\"\n      } ],\n      \"destination-negate\" : false,\n      \"service\" : [ {\n        \"uid\" : \"97aeb443-9aea-11d5-bd16-0090272ccb30\",\n        \"name\" : \"https\",\n        \"type\" : \"service-tcp\",\n        \"domain\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"domain-type\" : \"data domain\"\n        },\n        \"port\" : \"443\"\n      } ],\n      \"service-negate\" : false,\n      \"vpn\" : [ {\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"name\" : \"Any\",\n        \"type\" : \"CpmiAnyObject\",\n        \"domain\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"domain-type\" : \"data domain\"\n        }\n      } ],\n      \"action\" : {\n        \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c472\",\n        \"name\" : \"Accept\",\n        \"type\" : \"RulebaseAction\",\n        \"domain\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"domain-type\" : \"data domain\"\n        }\n      },\n      \"action-settings\" : {\n        \"enable-identity-captive-portal\" : false\n      },\n      \"content\" : [ {\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"name\" : \"Any\",\n        \"type\" : \"CpmiAnyObject\",\n        \"domain\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"domain-type\" : \"data domain\"\n        }\n      } ],\n      \"content-negate\" : false,\n      \"content-direction\" : \"any\",\n      \"time\" : [ {\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"name\" : \"Any\",\n        \"type\" : \"CpmiAnyObject\",\n        \"domain\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"domain-type\" : \"data domain\"\n        }\n      } ],\n      \"custom-fields\" : {\n        \"field-1\" : \"\",\n        \"field-2\" : \"\",\n        \"field-3\" : \"\"\n      },\n      \"track\" : {\n        \"type\" : {\n          \"uid\" : \"598ead32-aa42-4615-90ed-f51a5928d41d\",\n          \"name\" : \"Log\",\n          \"type\" : \"Track\",\n          \"domain\" : {\n            \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n            \"name\" : \"Check Point Data\",\n            \"domain-type\" : \"data domain\"\n          }\n        },\n        \"per-session\" : false,\n        \"per-connection\" : true,\n        \"accounting\" : false,\n        \"alert\" : \"none\"\n      }\n    } ]\n  } ]\n}"
+    },
+    "show-access-rulebase with filter expand group with exclusion members": {
+      "description": "For a given Group with Exclusion, shows the Access Control Rules that match at least one member of the \"include\" part and is not a member of the \"except\" part. In this example, the group-with-exclusion \"HR except Managers\" contains the \"HR\" group in \"include\" parameter and the \"Managers\" in the \"except\" parameter. HR-Managers-Server object is a member of both \"HR\" and \"Managers\", and therefore rules which contain this object will not be matched. HR-Employees-Server is a member of \"HR\" and not a member of \"Managers\" and therefore rules that contain this object will be matched.",
+      "request": "POST {{server}}/show-access-rulebase\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"Network\",\n  \"filter\" : \"dst:HR\",\n  \"filter-settings\" : {\n    \"packet-search-settings\" : {\n      \"expand-group-with-exclusion-members\" : \"true\"\n    },\n    \"search-mode\" : \"packet\"\n  }\n}",
+      "response": "{\n  \"uid\" : \"7f7308f0-7540-4631-832c-503de7b27c3d\",\n  \"name\" : \"Network\",\n  \"from\" : 1,\n  \"to\" : 3,\n  \"total\" : 3,\n  \"rulebase\" : [ {\n    \"uid\" : \"fcb7d62b-b499-4b64-94ae-bfc9f4a0a15a\",\n    \"name\" : \"HR Access\",\n    \"type\" : \"access-section\",\n    \"from\" : 2,\n    \"to\" : 2,\n    \"rulebase\" : [ {\n      \"uid\" : \"723030ba-a33f-44d7-813d-9afa2b7177fb\",\n      \"type\" : \"access-rule\",\n      \"domain\" : {\n        \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n        \"name\" : \"SMC User\",\n        \"domain-type\" : \"domain\"\n      },\n      \"enabled\" : true,\n      \"comments\" : \"\",\n      \"meta-info\" : {\n        \"lock\" : \"locked by current session\",\n        \"validation-state\" : \"ok\",\n        \"last-modify-time\" : {\n          \"posix\" : 1527523152630,\n          \"iso-8601\" : \"2018-05-28T18:59+0300\"\n        },\n        \"last-modifier\" : \"aa\",\n        \"creation-time\" : {\n          \"posix\" : 1527523116888,\n          \"iso-8601\" : \"2018-05-28T18:58+0300\"\n        },\n        \"creator\" : \"aa\"\n      },\n      \"install-on\" : [ {\n        \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c476\",\n        \"name\" : \"Policy Targets\",\n        \"type\" : \"Global\",\n        \"domain\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"domain-type\" : \"data domain\"\n        }\n      } ],\n      \"source\" : [ {\n        \"uid\" : \"c9f1f3dd-fd13-4c18-8145-2c752f1487ef\",\n        \"name\" : \"HR-Recruiters\",\n        \"type\" : \"group\",\n        \"domain\" : {\n          \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n          \"name\" : \"SMC User\",\n          \"domain-type\" : \"domain\"\n        }\n      } ],\n      \"source-negate\" : false,\n      \"destination\" : [ {\n        \"uid\" : \"04d80be4-1a1f-4802-bba9-c659479cfe47\",\n        \"name\" : \"HR-Employees-Server\",\n        \"type\" : \"host\",\n        \"domain\" : {\n          \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n          \"name\" : \"SMC User\",\n          \"domain-type\" : \"domain\"\n        },\n        \"ipv4-address\" : \"192.168.200.51\"\n      } ],\n      \"destination-negate\" : false,\n      \"service\" : [ {\n        \"uid\" : \"97aeb443-9aea-11d5-bd16-0090272ccb30\",\n        \"name\" : \"https\",\n        \"type\" : \"service-tcp\",\n        \"domain\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"domain-type\" : \"data domain\"\n        },\n        \"port\" : \"443\"\n      } ],\n      \"service-negate\" : false,\n      \"vpn\" : [ {\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"name\" : \"Any\",\n        \"type\" : \"CpmiAnyObject\",\n        \"domain\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"domain-type\" : \"data domain\"\n        }\n      } ],\n      \"action\" : {\n        \"uid\" : \"6c488338-8eec-4103-ad21-cd461ac2c472\",\n        \"name\" : \"Accept\",\n        \"type\" : \"RulebaseAction\",\n        \"domain\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"domain-type\" : \"data domain\"\n        }\n      },\n      \"action-settings\" : {\n        \"enable-identity-captive-portal\" : false\n      },\n      \"content\" : [ {\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"name\" : \"Any\",\n        \"type\" : \"CpmiAnyObject\",\n        \"domain\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"domain-type\" : \"data domain\"\n        }\n      } ],\n      \"content-negate\" : false,\n      \"content-direction\" : \"any\",\n      \"time\" : [ {\n        \"uid\" : \"97aeb369-9aea-11d5-bd16-0090272ccb30\",\n        \"name\" : \"Any\",\n        \"type\" : \"CpmiAnyObject\",\n        \"domain\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"domain-type\" : \"data domain\"\n        }\n      } ],\n      \"custom-fields\" : {\n        \"field-1\" : \"\",\n        \"field-2\" : \"\",\n        \"field-3\" : \"\"\n      },\n      \"track\" : {\n        \"type\" : {\n          \"uid\" : \"598ead32-aa42-4615-90ed-f51a5928d41d\",\n          \"name\" : \"Log\",\n          \"type\" : \"Track\",\n          \"domain\" : {\n            \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n            \"name\" : \"Check Point Data\",\n            \"domain-type\" : \"data domain\"\n          }\n        },\n        \"per-session\" : false,\n        \"per-connection\" : true,\n        \"accounting\" : false,\n        \"alert\" : \"none\"\n      }\n    } ]\n  } ]\n}"
+    },
+    "show-access-rulebase with hits": {
+      "description": "",
+      "request": "POST {{server}}/show-access-rulebase\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"offset\" : 0,\n  \"limit\" : 20,\n  \"name\" : \"Network\",\n  \"details-level\" : \"standard\",\n  \"use-object-dictionary\" : true,\n  \"show-hits\" : true,\n  \"hits-settings\" : {\n    \"from-date\" : \"2014-01-01\",\n    \"to-date\" : \"2014-12-31T23:59\",\n    \"target\" : \"corporate-gw\"\n  }\n}",
+      "response": ""
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:22.688083",
+    "source_file": "show-access-rulebase.html"
+  }
+}

@@ -1,0 +1,388 @@
+# show-vpn-communities-star
+
+```json
+{
+  "command": "show-vpn-communities-star",
+  "description": "Retrieve all objects.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/show-vpn-communities-star",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "filter",
+        "description": "Search expression to filter objects by. The provided text should be exactly the same as it would be given in SmartConsole Object Explorer. The logical operators in the expression ('AND', 'OR') should be provided in capital letters. The search involves both a IP search and a textual search in name, comment, tags etc.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "limit",
+        "description": "The maximal number of returned results.",
+        "type": "integer",
+        "required": false,
+        "default": "50"
+      },
+      {
+        "name": "offset",
+        "description": "Number of the results to initially skip.",
+        "type": "integer",
+        "required": false,
+        "default": "0"
+      },
+      {
+        "name": "order",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "name"
+        ]
+      },
+      {
+        "name": "ASC",
+        "description": "Sorts results by the given field in ascending order.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "name"
+        ]
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "from",
+        "description": "From which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "objects",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "to",
+        "description": "To which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "total",
+        "description": "Total number of elements returned by the query.",
+        "type": "integer",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "show-vpn-communities-star": {
+      "description": "Displays several VPN Star Communities",
+      "request": "POST {{server}}/show-vpn-communities-star\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"limit\" : 50,\n  \"offset\" : 0,\n  \"details-level\" : \"full\"\n}",
+      "response": "{\n  \"from\" : 1,\n  \"to\" : 2,\n  \"total\" : 2,\n  \"objects\" : [ {\n    \"uid\" : \"e66826a5-f659-4493-af90-7a6256e45416\",\n    \"name\" : \"AdamStar\",\n    \"type\" : \"vpn-community-star\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    },\n    \"meta-info\" : {\n      \"lock\" : \"locked by other session\",\n      \"validation-state\" : \"ok\",\n      \"last-modify-time\" : {\n        \"posix\" : 1482228216345,\n        \"iso-8601\" : \"2016-12-20T12:03+0200\"\n      },\n      \"last-modifier\" : \"aa\",\n      \"creation-time\" : {\n        \"posix\" : 1482218708467,\n        \"iso-8601\" : \"2016-12-20T09:25+0200\"\n      },\n      \"creator\" : \"aa\"\n    },\n    \"tags\" : [ ],\n    \"read-only\" : false,\n    \"comments\" : \"\",\n    \"color\" : \"black\",\n    \"icon\" : \"VPNCommunities/Star\",\n    \"use-shared-secret\" : false,\n    \"encryption-method\" : \"prefer ikev2, support ikev1\",\n    \"encryption-suite\" : \"vpn b\",\n    \"ike-phase-1\" : {\n      \"encryption-algorithm\" : \"aes-256\",\n      \"diffie-hellman-group\" : \"group 2\",\n      \"data-integrity\" : \"sha1\"\n    },\n    \"ike-phase-2\" : {\n      \"encryption-algorithm\" : \"aes-128\",\n      \"data-integrity\" : \"sha1\"\n    },\n    \"center-gateways\" : [ ],\n    \"satellite-gateways\" : [ ],\n    \"mesh-center-gateways\" : false\n  }, {\n    \"uid\" : \"a8c25199-7893-45d7-800d-57a2c18a3c7c\",\n    \"name\" : \"New_VPN_Community_Star_1\",\n    \"type\" : \"vpn-community-star\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    },\n    \"meta-info\" : {\n      \"lock\" : \"locked by current session\",\n      \"validation-state\" : \"ok\",\n      \"last-modify-time\" : {\n        \"posix\" : 1482231173231,\n        \"iso-8601\" : \"2016-12-20T12:52+0200\"\n      },\n      \"last-modifier\" : \"aa\",\n      \"creation-time\" : {\n        \"posix\" : 1482228564753,\n        \"iso-8601\" : \"2016-12-20T12:09+0200\"\n      },\n      \"creator\" : \"aa\"\n    },\n    \"tags\" : [ ],\n    \"read-only\" : false,\n    \"comments\" : \"\",\n    \"color\" : \"black\",\n    \"icon\" : \"VPNCommunities/Star\",\n    \"use-shared-secret\" : false,\n    \"encryption-method\" : \"ikev2 only\",\n    \"encryption-suite\" : \"custom\",\n    \"ike-phase-1\" : {\n      \"encryption-algorithm\" : \"aes-128\",\n      \"diffie-hellman-group\" : \"group 19\",\n      \"data-integrity\" : \"sha1\"\n    },\n    \"ike-phase-2\" : {\n      \"encryption-algorithm\" : \"aes-gcm-128\",\n      \"data-integrity\" : \"aes-xcbc\"\n    },\n    \"center-gateways\" : [ {\n      \"uid\" : \"049bbebf-46cf-454a-999c-45bf80a29075\",\n      \"name\" : \"Second_Security_Gateway\",\n      \"type\" : \"simple-gateway\",\n      \"domain\" : {\n        \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n        \"name\" : \"SMC User\",\n        \"domain-type\" : \"domain\"\n      },\n      \"meta-info\" : {\n        \"lock\" : \"locked by current session\",\n        \"validation-state\" : \"ok\",\n        \"last-modify-time\" : {\n          \"posix\" : 1482228560514,\n          \"iso-8601\" : \"2016-12-20T12:09+0200\"\n        },\n        \"last-modifier\" : \"aa\",\n        \"creation-time\" : {\n          \"posix\" : 1482228169047,\n          \"iso-8601\" : \"2016-12-20T12:02+0200\"\n        },\n        \"creator\" : \"aa\"\n      },\n      \"tags\" : [ ],\n      \"read-only\" : false,\n      \"comments\" : \"\",\n      \"color\" : \"black\",\n      \"icon\" : \"NetworkObjects/CheckPoint/GWs/xGW_CP\",\n      \"groups\" : [ ],\n      \"ipv4-address\" : \"1.1.1.1\",\n      \"dynamic-ip\" : false,\n      \"version\" : \"R80\",\n      \"os-name\" : \"Gaia\",\n      \"hardware\" : \"Open server\",\n      \"sic-name\" : \"\",\n      \"sic-state\" : \"uninitialized\",\n      \"interfaces\" : [ ],\n      \"firewall\" : true,\n      \"firewall-settings\" : {\n        \"auto-maximum-limit-for-concurrent-connections\" : true,\n        \"maximum-limit-for-concurrent-connections\" : 25000,\n        \"auto-calculate-connections-hash-table-size-and-memory-pool\" : true,\n        \"connections-hash-size\" : 131072,\n        \"memory-pool-size\" : 6,\n        \"maximum-memory-pool-size\" : 30\n      },\n      \"vpn\" : true,\n      \"vpn-settings\" : {\n        \"maximum-concurrent-ike-negotiations\" : 1000,\n        \"maximum-concurrent-tunnels\" : 10000\n      },\n      \"application-control\" : false,\n      \"url-filtering\" : false,\n      \"data-awareness\" : false,\n      \"ips\" : false,\n      \"anti-bot\" : false,\n      \"anti-virus\" : false,\n      \"threat-emulation\" : false,\n      \"save-logs-locally\" : false,\n      \"send-alerts-to-server\" : [ \"hugo1-take-264\" ],\n      \"send-logs-to-server\" : [ \"hugo1-take-264\" ],\n      \"send-logs-to-backup-server\" : [ ],\n      \"logs-settings\" : {\n        \"rotate-log-by-file-size\" : false,\n        \"rotate-log-file-size-threshold\" : 1000,\n        \"rotate-log-on-schedule\" : false,\n        \"alert-when-free-disk-space-below-metrics\" : \"mbytes\",\n        \"alert-when-free-disk-space-below\" : true,\n        \"alert-when-free-disk-space-below-threshold\" : 20,\n        \"alert-when-free-disk-space-below-type\" : \"popup alert\",\n        \"delete-when-free-disk-space-below-metrics\" : \"mbytes\",\n        \"delete-when-free-disk-space-below\" : true,\n        \"delete-when-free-disk-space-below-threshold\" : 5000,\n        \"before-delete-keep-logs-from-the-last-days\" : false,\n        \"before-delete-keep-logs-from-the-last-days-threshold\" : 0,\n        \"before-delete-run-script\" : false,\n        \"before-delete-run-script-command\" : \"\",\n        \"stop-logging-when-free-disk-space-below-metrics\" : \"mbytes\",\n        \"stop-logging-when-free-disk-space-below\" : false,\n        \"stop-logging-when-free-disk-space-below-threshold\" : 100,\n        \"reject-connections-when-free-disk-space-below-threshold\" : false,\n        \"reserve-for-packet-capture-metrics\" : \"mbytes\",\n        \"reserve-for-packet-capture-threshold\" : 500,\n        \"delete-index-files-when-index-size-above-metrics\" : \"mbytes\",\n        \"delete-index-files-when-index-size-above\" : false,\n        \"delete-index-files-when-index-size-above-threshold\" : 100000,\n        \"delete-index-files-older-than-days\" : false,\n        \"delete-index-files-older-than-days-threshold\" : 14,\n        \"forward-logs-to-log-server\" : false,\n        \"perform-log-rotate-before-log-forwarding\" : false,\n        \"update-account-log-every\" : 3600,\n        \"detect-new-citrix-ica-application-names\" : false,\n        \"turn-on-qos-logging\" : true\n      }\n    } ],\n    \"satellite-gateways\" : [ ],\n    \"mesh-center-gateways\" : false\n  } ]\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:29.408275",
+    "source_file": "show-vpn-communities-star.html"
+  }
+}
+```

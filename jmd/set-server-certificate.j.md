@@ -1,0 +1,247 @@
+# set-server-certificate
+
+```json
+{
+  "command": "set-server-certificate",
+  "description": "Edit existing server certificate using name or uid.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/set-server-certificate",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "new-name",
+        "description": "New name of the object.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "base64-certificate",
+        "description": "Certificate file encoded in base64.Valid file formats: p12.If you changed the 'base64-certificate' parameter, you must also change the 'password' parameter.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "base64-password",
+        "description": "Base64 encoded password of the certificate file.",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "subject",
+        "description": "Certificate's subject.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "valid-from",
+        "description": "Server certificate valid from date.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "valid-to",
+        "description": "Server certificate valid up to date.",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "set server-certificate": {
+      "description": "Edit the encoded server certificate and password.",
+      "request": "POST {{server}}/set-server-certificate\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"MyServerCertificate\",\n  \"base64-certificate\" : \"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\",\n  \"base64-password\" : \"bXlfcGFzc3dvcmQ=\"\n}",
+      "response": "{\n  \"uid\" : \"85944ed6-fa09-40c9-ada9-d980a1dc3f3c\",\n  \"name\" : \"MyServerCertificate\",\n  \"type\" : \"server-certificate\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"meta-info\" : {\n    \"lock\" : \"unlocked\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1689251799270,\n      \"iso-8601\" : \"2023-07-13T15:36+0300\"\n    },\n    \"last-modifier\" : \"WEB_API\",\n    \"creation-time\" : {\n      \"posix\" : 1689251799270,\n      \"iso-8601\" : \"2023-07-13T15:36+0300\"\n    },\n    \"creator\" : \"WEB_API\"\n  },\n  \"available-actions\" : { },\n  \"tags\" : [ ],\n  \"read-only\" : true,\n  \"comments\" : \"this is a comment\",\n  \"color\" : \"black\",\n  \"icon\" : \"subject_user_certificate\",\n  \"valid-from\" : \"20-Jan-20\",\n  \"valid-to\" : \"17-Jan-30\",\n  \"subject\" : \"O=My Company Ltd,L=Newbury,ST=Berkshire,C=GB\"\n}"
+    },
+    "set server-certificate name": {
+      "description": "Edit the name of the server certificate.",
+      "request": "POST {{server}}/set-server-certificate\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"MyServerCertificate\",\n  \"new-name\" : \"NewCertificateName\"\n}",
+      "response": "{\n  \"uid\" : \"85944ed6-fa09-40c9-ada9-d980a1dc3f3c\",\n  \"name\" : \"NewCertificateName\",\n  \"type\" : \"server-certificate\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"meta-info\" : {\n    \"lock\" : \"unlocked\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1689251799270,\n      \"iso-8601\" : \"2023-07-13T15:36+0300\"\n    },\n    \"last-modifier\" : \"WEB_API\",\n    \"creation-time\" : {\n      \"posix\" : 1689251799270,\n      \"iso-8601\" : \"2023-07-13T15:36+0300\"\n    },\n    \"creator\" : \"WEB_API\"\n  },\n  \"available-actions\" : { },\n  \"tags\" : [ ],\n  \"read-only\" : true,\n  \"comments\" : \"this is a comment\",\n  \"color\" : \"black\",\n  \"icon\" : \"subject_user_certificate\",\n  \"valid-from\" : \"20-Jan-20\",\n  \"valid-to\" : \"17-Jan-30\",\n  \"subject\" : \"O=My Company Ltd,L=Newbury,ST=Berkshire,C=GB\"\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:19.133182",
+    "source_file": "set-server-certificate.html"
+  }
+}
+```

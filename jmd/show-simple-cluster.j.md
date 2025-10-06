@@ -1,0 +1,6571 @@
+# show-simple-cluster
+
+```json
+{
+  "command": "show-simple-cluster",
+  "description": "Retrieve existing object using object name or uid.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/show-simple-cluster",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "limit-interfaces",
+        "description": "Limit number of interfaces to show. Default is 50.",
+        "type": "integer",
+        "required": false
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "advanced-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "keep-all-connections",
+          "keep-data-connections",
+          "rematch-connections"
+        ]
+      },
+      {
+        "name": "connection-persistence",
+        "description": "Handling established connections when installing a new policy.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "keep-all-connections",
+          "keep-data-connections",
+          "rematch-connections"
+        ]
+      },
+      {
+        "name": "sam",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "ssl_clear_opsec",
+          "opsec",
+          "ssl_opsec",
+          "auth_opsec"
+        ]
+      },
+      {
+        "name": "forward-to-other-sam-servers",
+        "description": "Forward SAM clients' requests to other SAM servers.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "use-early-versions",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "ssl_clear_opsec",
+          "opsec",
+          "ssl_opsec",
+          "auth_opsec"
+        ]
+      },
+      {
+        "name": "enabled",
+        "description": "Use early versions compatibility mode.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "compatibility-mode",
+        "description": "Early versions compatibility mode.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "ssl_clear_opsec",
+          "opsec",
+          "ssl_opsec",
+          "auth_opsec"
+        ]
+      },
+      {
+        "name": "purge-sam-file",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "enabled",
+        "description": "Purge SAM File.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "purge-when-size-reaches-to",
+        "description": "Purge SAM File When it Reaches to.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "anti-bot",
+        "description": "Anti-Bot blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "anti-spam-and-email-security",
+        "description": "Anti-Spam & Email-Security blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "anti-virus",
+        "description": "Anti-Virus blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "application-control",
+        "description": "Application Control blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "application-control-and-url-filtering-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "use_global_settings",
+          "override_global"
+        ]
+      },
+      {
+        "name": "global-settings-mode",
+        "description": "Whether to override global settings or not.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "use_global_settings",
+          "override_global"
+        ]
+      },
+      {
+        "name": "override-global-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "allow_all_requests",
+          "block_all_requests"
+        ]
+      },
+      {
+        "name": "fail-mode",
+        "description": "Fail mode - allow or block all requests.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "allow_all_requests",
+          "block_all_requests"
+        ]
+      },
+      {
+        "name": "website-categorization",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "hold",
+          "background",
+          "custom"
+        ]
+      },
+      {
+        "name": "mode",
+        "description": "Website categorization mode.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "hold",
+          "background",
+          "custom"
+        ]
+      },
+      {
+        "name": "custom-mode",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "hold",
+          "background"
+        ]
+      },
+      {
+        "name": "social-networking-widgets",
+        "description": "Social networking widgets mode.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "hold",
+          "background"
+        ]
+      },
+      {
+        "name": "url-filtering",
+        "description": "URL filtering mode.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "hold",
+          "background"
+        ]
+      },
+      {
+        "name": "auto-topology-custom-recalculation-time",
+        "description": "Auto topology custom recalculation time (seconds).",
+        "type": "integerDescription:",
+        "required": false
+      },
+      {
+        "name": "auto-topology-use-custom-recalculation-time",
+        "description": "Auto topology to use custom recalculation time instead of default.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "cluster-members",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "uninitialized",
+          "communicating",
+          "waiting_for_first_connection",
+          "not communicating"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "N/A",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Cluster member object UID.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "auto-generate-ip",
+        "description": "Use an automatically generated IP address for the Gateway object (applies only to Smart-1 Cloud).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "interfaces",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "ipv4-address",
+        "description": "IPv4 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv4-mask-length",
+        "description": "IPv4 network mask length.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "ipv4-network-mask",
+        "description": "IPv4 network mask.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "name",
+        "description": "Cluster member interface name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv6-address",
+        "description": "IPv6 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv6-mask-length",
+        "description": "IPv6 network mask length.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "ipv6-network-mask",
+        "description": "IPv6 network mask.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Cluster member interface object UID.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ip-address",
+        "description": "Cluster member IP address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv6-address",
+        "description": "Cluster member IPv6 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "sic-message",
+        "description": "Secure Internal Communication message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "sic-state",
+        "description": "Secure Internal Communication state.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "status",
+        "description": "Secure Internal Communication state.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "uninitialized",
+          "communicating",
+          "waiting_for_first_connection",
+          "not communicating"
+        ]
+      },
+      {
+        "name": "trust-details",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "token_not_issued",
+          "token_issued",
+          "token_expired",
+          "token_issued_and_used",
+          "up",
+          "down"
+        ]
+      },
+      {
+        "name": "authentication-token",
+        "description": "Authentication token to use on the Gateway side to establish the communication between the Gateway and the Management Server (applies o Smart-1 Cloud).",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "cloud-communication-details",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "token_not_issued",
+          "token_issued",
+          "token_expired",
+          "token_issued_and_used",
+          "up",
+          "down"
+        ]
+      },
+      {
+        "name": "ip",
+        "description": "IP address used for communication between the Gateway and the Management Server (used when 'auto-generate-ip=true').",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "status",
+        "description": "Status of communication between the Gateway and the Management Server.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "token_not_issued",
+          "token_issued",
+          "token_expired",
+          "token_issued_and_used",
+          "up",
+          "down"
+        ]
+      },
+      {
+        "name": "gateway-mac-address",
+        "description": "Use the Security Gateway MAC address, relevant for the gateway_mac_address identification-method.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "identification-method",
+        "description": "How to identify the gateway (relevant for DAIP gateways only).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "gateway_name",
+          "mac_address",
+          "none_not_secure",
+          "ip_address"
+        ]
+      },
+      {
+        "name": "status",
+        "description": "Status of the trusted communication with the Security Gateway.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "uninitialized",
+          "communicating",
+          "waiting_for_first_connection",
+          "not communicating"
+        ]
+      },
+      {
+        "name": "token-expiration-date",
+        "description": "N/A",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "trust-method",
+        "description": "Trust method that was used for establishing communication.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "one_time_password",
+          "without_password_not_secure",
+          "cloud_token"
+        ]
+      },
+      {
+        "name": "priority",
+        "description": "In a High Availability New mode cluster each machine is given a priority. The highest priority machine serves as the gateway in normal circumstances. If this machine fails, control is passed to the next highest priority machine. If that machine fails, control is passed to the next machine, and so on. In Load Sharing Unicast mode cluster, the highest priority is the pivot machine. The values must be in a range from 1 to N, where N is number of cluster members.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "comments",
+        "description": "Comments string.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "cluster-mode",
+        "description": "Cluster mode.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "cluster-xl-ha",
+          "cluster-ls-multicast",
+          "cluster-ls-unicast",
+          "gaia-vrrp",
+          "ip-clustering-ls",
+          "opsec-ha",
+          "opsec-ls",
+          "ipso-vrrp",
+          "cluster-active-active"
+        ]
+      },
+      {
+        "name": "cluster-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "default": "true",
+        "valid_values": [
+          "maintain-current-active",
+          "according-to-priority"
+        ]
+      },
+      {
+        "name": "member-recovery-mode",
+        "description": "In a High Availability cluster, each member is given a priority. The member with the highest priority serves as the gateway. If this gateway fails, control is passed to the member with the next highest priority. If that member fails, control is passed to the next, and so on. Upon gateway recovery, it is possible to: Maintain current active Cluster Member (maintain-current-active) or Switch to higher priority Cluster Member (according-to-priority).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "maintain-current-active",
+          "according-to-priority"
+        ]
+      },
+      {
+        "name": "state-synchronization",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "delayed",
+        "description": "Start synchronizing with delay of seconds, as defined by delayed-seconds, after connection initiation. Disabled when state-synchronization disabled.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "delayed-seconds",
+        "description": "Start synchronizing X seconds after connection initiation . The values must be in a range between 2 and 3600.",
+        "type": "integer",
+        "required": false,
+        "default": "3 seconds"
+      },
+      {
+        "name": "enabled",
+        "description": "Use State Synchronization.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "track-changes-of-cluster-members",
+        "description": "Track changes in the status of Cluster Members.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "popup alert",
+          "mail alert",
+          "snmp trap alert",
+          "user defined alert no.1",
+          "user defined alert no.2",
+          "user defined alert no.3"
+        ]
+      },
+      {
+        "name": "use-virtual-mac",
+        "description": "Use Virtual MAC. By enabling Virtual MAC in ClusterXL High Availability New mode, or Load Sharing Unicast mode, all cluster members associate the same Virtual MAC address with All Cluster Virtual Interfaces and the Virtual IP address.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "cluster-xl",
+        "description": "Cluster XL blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "communication-with-servers-behind-nat",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "according-to-topology",
+          "original-ip-only",
+          "translated-ip-only"
+        ]
+      },
+      {
+        "name": "override-profile",
+        "description": "Whether to override the Server (Check Point Host) object configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "according-to-topology: Use the original or translated IP address of the server based on the Topology of Security Gateway interfaces.original-ip-only: Use only the original IP address of the servertranslated-ip-only: Use only the translated IP address of the server.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "according-to-topology",
+          "original-ip-only",
+          "translated-ip-only"
+        ]
+      },
+      {
+        "name": "content-awareness",
+        "description": "Content Awareness blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "data-loss-prevention",
+        "description": "Data Loss Prevention.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dynamic-ip",
+        "description": "Dynamic IP address.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "enable-https-inspection",
+        "description": "Enable HTTPS Inspection after defining an outbound inspection certificate. To define the outbound certificate use \"set outbound-inspection-certificate\".",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "fetch-policy",
+        "description": "Security management server(s) to fetch the policy from.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "firewall",
+        "description": "Firewall blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "firewall-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "auto-calculate-connections-hash-table-size-and-memory-pool",
+        "description": "N/A",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "auto-maximum-limit-for-concurrent-connections",
+        "description": "N/A",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "connections-hash-size",
+        "description": "N/A",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "maximum-limit-for-concurrent-connections",
+        "description": "N/A",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "maximum-memory-pool-size",
+        "description": "N/A",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "memory-pool-size",
+        "description": "N/A",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "geo-mode",
+        "description": "Cluster High Availability Geo mode.This setting applies only to a cluster deployed in a cloud. Available when the cluster mode equals \"cluster-xl-ha\".",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "groups",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "hardware",
+        "description": "Gateway platform hardware type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "hardware-subtype",
+        "description": "Gateway type (relevant only for Spark gateways).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "wired",
+          "dsl",
+          "wireless",
+          "wireless + dsl",
+          "wifi-lte"
+        ]
+      },
+      {
+        "name": "hit-count",
+        "description": "Hit count tracks the number of connections each rule matches.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "https-inspection",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "background",
+          "hold"
+        ]
+      },
+      {
+        "name": "bypass-on-client-failure",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "override-profile",
+        "description": "Override profile of global configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "profile-value",
+        "description": "Override profile value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "Override value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "bypass-on-failure",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "override-profile",
+        "description": "Override profile of global configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "profile-value",
+        "description": "Override profile value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "Override value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "bypass-under-load",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "* true - enabled.* false - disabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "site-categorization-allow-mode",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "background",
+          "hold"
+        ]
+      },
+      {
+        "name": "override-profile",
+        "description": "Override profile of global configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "profile-value",
+        "description": "Override profile value.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "background",
+          "hold"
+        ]
+      },
+      {
+        "name": "value",
+        "description": "Override value.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "background",
+          "hold"
+        ]
+      },
+      {
+        "name": "deny-untrusted-server-cert",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "override-profile",
+        "description": "Override profile of global configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "profile-value",
+        "description": "Override profile value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "Override value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "deny-revoked-server-cert",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "override-profile",
+        "description": "Override profile of global configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "profile-value",
+        "description": "Override profile value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "Override value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "deny-expired-server-cert",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "override-profile",
+        "description": "Override profile of global configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "profile-value",
+        "description": "Override profile value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "Override value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "outbound-certificate",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "override-profile",
+        "description": "Override profile of global configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "profile-value",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "deployment-mode",
+        "description": "* Full inspection - According to the configured HTTPS Inspection policy.* Learning mode - Inspect a small percentage of the traffic to identify issues and estimate the expected resource consumption of the configured HTTPS Inspection policy.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "full",
+          "learning"
+        ]
+      },
+      {
+        "name": "identity-awareness",
+        "description": "Identity awareness blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "identity-awareness-settings",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "ad-query",
+        "description": "AD Query source enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "browser-based-authentication",
+        "description": "Browser Based Authentication source enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "browser-based-authentication-settings",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "authentication-settings",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "authentication-method",
+        "description": "Authentication method.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "identity-provider",
+        "description": "Identity provider object identified by the name or UID. Must be set when \"authentication-method\" was selected to be \"identity provider\".",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "radius",
+        "description": "Radius server object identified by the name or UID. Must be set when \"authentication-method\" was selected to be \"radius\".",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "users-directories",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "external-user-profile",
+        "description": "N/A",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "internal-users",
+        "description": "N/A",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "users-from-external-directories",
+        "description": "N/A",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "specific",
+        "description": "LDAP AU objects identified by the name or UID. Must be set when \"users-from-external-directories\" was selected to be \"specific\".",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "browser-based-authentication-portal-settings",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "portal-web-settings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "aliases",
+        "description": "List of URL aliases that are redirected to the main portal URL.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "ip-address",
+        "description": "Optional: IP address for the web portal to use, if your DNS server fails to resolve the main portal URL. Note: If your DNS server resolves the main portal URL, this IP address is ignored.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "main-url",
+        "description": "The main URL for the web portal.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "certificate",
+        "description": "The certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-dn",
+        "description": "The DN (Distinguished Name) of the certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-valid-from",
+        "description": "The date, from which the certificate is valid.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-valid-to",
+        "description": "The certificate expiration date.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "accessibility",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "allow-access-from",
+        "description": "Allowed access to the web portal (based on interfaces, or security policy).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "internal-access-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "undefined",
+        "description": "Controls portal access settings for internal interfaces, whose topology is set to 'Undefined'.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dmz",
+        "description": "Controls portal access settings for internal interfaces, whose topology is set to 'DMZ'.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "vpn",
+        "description": "Controls portal access settings for interfaces that are part of a VPN Encryption Domain.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "collecting-identities",
+        "description": "This gateway collects identities.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "identity-agent",
+        "description": "Identity Agent source enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "identity-agent-settings",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "agents-interval-keepalive",
+        "description": "Agents send keepalive period (minutes).",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "authentication-settings",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "authentication-method",
+        "description": "Authentication method.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "radius",
+        "description": "Radius server object identified by the name or UID. Must be set when \"authentication-method\" was selected to be \"radius\".",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "users-directories",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "external-user-profile",
+        "description": "N/A",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "internal-users",
+        "description": "N/A",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "users-from-external-directories",
+        "description": "N/A",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "specific",
+        "description": "LDAP AU objects identified by the name or UID. Must be set when \"users-from-external-directories\" was selected to be \"specific\".",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "identity-agent-portal-settings",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "portal-web-settings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "aliases",
+        "description": "List of URL aliases that are redirected to the main portal URL.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "ip-address",
+        "description": "Optional: IP address for the web portal to use, if your DNS server fails to resolve the main portal URL. Note: If your DNS server resolves the main portal URL, this IP address is ignored.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "main-url",
+        "description": "The main URL for the web portal.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "certificate",
+        "description": "The certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-dn",
+        "description": "The DN (Distinguished Name) of the certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-valid-from",
+        "description": "The date, from which the certificate is valid.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-valid-to",
+        "description": "The certificate expiration date.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "accessibility",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "allow-access-from",
+        "description": "Allowed access to the web portal (based on interfaces, or security policy).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "internal-access-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "undefined",
+        "description": "Controls portal access settings for internal interfaces, whose topology is set to 'Undefined'.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dmz",
+        "description": "Controls portal access settings for internal interfaces, whose topology is set to 'DMZ'.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "vpn",
+        "description": "Controls portal access settings for interfaces that are part of a VPN Encryption Domain.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "user-reauthenticate-interval",
+        "description": "Agent reauthenticate time interval (minutes).",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "identity-based-enforcement",
+        "description": "ON: Configures this object as a PEP-only object - identity-based enforcement (PEP) is enabled.OFF: Configures this object as a PDP-only object - identity-based enforcement is disabled.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "on",
+          "off"
+        ]
+      },
+      {
+        "name": "identity-collector",
+        "description": "Identity Collector source enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "identity-collector-settings",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "authentication-settings",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "users-directories",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "external-user-profile",
+        "description": "N/A",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "internal-users",
+        "description": "N/A",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "users-from-external-directories",
+        "description": "N/A",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "specific",
+        "description": "LDAP AU objects identified by the name or UID. Must be set when \"users-from-external-directories\" was selected to be \"specific\".",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "authorized-clients",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "client",
+        "description": "Client Name or UID.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "client-access-permissions",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "portal-web-settings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "aliases",
+        "description": "List of URL aliases that are redirected to the main portal URL.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "ip-address",
+        "description": "Optional: IP address for the web portal to use, if your DNS server fails to resolve the main portal URL. Note: If your DNS server resolves the main portal URL, this IP address is ignored.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "main-url",
+        "description": "The main URL for the web portal.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "certificate",
+        "description": "The certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-dn",
+        "description": "The DN (Distinguished Name) of the certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-valid-from",
+        "description": "The date, from which the certificate is valid.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-valid-to",
+        "description": "The certificate expiration date.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "accessibility",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "allow-access-from",
+        "description": "Allowed access to the web portal (based on interfaces, or security policy).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "internal-access-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "undefined",
+        "description": "Controls portal access settings for internal interfaces, whose topology is set to 'Undefined'.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dmz",
+        "description": "Controls portal access settings for internal interfaces, whose topology is set to 'DMZ'.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "vpn",
+        "description": "Controls portal access settings for interfaces that are part of a VPN Encryption Domain.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "identity-sharing-settings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "share-with-other-gateways",
+        "description": "Enable identity sharing with other gateways.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "receive-from-other-gateways",
+        "description": "Enable receiving identity from other gateways.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "receive-from",
+        "description": "Gateway(s) to receive identity from.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "cache-mode",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "override-profile",
+        "description": "Override profile of global configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "profile-value",
+        "description": "Override profile value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "Override value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "cache-mode-duration",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "override-profile",
+        "description": "Override profile of global configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "profile-value",
+        "description": "Override profile value.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "Override value.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "identity-web-api",
+        "description": "Identity Web API source enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "identity-web-api-settings",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "authentication-settings",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "users-directories",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "external-user-profile",
+        "description": "N/A",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "internal-users",
+        "description": "N/A",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "users-from-external-directories",
+        "description": "N/A",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "all gateways directories",
+          "specific",
+          "none"
+        ]
+      },
+      {
+        "name": "specific",
+        "description": "LDAP AU objects identified by the name or UID. Must be set when \"users-from-external-directories\" was selected to be \"specific\".",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "authorized-clients",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "client",
+        "description": "Client Name or UID.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "client-access-permissions",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "portal-web-settings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "aliases",
+        "description": "List of URL aliases that are redirected to the main portal URL.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "ip-address",
+        "description": "Optional: IP address for the web portal to use, if your DNS server fails to resolve the main portal URL. Note: If your DNS server resolves the main portal URL, this IP address is ignored.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "main-url",
+        "description": "The main URL for the web portal.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "certificate",
+        "description": "The certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-dn",
+        "description": "The DN (Distinguished Name) of the certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-valid-from",
+        "description": "The date, from which the certificate is valid.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-valid-to",
+        "description": "The certificate expiration date.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "accessibility",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "allow-access-from",
+        "description": "Allowed access to the web portal (based on interfaces, or security policy).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "internal-access-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "undefined",
+        "description": "Controls portal access settings for internal interfaces, whose topology is set to 'Undefined'.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dmz",
+        "description": "Controls portal access settings for internal interfaces, whose topology is set to 'DMZ'.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "vpn",
+        "description": "Controls portal access settings for interfaces that are part of a VPN Encryption Domain.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "proxy-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "detect-using-x-forward-for",
+        "description": "Whether X-Forward-For HTTP header is been used.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "radius-accounting",
+        "description": "Radius Accounting source enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "remote-access",
+        "description": "Remote Access source enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "terminal-servers",
+        "description": "Terminal Servers source enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "interfaces",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "prevent",
+          "detect"
+        ]
+      },
+      {
+        "name": "from",
+        "description": "From which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "objects",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "prevent",
+          "detect"
+        ]
+      },
+      {
+        "name": "ipv4-address",
+        "description": "IPv4 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv4-mask-length",
+        "description": "IPv4 network mask length.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "ipv4-network-mask",
+        "description": "IPv4 network mask.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "name",
+        "description": "Interface name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv6-address",
+        "description": "IPv6 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv6-mask-length",
+        "description": "IPv6 network mask length.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "ipv6-network-mask",
+        "description": "IPv6 network mask.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "anti-spoofing",
+        "description": "N/A",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "anti-spoofing-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "prevent",
+          "detect"
+        ]
+      },
+      {
+        "name": "action",
+        "description": "If packets will be rejected (the Prevent option) or whether the packets will be monitored (the Detect option).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "prevent",
+          "detect"
+        ]
+      },
+      {
+        "name": "exclude-packets",
+        "description": "Don't check packets from excluded network.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "excluded-network-name",
+        "description": "Excluded network name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "excluded-network-uid",
+        "description": "Excluded network UID.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "spoof-tracking",
+        "description": "Spoof tracking.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "alert"
+        ]
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "comments",
+        "description": "Comments string.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "dynamic-ip",
+        "description": "Enable dynamic interface.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "interface-type",
+        "description": "Cluster interface type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "cluster",
+          "sync",
+          "cluster + sync",
+          "private"
+        ]
+      },
+      {
+        "name": "network-interface-type",
+        "description": "Type of network interface.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "alias",
+          "bond",
+          "bridge",
+          "bridge member",
+          "ethernet",
+          "loopback",
+          "6 in 4 tunnel",
+          "pppoe",
+          "vpn tunnel",
+          "vlan"
+        ]
+      },
+      {
+        "name": "security-zone",
+        "description": "N/A",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "security-zone-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "auto-calculated",
+        "description": "Security Zone is calculated according to where the interface leads to.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "specific-zone",
+        "description": "Security Zone specified manually.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "topology",
+        "description": "Topology configuration.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "automatic",
+          "external",
+          "internal"
+        ]
+      },
+      {
+        "name": "topology-automatic-calculation",
+        "description": "Shows the automatic topology calculation.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "external",
+          "internal"
+        ]
+      },
+      {
+        "name": "topology-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "not defined",
+          "network defined by the interface ip and net mask",
+          "network defined by routing",
+          "specific"
+        ]
+      },
+      {
+        "name": "interface-leads-to-dmz",
+        "description": "Whether this interface leads to demilitarized zone (perimeter network).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "ip-address-behind-this-interface",
+        "description": "Network settings behind this interface.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "not defined",
+          "network defined by the interface ip and net mask",
+          "network defined by routing",
+          "specific"
+        ]
+      },
+      {
+        "name": "specific-network",
+        "description": "Network behind this interface.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Network interface object UID.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "to",
+        "description": "To which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "total",
+        "description": "Total number of elements returned by the query.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "ips",
+        "description": "Intrusion Prevention System blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "ips-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "according-to-policy",
+          "detect-only"
+        ]
+      },
+      {
+        "name": "activation-mode",
+        "description": "IPS activation mode: 'according-to-policy' or 'detect-only'.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "according-to-policy",
+          "detect-only"
+        ]
+      },
+      {
+        "name": "bypass-all-under-load",
+        "description": "Disable/enable all IPS protections until CPU and memory levels are back to normal.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "bypass-track-method",
+        "description": "Track options when all IPS protections are disabled until CPU/memory levels are back to normal.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "popup alert",
+          "mail alert",
+          "snmp trap alert",
+          "user defined alert no.1",
+          "user defined alert no.2",
+          "user defined alert no.3"
+        ]
+      },
+      {
+        "name": "cpu-usage-high-threshold",
+        "description": "CPU usage high threshold percentage (1-99).",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "cpu-usage-low-threshold",
+        "description": "CPU usage low threshold percentage (1-99).",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "memory-usage-high-threshold",
+        "description": "Memory usage high threshold percentage (1-99).",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "memory-usage-low-threshold",
+        "description": "Memory usage low threshold percentage (1-99).",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "send-threat-cloud-info",
+        "description": "Help improve Check Point Threat Prevention product by sending anonymous information.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "reject-on-cluster-fail-over",
+        "description": "Define the IPS connections during fail over reject packets or accept packets.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "ips-update-policy",
+        "description": "Specifies whether the IPS will be downloaded from the Management or directly to the Gateway.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "via management",
+          "gateway automatic update"
+        ]
+      },
+      {
+        "name": "ipv4-address",
+        "description": "IPv4 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv6-address",
+        "description": "IPv6 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "legacy-url-filtering",
+        "description": "Legacy URL Filtering enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "logs-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "percent",
+          "mbytes"
+        ]
+      },
+      {
+        "name": "alert-when-free-disk-space-below",
+        "description": "Alert when free disk space is below threshold enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "alert-when-free-disk-space-below-metrics",
+        "description": "Alert when free disk space below metrics.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "percent",
+          "mbytes"
+        ]
+      },
+      {
+        "name": "alert-when-free-disk-space-below-threshold",
+        "description": "Alert when free disk space below threshold.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "alert-when-free-disk-space-below-type",
+        "description": "Alert when free disk space below type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "popup alert",
+          "mail alert",
+          "snmp trap alert",
+          "user defined alert no.1",
+          "user defined alert no.2",
+          "user defined alert no.3"
+        ]
+      },
+      {
+        "name": "before-delete-keep-logs-from-the-last-days",
+        "description": "Before delete keep logs from the last days enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "before-delete-keep-logs-from-the-last-days-threshold",
+        "description": "Before delete keep logs from the last days threshold.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "before-delete-run-script",
+        "description": "Before delete run script enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "before-delete-run-script-command",
+        "description": "Before delete run script command.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "delete-index-files-older-than-days",
+        "description": "Delete index files older than days enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "delete-index-files-older-than-days-threshold",
+        "description": "Delete index files older than days threshold.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "delete-index-files-when-index-size-above",
+        "description": "Delete index files when index size above enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "delete-index-files-when-index-size-above-metrics",
+        "description": "Delete index files when index size above metrics.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "percent",
+          "mbytes"
+        ]
+      },
+      {
+        "name": "delete-index-files-when-index-size-above-threshold",
+        "description": "Delete index files when index size above threshold.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "delete-when-free-disk-space-below",
+        "description": "Delete when free disk space below enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "delete-when-free-disk-space-below-metrics",
+        "description": "Delete when free disk space below metrics.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "percent",
+          "mbytes"
+        ]
+      },
+      {
+        "name": "delete-when-free-disk-space-below-threshold",
+        "description": "Delete when free disk space below threshold.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "detect-new-citrix-ica-application-names",
+        "description": "Detect new Citrix ICA application names enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "distribute-logs-between-all-active-servers",
+        "description": "Distribute logs between all active servers.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "forward-logs-to-log-server",
+        "description": "Forward logs to log server enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "forward-logs-to-log-server-name",
+        "description": "Forward logs to log server name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "forward-logs-to-log-server-schedule-name",
+        "description": "Forward logs to log server schedule name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "perform-log-rotate-before-log-forwarding",
+        "description": "Perform log rotate before log forwarding enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "reject-connections-when-free-disk-space-below-threshold",
+        "description": "Reject connections when free disk space below threshold enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "reserve-for-packet-capture-metrics",
+        "description": "Reserve for packet capture metrics.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "percent",
+          "mbytes"
+        ]
+      },
+      {
+        "name": "reserve-for-packet-capture-threshold",
+        "description": "Reserve for packet capture threshold.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "rotate-log-by-file-size",
+        "description": "Rotate log by file size enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "rotate-log-file-size-threshold",
+        "description": "Log file size threshold.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "rotate-log-on-schedule",
+        "description": "Rotate log on schedule enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "rotate-log-schedule-name",
+        "description": "Rotate log schedule name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "stop-logging-when-free-disk-space-below",
+        "description": "Stop logging when free disk space below enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "stop-logging-when-free-disk-space-below-metrics",
+        "description": "Stop logging when free disk space below metrics.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "percent",
+          "mbytes"
+        ]
+      },
+      {
+        "name": "stop-logging-when-free-disk-space-below-threshold",
+        "description": "Stop logging when free disk space below threshold.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "turn-on-qos-logging",
+        "description": "Turn on QoS Logging enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "update-account-log-every",
+        "description": "Update account log in every amount of seconds.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "mobile-access",
+        "description": "Mobile-Access blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "monitoring",
+        "description": "Monitoring blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "nat-hide-internal-interfaces",
+        "description": "Hide internal networks behind the Gateway's external IP.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "nat-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "gateway",
+          "ip-address"
+        ]
+      },
+      {
+        "name": "auto-rule",
+        "description": "Whether to add automatic address translation rules.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "hide-behind",
+        "description": "Hide behind method. This parameter is forbidden in case \"method\" parameter is \"static\".",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "gateway",
+          "ip-address"
+        ]
+      },
+      {
+        "name": "install-on",
+        "description": "Which gateway should apply the NAT translation.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv4-address",
+        "description": "IPv4 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv6-address",
+        "description": "IPv6 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "method",
+        "description": "NAT translation method.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "hide",
+          "static"
+        ]
+      },
+      {
+        "name": "os-name",
+        "description": "Gateway platform operating system.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "platform-portal-settings",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "enabled",
+        "description": "State of the web portal (enabled or disabled).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "portal-web-settings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "aliases",
+        "description": "List of URL aliases that are redirected to the main portal URL.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "ip-address",
+        "description": "Optional: IP address for the web portal to use, if your DNS server fails to resolve the main portal URL. Note: If your DNS server resolves the main portal URL, this IP address is ignored.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "main-url",
+        "description": "The main URL for the web portal.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "certificate",
+        "description": "The certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-dn",
+        "description": "The DN (Distinguished Name) of the certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-valid-from",
+        "description": "The date, from which the certificate is valid.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-valid-to",
+        "description": "The certificate expiration date.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "accessibility",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "allow-access-from",
+        "description": "Allowed access to the web portal (based on interfaces, or security policy).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "internal-access-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "undefined",
+        "description": "Controls portal access settings for internal interfaces, whose topology is set to 'Undefined'.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dmz",
+        "description": "Controls portal access settings for internal interfaces, whose topology is set to 'DMZ'.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "vpn",
+        "description": "Controls portal access settings for interfaces that are part of a VPN Encryption Domain.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "policy-server",
+        "description": "Policy-Server blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "proxy-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "use-custom-proxy",
+        "description": "Use custom proxy settings for this network object.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "proxy-server",
+        "description": "N/A",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "port",
+        "description": "N/A",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "qos",
+        "description": "QoS.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "rtm-counters-report",
+        "description": "Enables monitoring blades system counters report (e.g CPU Usage,Memory Usage).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "rtm-traffic-report",
+        "description": "Enables monitoring blades traffic report.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "rtm-traffic-report-per-connection",
+        "description": "Enables Monitoring blade traffic report per connection.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "save-logs-locally",
+        "description": "Save logs locally on the gateway.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "send-alerts-to-server",
+        "description": "Server(s) to send alerts to.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "send-logs-to-backup-server",
+        "description": "Backup server(s) to send logs to.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "send-logs-to-server",
+        "description": "Servers(s) to send logs to.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "sic-name",
+        "description": "Secure Internal Communication name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "sic-state",
+        "description": "Secure Internal Communication state.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "threat-emulation",
+        "description": "Threat Emulation blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "threat-extraction",
+        "description": "Threat Extraction blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "threat-prevention-mode",
+        "description": "The mode of Threat Prevention to use. When using Autonomous Threat Prevention, disabling the Threat Prevention blades is not allowed.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "autonomous",
+          "custom"
+        ]
+      },
+      {
+        "name": "url-filtering",
+        "description": "URL Filtering blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "usercheck-portal-settings",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "enabled",
+        "description": "State of the web portal (enabled or disabled).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "portal-web-settings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "aliases",
+        "description": "List of URL aliases that are redirected to the main portal URL.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "ip-address",
+        "description": "Optional: IP address for the web portal to use, if your DNS server fails to resolve the main portal URL. Note: If your DNS server resolves the main portal URL, this IP address is ignored.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "main-url",
+        "description": "The main URL for the web portal.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "certificate",
+        "description": "The certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-dn",
+        "description": "The DN (Distinguished Name) of the certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-valid-from",
+        "description": "The date, from which the certificate is valid.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-valid-to",
+        "description": "The certificate expiration date.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "accessibility",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "allow-access-from",
+        "description": "Allowed access to the web portal (based on interfaces, or security policy).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "rule_base",
+          "internal_interfaces",
+          "all_interfaces"
+        ]
+      },
+      {
+        "name": "internal-access-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "undefined",
+        "description": "Controls portal access settings for internal interfaces, whose topology is set to 'Undefined'.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dmz",
+        "description": "Controls portal access settings for internal interfaces, whose topology is set to 'DMZ'.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "vpn",
+        "description": "Controls portal access settings for interfaces that are part of a VPN Encryption Domain.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "version",
+        "description": "Gateway platform version.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "vpn",
+        "description": "VPN blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "vpn-settings",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "active",
+          "backup"
+        ]
+      },
+      {
+        "name": "interfaces",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "active",
+          "backup"
+        ]
+      },
+      {
+        "name": "interface-name",
+        "description": "The name of the interface.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "next-hop-ip",
+        "description": "The IP address of the next hop.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "static-nat-ip",
+        "description": "The NATed IPv4 address that hides the source IPv4 address of outgoing connections (applies only to IPv4).",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "priority",
+        "description": "Priority of a 'Backup' interface.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "redundancy-mode",
+        "description": "Interface redundancy mode (Active/Backup).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "active",
+          "backup"
+        ]
+      },
+      {
+        "name": "ip-version",
+        "description": "The IP version of the interface's IP address (IPv4/IPv6).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "ipv4",
+          "ipv6"
+        ]
+      },
+      {
+        "name": "authentication",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "authentication-clients",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificates",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Certificate name.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "distinguished-name",
+        "description": "The Distinguished Name of the certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "base64-certificate",
+        "description": "Certificate file encoded in base64.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "certificate-authority",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "expiration-date",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "iso-8601",
+        "description": "Date and time represented in international ISO 8601 format.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "posix",
+        "description": "Number of milliseconds that have elapsed since 00:00:00, 1 January 1970.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "status",
+        "description": "Certificate status.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "signed",
+          "unsigned"
+        ]
+      },
+      {
+        "name": "stored-at",
+        "description": "Store keys on Security Management Server or on the Gateway. On cluster object only \"management server\" is valid.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "management server",
+          "gateway"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "link-selection",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "use-main-address",
+          "use-selected-address-from-topology",
+          "use-statically-nated-ip",
+          "calculated-ip-based-on-topology",
+          "dns-resolving-from-hostname",
+          "dns-resolving-from-gateway-and-domain-name",
+          "use-probing-with-high-availability",
+          "use-probing-with-load-sharing",
+          "use-one-time-probing"
+        ]
+      },
+      {
+        "name": "ip-selection",
+        "description": "N/A",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "use-main-address",
+          "use-selected-address-from-topology",
+          "use-statically-nated-ip",
+          "calculated-ip-based-on-topology",
+          "dns-resolving-from-hostname",
+          "dns-resolving-from-gateway-and-domain-name",
+          "use-probing-with-high-availability",
+          "use-probing-with-load-sharing",
+          "use-one-time-probing"
+        ]
+      },
+      {
+        "name": "dns-resolving-hostname",
+        "description": "DNS Resolving Hostname. Must be set when \"ip-selection\" was selected to be \"dns-resolving-from-hostname\".",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ip-address",
+        "description": "IP Address. Must be set when \"ip-selection\" was selected to be \"use-selected-address-from-topology\" or \"use-statically-nated-ip\".",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "maximum-concurrent-ike-negotiations",
+        "description": "N/A",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "maximum-concurrent-tunnels",
+        "description": "N/A",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "office-mode",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "off",
+          "specific-group",
+          "all-users"
+        ]
+      },
+      {
+        "name": "mode",
+        "description": "Office Mode Permissions. When selected to be \"off\", all the other definitions are irrelevant.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "off",
+          "specific-group",
+          "all-users"
+        ]
+      },
+      {
+        "name": "group",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "allocate-ip-address-from",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "manual",
+          "automatic"
+        ]
+      },
+      {
+        "name": "radius-server",
+        "description": "Radius server used to authenticate the user.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "use-allocate-method",
+        "description": "Use Allocate Method.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allocate-method",
+        "description": "Using either Manual (IP Pool) or Automatic (DHCP). Must be set when \"use-allocate-method\" is true.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "manual",
+          "automatic"
+        ]
+      },
+      {
+        "name": "manual-network",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "dhcp-server",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "virtual-ip-address",
+        "description": "Virtual IPV4 address for DHCP server replies. Must be set when \"allocate-method\" was selected to be \"automatic\".",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "dhcp-mac-address",
+        "description": "Calculated MAC address for DHCP allocation. Must be set when \"allocate-method\" was selected to be \"automatic\".",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "per-machine",
+          "per-user"
+        ]
+      },
+      {
+        "name": "optional-parameters",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "use-primary-dns-server",
+        "description": "Use Primary DNS Server.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "primary-dns-server",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "use-first-backup-dns-server",
+        "description": "Use First Backup DNS Server.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "first-backup-dns-server",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "use-second-backup-dns-server",
+        "description": "Use Second Backup DNS Server.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "second-backup-dns-server",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "dns-suffixes",
+        "description": "DNS Suffixes.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "use-primary-wins-server",
+        "description": "Use Primary WINS Server.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "primary-wins-server",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "use-first-backup-wins-server",
+        "description": "Use First Backup WINS Server.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "first-backup-wins-server",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "use-second-backup-wins-server",
+        "description": "Use Second Backup WINS Server.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "second-backup-wins-server",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ip-lease-duration",
+        "description": "IP Lease Duration in Minutes. The value must be in the range 2-32767.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "support-multiple-interfaces",
+        "description": "Support connectivity enhancement for gateways with multiple external interfaces.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "perform-anti-spoofing",
+        "description": "Perform Anti-Spoofing on Office Mode addresses.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "anti-spoofing-additional-addresses",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "remote-access",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "certificate",
+          "md5"
+        ]
+      },
+      {
+        "name": "support-l2tp",
+        "description": "Support L2TP (relevant only when office mode is active).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "l2tp-auth-method",
+        "description": "L2TP Authentication Method. Must be set when \"support-l2tp\" is true.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "certificate",
+          "md5"
+        ]
+      },
+      {
+        "name": "l2tp-certificate",
+        "description": "L2TP Certificate. Must be set when \"l2tp-auth-method\" was selected to be \"certificate\". Insert \"defaultCert\" when you want to use the default certificate.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "allow-vpn-clients-to-route-traffic",
+        "description": "Allow VPN clients to route traffic.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "support-nat-traversal-mechanism",
+        "description": "Support NAT traversal mechanism (UDP encapsulation).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "nat-traversal-service",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "support-visitor-mode",
+        "description": "Support Visitor Mode.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "visitor-mode-service",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "visitor-mode-interface",
+        "description": "Interface for Visitor Mode. Must be set when \"support-visitor-mode\" is true. Insert IPV4 Address of existing interface or \"All IPs\" when you want all interfaces.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "vpn-domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "vpn-domain-exclude-external-ip-addresses",
+        "description": "Exclude the external IP addresses from the VPN domain of this Security Gateway.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "vpn-domain-type",
+        "description": "Gateway VPN domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "manual",
+          "addresses_behind_gw",
+          "ranges",
+          "addresses_behind_nat"
+        ]
+      },
+      {
+        "name": "zero-phishing",
+        "description": "Zero Phishing blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "zero-phishing-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "automatic",
+          "manual"
+        ]
+      },
+      {
+        "name": "gateway-fqdn-mode",
+        "description": "Manual Fqdn.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "automatic",
+          "manual"
+        ]
+      },
+      {
+        "name": "manual-fqdn",
+        "description": "Zero Phishing gateway FQDN.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "smb-logs-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "popup alert",
+          "mail alert",
+          "snmp trap alert",
+          "user defined alert no.1",
+          "user defined alert no.2",
+          "user defined alert no.3"
+        ]
+      },
+      {
+        "name": "alert-when-queue-is-full",
+        "description": "Alert when queue is full enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "alert-when-queue-is-full-type",
+        "description": "Alert when queue is full type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "popup alert",
+          "mail alert",
+          "snmp trap alert",
+          "user defined alert no.1",
+          "user defined alert no.2",
+          "user defined alert no.3"
+        ]
+      },
+      {
+        "name": "detect-new-citrix-ica-application-names",
+        "description": "Detect new citrix ica application names enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "stop-logging-when-queue-reaches-maximal-capacity",
+        "description": "Stop logging when queue reaches maximal capacity enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "stop-logging-when-queue-reaches-maximal-capacity-threshold",
+        "description": "Stop logging when queue reaches maximal capacity threshold.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "turn-on-qos-logging",
+        "description": "Turn on qos logging enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "update-account-log-every",
+        "description": "Update account log in every amount of seconds.",
+        "type": "integer",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "show-simple-cluster (Enhanced Link Selection Interfaces)": {
+      "description": "Displays a cluster with enhanced link selection interfaces",
+      "request": "POST {{server}}/show-simple-cluster\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"Cluster_2_version_R82\"\n}",
+      "response": "{\n  \"uid\" : \"5ab98cba-f7dc-4a3a-964b-7a0aadd6fe8e\",\n  \"name\" : \"Cluster_2_version_R82\",\n  \"type\" : \"simple-cluster\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"meta-info\" : {\n    \"lock\" : \"locked by current session\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1703509380486,\n      \"iso-8601\" : \"2023-12-25T15:03+0200\"\n    },\n    \"last-modifier\" : \"aa\",\n    \"creation-time\" : {\n      \"posix\" : 1703509199423,\n      \"iso-8601\" : \"2023-12-25T14:59+0200\"\n    },\n    \"creator\" : \"aa\"\n  },\n  \"available-actions\" : {\n    \"edit\" : \"true\",\n    \"delete\" : \"true\",\n    \"clone\" : \"not_supported\"\n  },\n  \"tags\" : [ ],\n  \"read-only\" : false,\n  \"comments\" : \"\",\n  \"color\" : \"yellow\",\n  \"icon\" : \"NetworkObjects/cluster\",\n  \"groups\" : [ ],\n  \"nat-settings\" : {\n    \"auto-rule\" : false\n  },\n  \"ipv4-address\" : \"172.23.43.35\",\n  \"dynamic-ip\" : false,\n  \"version\" : \"R82\",\n  \"os-name\" : \"Gaia\",\n  \"hardware\" : \"Open server\",\n  \"firewall\" : true,\n  \"firewall-settings\" : {\n    \"auto-maximum-limit-for-concurrent-connections\" : true,\n    \"maximum-limit-for-concurrent-connections\" : 25000,\n    \"auto-calculate-connections-hash-table-size-and-memory-pool\" : true,\n    \"connections-hash-size\" : 131072,\n    \"memory-pool-size\" : 6,\n    \"maximum-memory-pool-size\" : 30\n  },\n  \"vpn\" : true,\n  \"vpn-settings\" : {\n    \"useClientlessVpn\" : false,\n    \"maximum-concurrent-ike-negotiations\" : 1000,\n    \"maximum-concurrent-tunnels\" : 10000,\n    \"vpn-domain-type\" : \"addresses_behind_gw\",\n    \"link-selection\" : {\n      \"ip-selection\" : \"use-main-address\"\n    },\n    \"remote-access\" : {\n      \"support-l2tp\" : false,\n      \"allow-vpn-clients-to-route-traffic\" : false,\n      \"support-nat-traversal-mechanism\" : true,\n      \"nat-traversal-service\" : {\n        \"uid\" : \"97aeb390-9aea-11d5-bd16-0090272ccb30\",\n        \"name\" : \"VPN1_IPSEC_encapsulation\",\n        \"type\" : \"service-udp\",\n        \"domain\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"domain-type\" : \"data domain\"\n        },\n        \"meta-info\" : {\n          \"lock\" : \"unlocked\",\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1702833041075,\n            \"iso-8601\" : \"2023-12-17T19:10+0200\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1702833041075,\n            \"iso-8601\" : \"2023-12-17T19:10+0200\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"available-actions\" : {\n          \"edit\" : \"false\",\n          \"delete\" : \"false\",\n          \"clone\" : \"true\"\n        },\n        \"tags\" : [ ],\n        \"read-only\" : true,\n        \"comments\" : \"Check Point VPN-1 SecuRemote IPSEC Transport Encapsulation Protocol\",\n        \"color\" : \"firebrick\",\n        \"icon\" : \"Services/UDPService\",\n        \"groups\" : [ \"97aeb475-9aea-11d5-bd16-0090272ccb30\" ],\n        \"keep-connections-open-after-policy-installation\" : false,\n        \"session-timeout\" : 40,\n        \"use-default-session-timeout\" : true,\n        \"match-for-any\" : true,\n        \"sync-connections-on-cluster\" : true,\n        \"aggressive-aging\" : {\n          \"enable\" : true,\n          \"timeout\" : 15,\n          \"use-default-timeout\" : true,\n          \"default-timeout\" : 0\n        },\n        \"override-default-settings\" : false,\n        \"port\" : \"2746\",\n        \"match-by-protocol-signature\" : false,\n        \"accept-replies\" : true\n      },\n      \"support-visitor-mode\" : true,\n      \"visitor-mode-service\" : {\n        \"uid\" : \"97aeb443-9aea-11d5-bd16-0090272ccb30\",\n        \"name\" : \"https\",\n        \"type\" : \"service-tcp\",\n        \"domain\" : {\n          \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n          \"name\" : \"Check Point Data\",\n          \"domain-type\" : \"data domain\"\n        },\n        \"meta-info\" : {\n          \"lock\" : \"unlocked\",\n          \"validation-state\" : \"ok\",\n          \"last-modify-time\" : {\n            \"posix\" : 1702833044160,\n            \"iso-8601\" : \"2023-12-17T19:10+0200\"\n          },\n          \"last-modifier\" : \"System\",\n          \"creation-time\" : {\n            \"posix\" : 1702833044160,\n            \"iso-8601\" : \"2023-12-17T19:10+0200\"\n          },\n          \"creator\" : \"System\"\n        },\n        \"available-actions\" : {\n          \"edit\" : \"false\",\n          \"delete\" : \"false\",\n          \"clone\" : \"true\"\n        },\n        \"tags\" : [ ],\n        \"read-only\" : true,\n        \"comments\" : \"HTTP protocol over TLS/SSL\",\n        \"color\" : \"red\",\n        \"icon\" : \"Services/TCPService\",\n        \"groups\" : [ \"82bccbc2-603c-4d96-a59b-9c2b730efb5c\", \"7f9275f0-4382-4222-b4cd-06d2c5aa3222\" ],\n        \"keep-connections-open-after-policy-installation\" : false,\n        \"session-timeout\" : 3600,\n        \"use-default-session-timeout\" : true,\n        \"match-for-any\" : true,\n        \"sync-connections-on-cluster\" : true,\n        \"aggressive-aging\" : {\n          \"enable\" : true,\n          \"timeout\" : 60,\n          \"use-default-timeout\" : false,\n          \"default-timeout\" : 60\n        },\n        \"override-default-settings\" : false,\n        \"port\" : \"443\",\n        \"protocol\" : \"ENC-HTTP\",\n        \"match-by-protocol-signature\" : false,\n        \"enable-tcp-resource\" : false,\n        \"use-delayed-sync\" : false,\n        \"delayed-sync-value\" : 30\n      },\n      \"visitor-mode-interface\" : \"All IPs\"\n    },\n    \"office-mode\" : {\n      \"mode\" : \"off\"\n    },\n    \"vpn-domain-exclude-external-ip-addresses\" : false,\n    \"authentication\" : { },\n    \"interfaces\" : [ {\n      \"interface-name\" : \"eth3\",\n      \"next-hop-ip\" : \"172.43.52.100\",\n      \"static-nat-ip\" : \"10.20.30.10\",\n      \"availability\" : \"active\",\n      \"ip-type\" : \"ipv4\"\n    }, {\n      \"interface-name\" : \"eth0\",\n      \"next-hop-ip\" : \"172.23.43.100\",\n      \"static-nat-ip\" : \"50.40.30.10\",\n      \"priority\" : 7,\n      \"availability\" : \"backup\",\n      \"ip-type\" : \"ipv4\"\n    } ]\n  },\n  \"policy-server\" : false,\n  \"mobile-access\" : false,\n  \"application-control\" : false,\n  \"url-filtering\" : false,\n  \"legacy-url-filtering\" : false,\n  \"application-control-and-url-filtering-settings\" : {\n    \"global-settings-mode\" : \"use_global_settings\"\n  },\n  \"content-awareness\" : false,\n  \"monitoring\" : false,\n  \"anti-spam-and-email-security\" : false,\n  \"threat-prevention-mode\" : \"custom\",\n  \"ips\" : false,\n  \"anti-bot\" : false,\n  \"anti-virus\" : false,\n  \"threat-emulation\" : false,\n  \"threat-extraction\" : false,\n  \"zero-phishing\" : false,\n  \"identity-awareness\" : false,\n  \"data-loss-prevention\" : false,\n  \"qos\" : false,\n  \"cluster-xl\" : true,\n  \"save-logs-locally\" : false,\n  \"send-alerts-to-server\" : [ \"jaguar-tpi-t393-main-take-5\" ],\n  \"send-logs-to-server\" : [ \"jaguar-tpi-t393-main-take-5\" ],\n  \"send-logs-to-backup-server\" : [ ],\n  \"logs-settings\" : {\n    \"rotate-log-by-file-size\" : false,\n    \"rotate-log-file-size-threshold\" : 1000,\n    \"rotate-log-on-schedule\" : false,\n    \"alert-when-free-disk-space-below-metrics\" : \"mbytes\",\n    \"alert-when-free-disk-space-below\" : true,\n    \"alert-when-free-disk-space-below-threshold\" : 3000,\n    \"alert-when-free-disk-space-below-type\" : \"popup alert\",\n    \"delete-when-free-disk-space-below-metrics\" : \"mbytes\",\n    \"delete-when-free-disk-space-below\" : true,\n    \"delete-when-free-disk-space-below-threshold\" : 5000,\n    \"before-delete-keep-logs-from-the-last-days\" : false,\n    \"before-delete-keep-logs-from-the-last-days-threshold\" : 3664,\n    \"before-delete-run-script\" : false,\n    \"before-delete-run-script-command\" : \"\",\n    \"stop-logging-when-free-disk-space-below-metrics\" : \"mbytes\",\n    \"stop-logging-when-free-disk-space-below\" : true,\n    \"stop-logging-when-free-disk-space-below-threshold\" : 100,\n    \"reject-connections-when-free-disk-space-below-threshold\" : false,\n    \"reserve-for-packet-capture-metrics\" : \"mbytes\",\n    \"reserve-for-packet-capture-threshold\" : 500,\n    \"delete-index-files-when-index-size-above-metrics\" : \"mbytes\",\n    \"delete-index-files-when-index-size-above\" : false,\n    \"delete-index-files-when-index-size-above-threshold\" : 100000,\n    \"delete-index-files-older-than-days\" : false,\n    \"delete-index-files-older-than-days-threshold\" : 14,\n    \"forward-logs-to-log-server\" : false,\n    \"perform-log-rotate-before-log-forwarding\" : false,\n    \"update-account-log-every\" : 3600,\n    \"detect-new-citrix-ica-application-names\" : false,\n    \"turn-on-qos-logging\" : true,\n    \"distribute-logs-between-all-active-servers\" : false\n  },\n  \"hit-count\" : true,\n  \"platform-portal-settings\" : {\n    \"enabled\" : true,\n    \"portal-web-settings\" : {\n      \"main-url\" : \"https://172.23.43.35/\",\n      \"ip-address\" : \"172.23.43.35\",\n      \"aliases\" : [ ]\n    },\n    \"accessibility\" : {\n      \"allow-access-from\" : \"RULE_BASE\"\n    }\n  },\n  \"nat-hide-internal-interfaces\" : false,\n  \"enable-https-inspection\" : false,\n  \"https-inspection\" : {\n    \"bypass-on-failure\" : {\n      \"override-profile\" : false,\n      \"profile-value\" : true\n    },\n    \"site-categorization-allow-mode\" : {\n      \"override-profile\" : false,\n      \"profile-value\" : \"hold\"\n    },\n    \"deny-untrusted-server-cert\" : {\n      \"override-profile\" : false,\n      \"profile-value\" : false\n    },\n    \"deny-expired-server-cert\" : {\n      \"override-profile\" : false,\n      \"profile-value\" : false\n    },\n    \"outbound-certificate\" : {\n      \"override-profile\" : false,\n      \"profile-value\" : \"\"\n    },\n    \"bypass-on-client-failure\" : {\n      \"override-profile\" : false,\n      \"profile-value\" : true\n    },\n    \"bypass-under-load\" : {\n      \"value\" : false\n    },\n    \"deployment-mode\" : \"full\",\n    \"deny-revoked-server-cert\" : {\n      \"override-profile\" : false,\n      \"profile-value\" : true\n    }\n  },\n  \"zero-phishing-settings\" : {\n    \"gateway-fqdn-mode\" : \"automatic\"\n  },\n  \"rtm-traffic-report-per-connection\" : false,\n  \"rtm-traffic-report\" : false,\n  \"rtm-counters-report\" : true,\n  \"interfaces\" : {\n    \"total\" : 4,\n    \"from\" : 1,\n    \"to\" : 4,\n    \"objects\" : [ {\n      \"uid\" : \"2f17a388-5912-4d3d-98e1-df70ffc1bf1a\",\n      \"name\" : \"eth0\",\n      \"ipv4-address\" : \"172.23.43.35\",\n      \"ipv4-network-mask\" : \"255.255.255.0\",\n      \"ipv4-mask-length\" : 24,\n      \"ipv6-address\" : \"\",\n      \"topology\" : \"external\",\n      \"anti-spoofing\" : true,\n      \"anti-spoofing-settings\" : {\n        \"action\" : \"prevent\",\n        \"exclude-packets\" : false,\n        \"spoof-tracking\" : \"log\"\n      },\n      \"security-zone\" : false,\n      \"comments\" : \"\",\n      \"color\" : \"black\",\n      \"icon\" : \"NetworkObjects/network\",\n      \"network-interface-type\" : \"ethernet\",\n      \"interface-type\" : \"cluster\"\n    }, {\n      \"uid\" : \"6e780c91-7bc5-4c93-a76e-c4b884490ea9\",\n      \"name\" : \"eth1\",\n      \"ipv4-address\" : \"1.1.3.0\",\n      \"ipv4-network-mask\" : \"255.255.255.0\",\n      \"ipv4-mask-length\" : 24,\n      \"ipv6-address\" : \"\",\n      \"topology\" : \"internal\",\n      \"topology-settings\" : {\n        \"ip-address-behind-this-interface\" : \"network defined by the interface ip and net mask\",\n        \"interface-leads-to-dmz\" : false\n      },\n      \"anti-spoofing\" : false,\n      \"security-zone\" : false,\n      \"comments\" : \"\",\n      \"color\" : \"black\",\n      \"icon\" : \"NetworkObjects/network\",\n      \"network-interface-type\" : \"ethernet\",\n      \"interface-type\" : \"sync\"\n    }, {\n      \"uid\" : \"15de7f75-5184-42b4-af1b-a02c47411233\",\n      \"name\" : \"eth2\",\n      \"ipv4-address\" : \"192.168.2.1\",\n      \"ipv4-network-mask\" : \"255.255.255.0\",\n      \"ipv4-mask-length\" : 24,\n      \"ipv6-address\" : \"\",\n      \"topology\" : \"internal\",\n      \"topology-settings\" : {\n        \"ip-address-behind-this-interface\" : \"network defined by the interface ip and net mask\",\n        \"interface-leads-to-dmz\" : false\n      },\n      \"anti-spoofing\" : true,\n      \"anti-spoofing-settings\" : {\n        \"action\" : \"prevent\",\n        \"exclude-packets\" : false,\n        \"spoof-tracking\" : \"log\"\n      },\n      \"security-zone\" : false,\n      \"comments\" : \"\",\n      \"color\" : \"black\",\n      \"icon\" : \"NetworkObjects/network\",\n      \"network-interface-type\" : \"ethernet\",\n      \"interface-type\" : \"cluster\"\n    }, {\n      \"uid\" : \"30796fc3-18af-4bb2-893e-185c07e3bb95\",\n      \"name\" : \"eth3\",\n      \"ipv4-address\" : \"172.43.52.201\",\n      \"ipv4-network-mask\" : \"255.255.255.0\",\n      \"ipv4-mask-length\" : 24,\n      \"ipv6-address\" : \"fe81::1234\",\n      \"ipv6-network-mask\" : \"ffff:ffff:ffff:ffff:ffff::\",\n      \"ipv6-mask-length\" : 80,\n      \"topology\" : \"external\",\n      \"anti-spoofing\" : false,\n      \"security-zone\" : false,\n      \"comments\" : \"\",\n      \"color\" : \"black\",\n      \"icon\" : \"NetworkObjects/network\",\n      \"network-interface-type\" : \"ethernet\",\n      \"interface-type\" : \"cluster\"\n    } ]\n  },\n  \"cluster-members\" : [ {\n    \"uid\" : \"91d1b262-8603-4153-ad51-388147fe726a\",\n    \"name\" : \"member3\",\n    \"sic-state\" : \"initialized\",\n    \"trust-state\" : \"initialized\",\n    \"sic-message\" : \"Initialized but trust not established\",\n    \"sic-name\" : \"\",\n    \"ip-address\" : \"172.23.43.37\",\n    \"interfaces\" : [ {\n      \"uid\" : \"485af7b6-0114-4ad9-9f0f-c2710d1ce164\",\n      \"name\" : \"eth0\",\n      \"ipv4-address\" : \"172.23.43.37\",\n      \"ipv4-network-mask\" : \"255.255.255.0\",\n      \"ipv4-mask-length\" : 24,\n      \"ipv6-address\" : \"\",\n      \"ipv6-network-mask\" : \"::\",\n      \"ipv6-mask-length\" : 0\n    }, {\n      \"uid\" : \"025ddad9-9883-46da-9179-ee5d8b706294\",\n      \"name\" : \"eth1\",\n      \"ipv4-address\" : \"1.1.3.4\",\n      \"ipv4-network-mask\" : \"255.255.255.0\",\n      \"ipv4-mask-length\" : 24,\n      \"ipv6-address\" : \"\",\n      \"ipv6-network-mask\" : \"::\",\n      \"ipv6-mask-length\" : 0\n    }, {\n      \"uid\" : \"d30b7bbd-ff57-4ba8-a267-021515404c72\",\n      \"name\" : \"eth2\",\n      \"ipv4-address\" : \"192.168.2.2\",\n      \"ipv4-network-mask\" : \"255.255.255.0\",\n      \"ipv4-mask-length\" : 24,\n      \"ipv6-address\" : \"\",\n      \"ipv6-network-mask\" : \"::\",\n      \"ipv6-mask-length\" : 0\n    } ],\n    \"ipv6-address\" : \"\",\n    \"priority\" : 1,\n    \"comments\" : \"\",\n    \"color\" : \"black\"\n  }, {\n    \"uid\" : \"82733b67-6d35-480b-bdb0-b12fb9d1f916\",\n    \"name\" : \"member4\",\n    \"sic-state\" : \"initialized\",\n    \"trust-state\" : \"initialized\",\n    \"sic-message\" : \"Initialized but trust not established\",\n    \"sic-name\" : \"\",\n    \"ip-address\" : \"172.23.43.36\",\n    \"interfaces\" : [ {\n      \"uid\" : \"fa6352da-992d-4202-b7ed-e533cbb647a0\",\n      \"name\" : \"eth0\",\n      \"ipv4-address\" : \"172.23.43.36\",\n      \"ipv4-network-mask\" : \"255.255.255.0\",\n      \"ipv4-mask-length\" : 24,\n      \"ipv6-address\" : \"\",\n      \"ipv6-network-mask\" : \"::\",\n      \"ipv6-mask-length\" : 0\n    }, {\n      \"uid\" : \"028ea78b-b7ac-4d10-aaca-5054b046cb81\",\n      \"name\" : \"eth1\",\n      \"ipv4-address\" : \"1.1.3.5\",\n      \"ipv4-network-mask\" : \"255.255.255.0\",\n      \"ipv4-mask-length\" : 24,\n      \"ipv6-address\" : \"\",\n      \"ipv6-network-mask\" : \"::\",\n      \"ipv6-mask-length\" : 0\n    }, {\n      \"uid\" : \"ef814535-e7ba-43ac-9058-e2bac16f6c8e\",\n      \"name\" : \"eth2\",\n      \"ipv4-address\" : \"192.168.2.3\",\n      \"ipv4-network-mask\" : \"255.255.255.0\",\n      \"ipv4-mask-length\" : 24,\n      \"ipv6-address\" : \"\",\n      \"ipv6-network-mask\" : \"::\",\n      \"ipv6-mask-length\" : 0\n    } ],\n    \"ipv6-address\" : \"\",\n    \"priority\" : 2,\n    \"comments\" : \"\",\n    \"color\" : \"black\"\n  } ],\n  \"cluster-mode\" : \"cluster-xl-ha\",\n  \"geo-mode\" : false,\n  \"ips-update-policy\" : \"gateway automatic update\",\n  \"fetch-policy\" : [ \"jaguar-tpi-t393-main-take-5\" ],\n  \"platform\" : \"open server\",\n  \"auto-topology-use-custom-recalculation-time\" : false,\n  \"auto-topology-custom-recalculation-time\" : 10,\n  \"cluster-settings\" : {\n    \"track-changes-of-cluster-members\" : \"log\",\n    \"state-synchronization\" : {\n      \"enabled\" : true,\n      \"delayed\" : true,\n      \"delayed-seconds\" : 3\n    },\n    \"use-virtual-mac\" : false,\n    \"member-recovery-mode\" : \"maintain-current-active\"\n  },\n  \"proxy-settings\" : {\n    \"use-custom-proxy\" : false\n  }\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:28.057394",
+    "source_file": "show-simple-cluster.html"
+  }
+}
+```

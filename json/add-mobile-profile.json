@@ -1,0 +1,1440 @@
+{
+  "command": "add-mobile-profile",
+  "description": "Create new Mobile Profile.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/add-mobile-profile",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "applications",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "default": "false",
+        "valid_values": [
+          "weeks",
+          "months",
+          "days"
+        ]
+      },
+      {
+        "name": "enable-print-mails",
+        "description": "Allow to print mails.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "max-attachments-size",
+        "description": "Maximum size of attachments allowed for downloading - you can choose a unit (gbs, kbs, mbs, bytes) in \"max-attachments-unit\" field.",
+        "type": "integer",
+        "required": false,
+        "default": "5"
+      },
+      {
+        "name": "calendar-from-the-last",
+        "description": "How far back to see your Calendar from the current date - you can choose a unit (day, week, month) in \"calendar-from-the-last-unit\" field.",
+        "type": "integer",
+        "required": false,
+        "default": "1"
+      },
+      {
+        "name": "calendar-from-the-last-unit",
+        "description": "Unit for \"calendar-from-the-last\" numeric value.",
+        "type": "string",
+        "required": false,
+        "default": "Months",
+        "valid_values": [
+          "weeks",
+          "months",
+          "days"
+        ]
+      },
+      {
+        "name": "calendar-to-the-following",
+        "description": "How much ahead to see your Calendar from the current date - you can choose a unit (day, week, month) in \"calendar-to-the-following-unit\" field.",
+        "type": "integer",
+        "required": false,
+        "default": "1"
+      },
+      {
+        "name": "calendar-to-the-following-unit",
+        "description": "Unit for \"calendar-to-the-following\" numeric value.",
+        "type": "string",
+        "required": false,
+        "default": "Months",
+        "valid_values": [
+          "weeks",
+          "months",
+          "days"
+        ]
+      },
+      {
+        "name": "mail-from-the-last",
+        "description": "How far back to see your emails from the current date - choose a unit (day, week, month) in \"mail-from-the-last-unit\" field.",
+        "type": "integer",
+        "required": false,
+        "default": "14"
+      },
+      {
+        "name": "mail-from-the-last-unit",
+        "description": "Unit for \"mail-from-the-last\" numeric value.",
+        "type": "string",
+        "required": false,
+        "default": "Days",
+        "valid_values": [
+          "weeks",
+          "months",
+          "days"
+        ]
+      },
+      {
+        "name": "synchronize-contacts",
+        "description": "Contacts synchronization method - from the mail server to device and the app and vice versa or from the mail server to device and the app or from the mail server to the app.",
+        "type": "string",
+        "required": false,
+        "default": "mail srv to app",
+        "valid_values": [
+          "mail srv to app and device and vice versa",
+          "mail srv to app and device",
+          "mail srv to app"
+        ]
+      },
+      {
+        "name": "allow-push-notification",
+        "description": "Allow to receive push notifications of mails and meetings.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "allow-calendar-sync",
+        "description": "Allow synchronization between business calendar to device calendar.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "allow-contacts-from-global-address-list",
+        "description": "Allow to add additional contacts from Global Address List to the app.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "allow-contacts-from-local-phone",
+        "description": "Allow to add additional contacts from local phone to the app.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "save-local-web-cache",
+        "description": "Configure whether local cache data generated by web browser should be preserved.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "allow-caching-docsec-credentials",
+        "description": "Allow store encrypted document credentials in application secure storage.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "allow-caching-docsec-keys",
+        "description": "Allow store encrypted document keys in application secure storage.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "client-customization",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "default": "fc037b"
+      },
+      {
+        "name": "app-theme-color-dark",
+        "description": "Configure the application display colors in Dark mode. 6 hex digits that define RGB color - relevant for IOS.",
+        "type": "string",
+        "required": false,
+        "default": "fc037b"
+      },
+      {
+        "name": "app-theme-color-light",
+        "description": "Configure the application display colors in light mode. 6 hex digits that define RGB color - relevant for IOS.",
+        "type": "string",
+        "required": false,
+        "default": "fc037b"
+      },
+      {
+        "name": "allow-calendar",
+        "description": "Allow sync business calendar to device calendar.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "allow-contacts",
+        "description": "Enable/Disable contacts app.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "allow-mail",
+        "description": "Enable/Disable email app.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "allow-notes-sync",
+        "description": "Allow sync business notes to device notes.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "allow-saved-file-apps",
+        "description": "Allow the appearance of 'Saved file app' in the app list.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "allow-secure-chat",
+        "description": "Enable/Disable Messages app (depends on Mail app).",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "allow-tasks",
+        "description": "Enable/Disable Tasks app.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "certificate-expire-message",
+        "description": "message to show users when certificate is expired - for admin to fill - can contain only English characters, digits, comma, spaces and points.",
+        "type": "string",
+        "required": false,
+        "default": "Contact Helpdesk to get a new certificate enrollment key."
+      },
+      {
+        "name": "data-leak-prevention",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "default": "any file",
+        "valid_values": [
+          "any file",
+          "word documents",
+          "excel documents",
+          "powerpoint documents",
+          "any microsoft office documents",
+          "media files"
+        ]
+      },
+      {
+        "name": "open-extension-with-external-app",
+        "description": "Open the following extensions from your app with external apps when they cannot be opened with Capsule viewer.",
+        "type": "string",
+        "required": false,
+        "default": "any file",
+        "valid_values": [
+          "any file",
+          "word documents",
+          "excel documents",
+          "powerpoint documents",
+          "any microsoft office documents",
+          "media files"
+        ]
+      },
+      {
+        "name": "share-protected-extension",
+        "description": "Share protected files extensions to external apps.",
+        "type": "string",
+        "required": false,
+        "default": "any file",
+        "valid_values": [
+          "any file",
+          "word documents",
+          "excel documents",
+          "powerpoint documents",
+          "any microsoft office documents",
+          "media files"
+        ]
+      },
+      {
+        "name": "share-unprotected-extension",
+        "description": "Share unprotected files extensions to external apps.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "any file",
+          "word documents",
+          "excel documents",
+          "powerpoint documents",
+          "any microsoft office documents",
+          "media files"
+        ]
+      },
+      {
+        "name": "allow-copy-paste",
+        "description": "Allow copy paste of mail content.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "block-forward-attachments",
+        "description": "Allow share mail attachments with external mails.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "block-screenshot",
+        "description": "If true - you can't make a screenshot from your app.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "allowed-domains-forward-attachment",
+        "description": "exclusion of domains which attachments are allowed to be sent, even that shared policy prevents sharing these kinds of attached files - can contain only English characters, digits, comma, spaces and points.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "accept-protected-file-extensions",
+        "description": "Accept protected files with these extensions from external apps to your app.",
+        "type": "string",
+        "required": false,
+        "default": "any file",
+        "valid_values": [
+          "any file",
+          "word documents",
+          "excel documents",
+          "powerpoint documents",
+          "any microsoft office documents",
+          "media files"
+        ]
+      },
+      {
+        "name": "accept-unprotected-file-extensions",
+        "description": "Accept unprotected files with these extensions from external apps to your app.",
+        "type": "string",
+        "required": false,
+        "default": "any file",
+        "valid_values": [
+          "any file",
+          "word documents",
+          "excel documents",
+          "powerpoint documents",
+          "any microsoft office documents",
+          "media files"
+        ]
+      },
+      {
+        "name": "allow-import-from-gallery",
+        "description": "Allow import media from gallery.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "allow-taking-photos-and-videos",
+        "description": "Allow the camera to be used from your app.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "offer-capsule-as-viewer",
+        "description": "Offer Capsule as a viewer for external protected documents.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "harmony-mobile",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "default": "false",
+        "valid_values": [
+          "none",
+          "wipe",
+          "block"
+        ]
+      },
+      {
+        "name": "protect-policy-enabled",
+        "description": "Enable/disable Protect Application- cannot be enable if Harmony SDK is enable.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "protect-high-risk-action",
+        "description": "What is the action if there is high risk found by Harmony Mobile.",
+        "type": "string",
+        "required": false,
+        "default": "Block",
+        "valid_values": [
+          "none",
+          "wipe",
+          "block"
+        ]
+      },
+      {
+        "name": "protect-high-risk-message",
+        "description": "The message can contain only English characters, digits, comma, spaces and points.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "protect-medium-risk-action",
+        "description": "What is the action if there is medium risk found by Harmony Mobile.",
+        "type": "string",
+        "required": false,
+        "default": "None",
+        "valid_values": [
+          "none",
+          "wipe",
+          "block"
+        ]
+      },
+      {
+        "name": "protect-medium-risk-message",
+        "description": "The message can contain only English characters, digits, comma, spaces and points.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "protect-not-activated-action",
+        "description": "What is the action if there is policy violation (configuration for Harmony Mobile).",
+        "type": "string",
+        "required": false,
+        "default": "Block",
+        "valid_values": [
+          "none",
+          "wipe",
+          "block"
+        ]
+      },
+      {
+        "name": "protect-not-activated-message",
+        "description": "The message can contain only English characters, digits, comma, spaces and points.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "enable-harmony-mobile-sdk",
+        "description": "Enable/disable Harmony SDK - cannot be enable if Harmony Mobile Application is enable.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "compromised-behavior",
+        "description": "Device configuration - response to malicious behavior (configuration for Harmony SDK).",
+        "type": "string",
+        "required": false,
+        "default": "Block",
+        "valid_values": [
+          "block",
+          "notify",
+          "ignore"
+        ]
+      },
+      {
+        "name": "harmony-mobile-sdk-license",
+        "description": "License for Harmony Mobile Sdk (configuration for Harmony SDK) - can contain only English characters, digits, comma, spaces and point.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "malware-behavior",
+        "description": "Behavior when App is identified as malicious (configuration for Harmony SDK).",
+        "type": "string",
+        "required": false,
+        "default": "Block",
+        "valid_values": [
+          "block",
+          "notify",
+          "ignore"
+        ]
+      },
+      {
+        "name": "man-in-the-middle-attack",
+        "description": "Behavior when there is a network man-in-the-middle attack (configuration for Harmony SDK).",
+        "type": "string",
+        "required": false,
+        "default": "Notify",
+        "valid_values": [
+          "block",
+          "notify",
+          "ignore"
+        ]
+      },
+      {
+        "name": "os-integrity-compromised",
+        "description": "Behavior when Device OS is compromised (configuration for Harmony SDK).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "block",
+          "notify",
+          "ignore"
+        ]
+      },
+      {
+        "name": "suspicious-app",
+        "description": "Behavior when App is suspected as malicious (configuration for Harmony SDK).",
+        "type": "string",
+        "required": false,
+        "default": "Block",
+        "valid_values": [
+          "block",
+          "notify",
+          "ignore"
+        ]
+      },
+      {
+        "name": "suspicious-enterprise-certificate",
+        "description": "Behavior when a certificate profile has been installed allowing the installing of apps on device from unknown source - iOS only (configuration for Harmony SDK).",
+        "type": "string",
+        "required": false,
+        "default": "Notify",
+        "valid_values": [
+          "block",
+          "notify",
+          "ignore"
+        ]
+      },
+      {
+        "name": "security",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "default": "1",
+        "valid_values": [
+          "weeks",
+          "days",
+          "hours",
+          "minutes"
+        ]
+      },
+      {
+        "name": "session-timeout",
+        "description": "Session timeout - you can choose a unit (day, week, month) in \"session-timeout-unit\" field.",
+        "type": "integer",
+        "required": false,
+        "default": "1"
+      },
+      {
+        "name": "session-timeout-unit",
+        "description": "Unit for \"session-timeout\" numeric value.",
+        "type": "string",
+        "required": false,
+        "default": "weeks",
+        "valid_values": [
+          "weeks",
+          "days",
+          "hours",
+          "minutes"
+        ]
+      },
+      {
+        "name": "activate-passcode-lock",
+        "description": "Require passcode to the application.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "allow-store-credentials",
+        "description": "Allow storing the credentials on the device.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "passcode-profile",
+        "description": "Passcode Policy object identified by the name or UID.",
+        "type": "string",
+        "required": false,
+        "default": "Restrictive"
+      },
+      {
+        "name": "report-jailbroken",
+        "description": "Issue log when device is detected as jail broken.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "block-jailbroken",
+        "description": "Action upon detection of jail broken devices.",
+        "type": "string",
+        "required": false,
+        "default": "none",
+        "valid_values": [
+          "block",
+          "none"
+        ]
+      },
+      {
+        "name": "block-3rd-party-keyboard",
+        "description": "Block 3rd party keyboard.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "hide-ssl-connect-anyway-button",
+        "description": "Hide connect button on critical SSL trust failures.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "applications",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "weeks",
+          "months",
+          "days"
+        ]
+      },
+      {
+        "name": "enable-print-mails",
+        "description": "Allow to print mails.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "max-attachments-size",
+        "description": "Maximum size of attachments allowed for downloading - you can choose a unit (gbs, kbs, mbs, bytes) in \"max-attachments-unit\" field.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "calendar-from-the-last",
+        "description": "How far back to see your Calendar from the current date - you can choose a unit (day, week, month) in \"calendar-from-the-last-unit\" field.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "calendar-from-the-last-unit",
+        "description": "Unit for \"calendar-from-the-last\" numeric value.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "weeks",
+          "months",
+          "days"
+        ]
+      },
+      {
+        "name": "calendar-to-the-following",
+        "description": "How much ahead to see your Calendar from the current date - you can choose a unit (day, week, month) in \"calendar-to-the-following-unit\" field.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "calendar-to-the-following-unit",
+        "description": "Unit for \"calendar-to-the-following\" numeric value.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "weeks",
+          "months",
+          "days"
+        ]
+      },
+      {
+        "name": "mail-from-the-last",
+        "description": "How far back to see your emails from the current date - choose a unit (day, week, month) in \"mail-from-the-last-unit\" field.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "mail-from-the-last-unit",
+        "description": "Unit for \"mail-from-the-last\" numeric value.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "weeks",
+          "months",
+          "days"
+        ]
+      },
+      {
+        "name": "synchronize-contacts",
+        "description": "Contacts synchronization method - from the mail server to device and the app and vice versa or from the mail server to device and the app or from the mail server to the app.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mail srv to app and device and vice versa",
+          "mail srv to app and device",
+          "mail srv to app"
+        ]
+      },
+      {
+        "name": "allow-push-notification",
+        "description": "Allow to receive push notifications of mails and meetings.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-calendar-sync",
+        "description": "Allow synchronization between business calendar to device calendar.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-contacts-from-global-address-list",
+        "description": "Allow to add additional contacts from Global Address List to the app.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-contacts-from-local-phone",
+        "description": "Allow to add additional contacts from local phone to the app.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "save-local-web-cache",
+        "description": "Configure whether local cache data generated by web browser should be preserved.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-caching-docsec-credentials",
+        "description": "Allow store encrypted document credentials in application secure storage.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-caching-docsec-keys",
+        "description": "Allow store encrypted document keys in application secure storage.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "client-customization",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "app-theme-color-dark",
+        "description": "Configure the application display colors in Dark mode. 6 hex digits that define RGB color - relevant for IOS.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "app-theme-color-light",
+        "description": "Configure the application display colors in light mode. 6 hex digits that define RGB color - relevant for IOS.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "allow-calendar",
+        "description": "Allow sync business calendar to device calendar.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-contacts",
+        "description": "Enable/Disable contacts app.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-mail",
+        "description": "Enable/Disable email app.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-notes-sync",
+        "description": "Allow sync business notes to device notes.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-saved-file-apps",
+        "description": "Allow the appearance of 'Saved file app' in the app list.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-secure-chat",
+        "description": "Enable/Disable Messages app (depends on Mail app).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-tasks",
+        "description": "Enable/Disable Tasks app.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "certificate-expire-message",
+        "description": "message to show users when certificate is expired - for admin to fill.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "data-leak-prevention",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "open-extension-with-external-app",
+        "description": "Open the following extensions from your app with external apps when they cannot be opened with Capsule viewer.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "share-protected-extension",
+        "description": "Share protected files with these extensions from your app with external apps.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "share-unprotected-extension",
+        "description": "Share unprotected files with these extensions from your app with external apps.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "allow-copy-paste",
+        "description": "Allow copy paste of mail content.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "block-forward-attachments",
+        "description": "Allow share mail attachments with external mails.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "block-screenshot",
+        "description": "If true - you can't make a screenshot from your app.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allowed-domains-forward-attachment",
+        "description": "exclusion of domains which attachments are allowed to be sent, even that shared policy prevents sharing these kinds of attached files.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "accept-protected-file-extensions",
+        "description": "Accept protected files with these extensions from external apps to your app.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "accept-unprotected-file-extensions",
+        "description": "Accept unprotected files with these extensions from external apps to your app.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "allow-import-from-gallery",
+        "description": "Allow import media from gallery.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-taking-photos-and-videos",
+        "description": "Allow the camera to be used from your app.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "offer-capsule-as-viewer",
+        "description": "Offer Capsule as a viewer for external protected documents.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "harmony-mobile",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "none",
+          "wipe",
+          "block"
+        ]
+      },
+      {
+        "name": "protect-policy-enabled",
+        "description": "Enable/disable Protect Application- cannot be enable if Harmony SDK is enable.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "protect-high-risk-action",
+        "description": "What is the action if there is high risk found by Harmony Mobile.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "wipe",
+          "block"
+        ]
+      },
+      {
+        "name": "protect-high-risk-message",
+        "description": "The message can contain only English characters, digits, comma, spaces and points.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "protect-medium-risk-action",
+        "description": "What is the action if there is medium risk found by Harmony Mobile.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "wipe",
+          "block"
+        ]
+      },
+      {
+        "name": "protect-medium-risk-message",
+        "description": "The message can contain only English characters, digits, comma, spaces and points.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "protect-not-activated-action",
+        "description": "What is the action if there is policy violation (configuration for Harmony Mobile).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "wipe",
+          "block"
+        ]
+      },
+      {
+        "name": "protect-not-activated-message",
+        "description": "The message can contain only English characters, digits, comma, spaces and points.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "enable-harmony-mobile-sdk",
+        "description": "Enable/disable Harmony SDK - cannot be enable if Harmony Mobile Application is enable.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "compromised-behavior",
+        "description": "Device configuration enables/disable malicious behavior (configuration for Harmony SDK).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "block",
+          "notify",
+          "ignore"
+        ]
+      },
+      {
+        "name": "harmony-mobile-sdk-license",
+        "description": "License for Harmony Mobile Sdk (configuration for Harmony SDK).",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "malware-behavior",
+        "description": "Behavior when App is identified as malicious (configuration for Harmony SDK).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "block",
+          "notify",
+          "ignore"
+        ]
+      },
+      {
+        "name": "man-in-the-middle-attack",
+        "description": "Behavior when there is a network man-in-the-middle attack (configuration for Harmony SDK).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "block",
+          "notify",
+          "ignore"
+        ]
+      },
+      {
+        "name": "os-integrity-compromised",
+        "description": "Behavior when Device OS is compromised (configuration for Harmony SDK).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "block",
+          "notify",
+          "ignore"
+        ]
+      },
+      {
+        "name": "suspicious-app",
+        "description": "Behavior when App is suspected as malicious (configuration for Harmony SDK).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "block",
+          "notify",
+          "ignore"
+        ]
+      },
+      {
+        "name": "suspicious-enterprise-certificate",
+        "description": "Behavior when a certificate profile has been installed allowing the installing of apps on device from unknown source - iOS only (configuration for Harmony SDK).",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "block",
+          "notify",
+          "ignore"
+        ]
+      },
+      {
+        "name": "security",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "weeks",
+          "days",
+          "hours",
+          "minutes"
+        ]
+      },
+      {
+        "name": "session-timeout",
+        "description": "Session timeout - you can choose a unit (day, week, month) in \"session-timeout-unit\" field.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "session-timeout-unit",
+        "description": "Unit for \"session-timeout\" numeric value.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "weeks",
+          "days",
+          "hours",
+          "minutes"
+        ]
+      },
+      {
+        "name": "activate-passcode-lock",
+        "description": "Require passcode to the application.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-store-credentials",
+        "description": "Allow storing the credentials on the device.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "passcode-profile",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "report-jailbroken",
+        "description": "Issue log when device is detected as jail broken.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "block-jailbroken",
+        "description": "Action upon detection of jail broken devices.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "block",
+          "none"
+        ]
+      },
+      {
+        "name": "block-3rd-party-keyboard",
+        "description": "Block 3rd party keyboard.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "hide-ssl-connect-anyway-button",
+        "description": "Hide connect button on critical SSL trust failures.",
+        "type": "boolean",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "add-mobile-profile": {
+      "description": "",
+      "request": "POST {{server}}/add-mobile-profile\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"New Mobile Profile\"\n}",
+      "response": "{\n  \"uid\" : \"d81c95ed-bb8b-47de-98f0-3e2397eb1035\",\n  \"name\" : \"New Mobile Profile\",\n  \"type\" : \"mobile-profile\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"client-customization\" : {\n    \"app-theme-color-light\" : \"fc037b\",\n    \"app-theme-color-dark\" : \"fc037b\",\n    \"allow-mail\" : true,\n    \"allow-secure-chat\" : true,\n    \"allow-calendar\" : true,\n    \"allow-contacts\" : true,\n    \"allow-tasks\" : true,\n    \"allow-notes-sync\" : true,\n    \"allow-saved-file-apps\" : true,\n    \"certificate-expire-message\" : \"\"\n  },\n  \"security\" : {\n    \"session-timeout\" : 1,\n    \"session-timeout-unit\" : \"weeks\",\n    \"activate-passcode-lock\" : true,\n    \"passcode-profile\" : {\n      \"uid\" : \"d828d7c4-78be-420e-984e-ce676c54b667\",\n      \"name\" : \"Restrictive\",\n      \"type\" : \"passcode-profile\",\n      \"domain\" : {\n        \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n        \"name\" : \"SMC User\",\n        \"domain-type\" : \"domain\"\n      },\n      \"icon\" : \"MobileProfile/passcode_policy\",\n      \"color\" : \"firebrick\"\n    },\n    \"allow-store-credentials\" : false,\n    \"report-jailbroken\" : true,\n    \"block-jailbroken\" : \"none\",\n    \"block-3rd-party-keyboard\" : false,\n    \"hide-ssl-connect-anyway-button\" : false\n  },\n  \"applications\" : {\n    \"enable-print-mails\" : false,\n    \"max-attachments-size\" : 5,\n    \"enable-microsoft-365\" : false,\n    \"azure-ad-endpoint\" : \"\",\n    \"service-root-endpoint\" : \"\",\n    \"tenant-id\" : \"\",\n    \"app-id\" : \"\",\n    \"mail-from-the-last\" : 14,\n    \"mail-from-the-last-unit\" : \"days\",\n    \"calendar-from-the-last\" : 1,\n    \"calendar-from-the-last-unit\" : \"months\",\n    \"calendar-to-the-following\" : 1,\n    \"calendar-to-the-following-unit\" : \"months\",\n    \"synchronize-contacts\" : \"mail srv to app\",\n    \"allow-push-notification\" : true,\n    \"allow-calendar-sync\" : false,\n    \"allow-contacts-from-global-address-list\" : true,\n    \"allow-contacts-from-local-phone\" : true,\n    \"save-local-web-cache\" : false,\n    \"allow-caching-docsec-credentials\" : true,\n    \"allow-caching-docsec-keys\" : true\n  },\n  \"data-leak-prevention\" : {\n    \"share-protected-extension\" : [ \"any file\" ],\n    \"open-extension-with-external-app\" : [ \"any file\" ],\n    \"accept-protected-file-extensions\" : [ \"any file\" ],\n    \"accept-unprotected-file-extensions\" : [ \"any file\" ],\n    \"block-screenshot\" : false,\n    \"allow-copy-paste\" : true,\n    \"block-forward-attachments\" : false,\n    \"allowed-domains-forward-attachment\" : \"\",\n    \"offer-capsule-as-viewer\" : true,\n    \"allow-taking-photos-and-videos\" : true,\n    \"allow-import-from-gallery\" : true\n  },\n  \"harmony-mobile\" : {\n    \"enable-harmony-mobile-application\" : false,\n    \"enforcement-policy\" : \"not enforced\",\n    \"enforcement-action\" : \"warn\",\n    \"enforcement-message\" : \"\",\n    \"enable-harmony-mobile-sdk\" : false,\n    \"harmony-mobile-sdk-license\" : \"\",\n    \"compromised-behavior\" : \"block\",\n    \"malware-behavior\" : \"block\",\n    \"man-in-the-middle-attack\" : \"notify\",\n    \"os-integrity-compromised\" : \"block\",\n    \"suspicious-app\" : \"block\",\n    \"suspicious-enterprise-certificate\" : \"notify\"\n  },\n  \"comments\" : \"\",\n  \"color\" : \"black\",\n  \"icon\" : \"Profiles/profile\",\n  \"tags\" : [ ],\n  \"meta-info\" : {\n    \"lock\" : \"unlocked\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1682858894600,\n      \"iso-8601\" : \"2023-04-30T15:48+0300\"\n    },\n    \"last-modifier\" : \"aa\",\n    \"creation-time\" : {\n      \"posix\" : 1682858894600,\n      \"iso-8601\" : \"2023-04-30T15:48+0300\"\n    },\n    \"creator\" : \"aa\"\n  },\n  \"read-only\" : true,\n  \"available-actions\" : { }\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:07.948614",
+    "source_file": "add-mobile-profile.html"
+  }
+}

@@ -1,0 +1,367 @@
+# show-logs
+
+```json
+{
+  "command": "show-logs",
+  "description": "Showing logs according to the given filter.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/show-logs",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "new-query",
+        "description": "",
+        "type": "array",
+        "required": true,
+        "default": "last-24-hours",
+        "valid_values": [
+          "last-7-days",
+          "last-hour",
+          "today",
+          "last-24-hours",
+          "yesterday",
+          "this-week",
+          "this-month",
+          "last-30-days",
+          "all-time",
+          "custom"
+        ]
+      },
+      {
+        "name": "filter",
+        "description": "The filter as entered in SmartConsole/SmartView.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "time-frame",
+        "description": "Specify the time frame to query logs.",
+        "type": "string",
+        "required": false,
+        "default": "last-24-hours",
+        "valid_values": [
+          "last-7-days",
+          "last-hour",
+          "today",
+          "last-24-hours",
+          "yesterday",
+          "this-week",
+          "this-month",
+          "last-30-days",
+          "all-time",
+          "custom"
+        ]
+      },
+      {
+        "name": "custom-start",
+        "description": "This option is only applicable when using the custom time-frame option.",
+        "type": "stringDescription:",
+        "required": false
+      },
+      {
+        "name": "custom-end",
+        "description": "This option is only applicable when using the custom time-frame option.",
+        "type": "stringDescription:",
+        "required": false
+      },
+      {
+        "name": "max-logs-per-request",
+        "description": "Limit the number of logs to be retrieved.",
+        "type": "integer",
+        "required": false,
+        "default": "100",
+        "valid_values": [
+          "1-100"
+        ]
+      },
+      {
+        "name": "top",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "default": "10",
+        "valid_values": [
+          "sources",
+          "destinations",
+          "services",
+          "actions",
+          "blades",
+          "origins",
+          "users",
+          "applications",
+          "access_rules",
+          "log_types"
+        ]
+      },
+      {
+        "name": "field",
+        "description": "The field on which the top command is executed.",
+        "type": "string",
+        "required": true,
+        "valid_values": [
+          "sources",
+          "destinations",
+          "services",
+          "actions",
+          "blades",
+          "origins",
+          "users",
+          "applications",
+          "access_rules",
+          "log_types"
+        ]
+      },
+      {
+        "name": "count",
+        "description": "The number of results to retrieve.",
+        "type": "integer",
+        "required": false,
+        "default": "10",
+        "valid_values": [
+          "1-50"
+        ]
+      },
+      {
+        "name": "type",
+        "description": "Type of logs to return.",
+        "type": "string",
+        "required": false,
+        "default": "logs",
+        "valid_values": [
+          "logs",
+          "audit",
+          "all"
+        ]
+      },
+      {
+        "name": "log-servers",
+        "description": "List of IP's of logs servers to query.",
+        "type": "array",
+        "required": false,
+        "default": "all"
+      },
+      {
+        "name": "ignore-warnings",
+        "description": "Ignore warnings if exist.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "incidents",
+        "description": "Incident object when error or warning occur.",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "logs",
+        "description": "Logs result.",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "logs-count",
+        "description": "Number of logs in the result.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "query-id",
+        "description": "Get the next page of last run query with specified limit.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "tops",
+        "description": "Tops result.",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "tops-count",
+        "description": "Total logs in top response.",
+        "type": "integer",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "show-logs": {
+      "description": "Querying for logs with a simple filter. To be able to use the show logs with paging command, you must include the session id in the command.",
+      "request": "POST {{server}}/show-logs\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"new-query\" : {\n    \"time-frame\" : \"today\",\n    \"max-logs-per-request\" : \"2\",\n    \"filter\" : \"blade:Threat Emulation\"\n  }\n}",
+      "response": "{\n  \"logs\" : [ {\n    \"analyzed_on\" : \"Check Point Threat Cloud\",\n    \"i_f_dir\" : \"inbound\",\n    \"proto_attr\" : [ {\n      \"isCHKPObject\" : \"false\",\n      \"resolved\" : \"TCP (6)\"\n    } ],\n    \"type\" : \"Log\",\n    \"orig_log_server_attr\" : [ {\n      \"isCHKPObject\" : \"true\",\n      \"uuid\" : \"ac0f97df-be60-744c-b2c0-4b39d2f35d1b\",\n      \"resolved\" : \"harry-api-for-logs-t261-take-13\"\n    } ],\n    \"index_time\" : \"2020-03-29T14:01:13Z\",\n    \"policy_date\" : \"2019-06-30T10:02:43Z\",\n    \"file_type\" : \"pdf\",\n    \"file_md5\" : \"c0d5b1cc0c77fcf32ff02aac98fac536\",\n    \"dst_attr\" : [ {\n      \"isCHKPObject\" : \"false\",\n      \"resolved\" : \"labs-proxy-old.ad.checkpoint.com\"\n    } ],\n    \"action\" : \"Detect\",\n    \"id\" : \"ac17545d-440a-0000-5e80-a70500000000\",\n    \"i_f_name\" : \"eth0\",\n    \"lastUpdateSeqNum\" : \"3\",\n    \"sequencenum\" : \"3\",\n    \"resource\" : \"http://192.168.13.178/sari/mainte/Evgeny_CV_m.pdf\",\n    \"rounded_sent_bytes\" : \"0\",\n    \"policy_time\" : \"2019-06-30T10:02:44Z\",\n    \"TP_match_table\" : [ {\n      \"smartdefense_profile\" : \"kobi\",\n      \"layer_name\" : \"Standard Threat Prevention\",\n      \"layer_uuid\" : \"B267F23C-FF59-4062-923F-605C371D15D3\",\n      \"malware_rule_id\" : \"38AA1A71-9BB4-4A14-BC35-B138262A707D\"\n    } ],\n    \"marker\" : \"@A@@B@1585515600@C@34\",\n    \"log_uid\" : \"DCB3FC1C-2517-314A-9B1E-E992202D7AAE\",\n    \"proto\" : \"6\",\n    \"verdict\" : \"Malicious\",\n    \"protection_name\" : \"Exploited pdf document\",\n    \"te_verdict_determined_by\" : \"Win7,Office 2013,Adobe 11: cloud emulation. WinXP,Office 2003/7,Adobe 9: cloud emulation. \",\n    \"packet_capture_unique_id\" : [ \"{DCB3FC1C-2517-314A-9B1E-E992202D7AAE}00000000-0000-0000-0000-000000000000\", \"{DCB3FC1C-2517-314A-9B1E-E992202D7AAE}e50e99f3-5963-4573-af9e-e3f4750b55e2\" ],\n    \"policy_mgmt\" : \"halo1-main-take-101\",\n    \"lastUpdateTime\" : \"1585489669000\",\n    \"dst\" : \"194.29.36.43\",\n    \"confidence_level\" : \"High\",\n    \"description\" : \"Malicious embedded file detected: File Type: js, File SHA-1: bc00b5378dbe753cff283be71c049551ef892161.\",\n    \"source_os\" : \"Windows\",\n    \"file_sha256\" : \"e68f38195b3c816309882388c23118327ec97f9ad775bf59b9a8a3089dd68fd8\",\n    \"__interface\" : \"eth0\",\n    \"resource_table\" : [ {\n      \"resource\" : \"http://192.168.13.178/sari/mainte/Evgeny_CV_m.pdf\"\n    } ],\n    \"scope\" : \"10.0.0.90\",\n    \"detected_on\" : [ \"WinXP,Office 2003/7,Adobe 9\", \"Win7,Office 2013,Adobe 11\" ],\n    \"malware_rule_id\" : \"38AA1A71-9BB4-4A14-BC35-B138262A707D\",\n    \"rounded_received_bytes\" : \"0\",\n    \"policy\" : \"Standard\",\n    \"proxy_src_ip\" : \"10.0.0.90\",\n    \"dst_country\" : \"Israel\",\n    \"severity\" : \"Critical\",\n    \"s_port\" : \"49511\",\n    \"log_id\" : \"4000\",\n    \"product_family\" : \"Threat\",\n    \"product\" : \"Threat Emulation\",\n    \"file_sha1\" : \"2154845e38fc348ae1be419684f9572a680fabfd\",\n    \"src\" : \"10.0.0.90\",\n    \"smartdefense_profile\" : \"kobi\",\n    \"file_name\" : \"Evgeny_CV_m.pdf\",\n    \"session_id\" : \"0xdcb3fc1c,0x2517314a,0x9b1ee992,0x202d7aae\",\n    \"policy_name\" : \"Standard\",\n    \"protection_type\" : \"HTTP Emulation\",\n    \"file_size\" : \"213354\",\n    \"db_tag\" : \"{8C228E1C-4D2C-624E-8A2A-C12DE7EF4641}\",\n    \"orig_log_server\" : \"172.23.84.93\",\n    \"fservice\" : \"HTTPS_proxy\",\n    \"orig\" : \"dummyGW\",\n    \"service\" : \"8080\",\n    \"rounded_bytes\" : \"0\",\n    \"orig_log_server_ip\" : \"172.23.84.93\",\n    \"stored\" : \"true\",\n    \"malware_action\" : [ \"Unexpected Process Termination\", \"Unexpected Process Creation\" ],\n    \"calc_desc\" : \"10.0.0.90 downloaded a malicious file from http://192.168.13.178/sari/mainte/evgeny_cv_m.pdf that was detected\",\n    \"time\" : \"2020-03-29T13:47:49Z\",\n    \"packet_capture\" : \"Packet Capture\"\n  }, {\n    \"analyzed_on\" : \"Check Point Threat Cloud\",\n    \"i_f_dir\" : \"inbound\",\n    \"proto_attr\" : [ {\n      \"isCHKPObject\" : \"false\",\n      \"resolved\" : \"TCP (6)\"\n    } ],\n    \"detection_time\" : \"2016-01-31T04:06:08Z\",\n    \"type\" : \"Correlated\",\n    \"time_interval\" : \"0\",\n    \"orig_log_server_attr\" : [ {\n      \"isCHKPObject\" : \"true\",\n      \"uuid\" : \"ac0f97df-be60-744c-b2c0-4b39d2f35d1b\",\n      \"resolved\" : \"harry-api-for-logs-t261-take-13\"\n    } ],\n    \"cu_detected_by\" : \"192.168.32.125\",\n    \"index_time\" : \"2020-03-29T13:39:08Z\",\n    \"is_last\" : \"1\",\n    \"file_type\" : \"xls\",\n    \"file_md5\" : \"59e131ab59885898620f9b5f2e5024a7\",\n    \"dst_attr\" : [ {\n      \"isCHKPObject\" : \"false\",\n      \"resolved\" : \"labs-proxy-old.ad.checkpoint.com\"\n    } ],\n    \"action\" : \"Detect\",\n    \"id\" : \"ac17545d-2f60-0000-5e80-a4ef00000049\",\n    \"i_f_name\" : \"\",\n    \"lastUpdateSeqNum\" : \"147\",\n    \"sequencenum\" : \"147\",\n    \"rounded_sent_bytes\" : \"0\",\n    \"cu_log_count\" : \"2\",\n    \"cu_rule_category\" : \"Legacy;Threat Prevention\",\n    \"last_update_time\" : \"2016-01-31T04:06:08Z\",\n    \"marker\" : \"@A@@B@1585489134@C@181\",\n    \"proto\" : \"6\",\n    \"verdict\" : \"Malicious\",\n    \"protection_name\" : \"Exploited xls document\",\n    \"event_name\" : \"Threat Emulation\",\n    \"packet_capture_unique_id\" : [ \"{0000006F-0061-004D-A2F6-68014A191CC6}00000000-0000-0000-0000-000000000000\", \"{0000006F-0061-004D-A2F6-68014A191CC6}e50e99f3-5963-4573-af9e-e3f4750b55e2\" ],\n    \"lastUpdateTime\" : \"1585489135000\",\n    \"max_num_count_detected\" : \"2\",\n    \"dst\" : \"194.29.36.43\",\n    \"confidence_level\" : \"High\",\n    \"__interface\" : \"\",\n    \"num_of_updates\" : \"2\",\n    \"event_start_time\" : \"2016-01-31T04:06:07Z\",\n    \"is_correlated\" : \"true\",\n    \"detected_on\" : [ \"WinXP,Office 2003/7,Adobe 9\", \"Win7,Office 2013,Adobe 11\" ],\n    \"malware_rule_id\" : \"427196B4-B437-44CB-9E82-AFCE9E55681C\",\n    \"rounded_received_bytes\" : \"0\",\n    \"dst_country\" : \"Israel\",\n    \"severity\" : \"Critical\",\n    \"log_id\" : \"2000\",\n    \"product_family\" : \"Threat\",\n    \"file_sha1\" : \"37ae372dd5a3cca351058cf1833f75c9a451c565\",\n    \"product\" : \"Threat Emulation\",\n    \"src\" : \"10.13.23.44\",\n    \"file_name\" : \"HP_600GB_SAS_15K_c.xls\",\n    \"protection_type\" : \"HTTP Emulation\",\n    \"event_end_time\" : \"2016-01-31T04:06:08Z\",\n    \"orig_log_server\" : \"172.23.84.93\",\n    \"fservice\" : \"http\",\n    \"orig\" : \"192.168.13.23\",\n    \"service\" : \"80\",\n    \"rounded_bytes\" : \"0\",\n    \"orig_log_server_ip\" : \"172.23.84.93\",\n    \"stored\" : \"true\",\n    \"malware_action\" : [ \"Malware signature matched ( Virus.MSExcel.Sic.T.tb )\", \"Malware activity observed ( Virus.MSExcel.Sic.f )\" ],\n    \"calc_desc\" : \"10.13.23.44 downloaded a malicious file from  that was detected\",\n    \"cu_rule_id\" : \"BF24D5CC-931C-4583-A3C7-101A8ACD0532\",\n    \"logid\" : \"134217729\",\n    \"time\" : \"2020-03-29T13:38:55Z\",\n    \"packet_capture\" : \"Packet Capture\"\n  } ],\n  \"logs-count\" : \"2\",\n  \"query-id\" : \"aa_be383957-9167-4ca3-b101-a25bc0fbec1c\"\n}"
+    },
+    "show-logs with paging": {
+      "description": "Querying for the next page of logs. To be able to use the show logs with paging command, you must include the session id that was used in the show logs command.",
+      "request": "POST {{server}}/show-logs\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"query-id\" : \"aa_be383957-9167-4ca3-b101-a25bc0fbec1c\"\n}",
+      "response": ""
+    },
+    "show-logs tops": {
+      "description": "Quering for tops.",
+      "request": "POST {{server}}/show-logs\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"new-query\" : {\n    \"top\" : {\n      \"field\" : \"blades\",\n      \"count\" : \"10\"\n    }\n  }\n}",
+      "response": "{\n  \"tops\" : [ {\n    \"Firewall\" : \"717\"\n  }, {\n    \"System Monitor\" : \"132\"\n  }, {\n    \"HTTPS Inspection\" : \"25\"\n  }, {\n    \"Threat Emulation\" : \"15\"\n  }, {\n    \"Application Control\" : \"14\"\n  }, {\n    \"Identity Awareness\" : \"7\"\n  }, {\n    \"Mobile Access\" : \"7\"\n  }, {\n    \"URL Filtering\" : \"7\"\n  }, {\n    \"SmartEvent Client\" : \"4\"\n  }, {\n    \"SmartConsole\" : \"2\"\n  } ],\n  \"query-id\" : \"WEB_API_f942e748-e809-4308-ace7-2b3b1d5b72c1\",\n  \"tops-count\" : \"935\"\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:25.814931",
+    "source_file": "show-logs.html"
+  }
+}
+```

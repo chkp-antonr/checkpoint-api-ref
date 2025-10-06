@@ -1,0 +1,365 @@
+# clone-resource-cifs
+
+```json
+{
+  "command": "clone-resource-cifs",
+  "description": "Clone existing object.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/clone-resource-cifs",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "allowed-disk-and-print-shares",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "add",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "server-name",
+        "description": "Blocks the ability to remotely manipulate a the window's registry.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "share-name",
+        "description": "Disk shares.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "server-name",
+        "description": "Blocks the ability to remotely manipulate a the window's registry.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "share-name",
+        "description": "Disk shares.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "remove",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "server-name",
+        "description": "Blocks the ability to remotely manipulate a the window's registry.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "share-name",
+        "description": "Disk shares.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "server-name",
+        "description": "Blocks the ability to remotely manipulate a the window's registry.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "share-name",
+        "description": "Disk shares.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "server-name",
+        "description": "Blocks the ability to remotely manipulate a the window's registry.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "share-name",
+        "description": "Disk shares.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "server-name",
+        "description": "Blocks the ability to remotely manipulate a the window's registry.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "share-name",
+        "description": "Disk shares.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "log-mapped-shares",
+        "description": "Logs each share map attempt.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "new-name",
+        "description": "New name of the object.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "log-access-violation",
+        "description": "Logs any attempt to violate the restrictions imposed by the Resource.",
+        "type": "boolean",
+        "required": false,
+        "default": "false"
+      },
+      {
+        "name": "block-remote-registry-access",
+        "description": "Blocks the ability to remotely manipulate a the window's registry.",
+        "type": "boolean",
+        "required": false,
+        "default": "true"
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "allowed-disk-and-print-shares",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "server-name",
+        "description": "Logs each share map attempt.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "share-name",
+        "description": "Logs each share map attempt.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "log-mapped-shares",
+        "description": "Logs each share map attempt.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "log-access-violation",
+        "description": "Logs any attempt to violate the restrictions imposed by the Resource.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "block-remote-registry-access",
+        "description": "Blocks the ability to remotely manipulate a the window's registry.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "tags",
+        "description": "Collection of tag objects identified by the name or UID.",
+        "type": "array",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "clone-resource-cifs": {
+      "description": "",
+      "request": "POST {{server}}/clone-resource-cifs\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"api_cif\"\n}",
+      "response": "{\n  \"uid\" : \"b9e08434-c494-4663-9c7c-7fbc2135bc87\",\n  \"name\" : \"api_cif_Clone\",\n  \"type\" : \"resource-cifs\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"meta-info\" : {\n    \"lock\" : \"unlocked\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1661350695454,\n      \"iso-8601\" : \"2022-08-24T17:18+0300\"\n    },\n    \"last-modifier\" : \"aa\",\n    \"creation-time\" : {\n      \"posix\" : 1661350695454,\n      \"iso-8601\" : \"2022-08-24T17:18+0300\"\n    },\n    \"creator\" : \"aa\"\n  },\n  \"available-actions\" : { },\n  \"tags\" : [ ],\n  \"read-only\" : true,\n  \"comments\" : \"\",\n  \"color\" : \"black\",\n  \"icon\" : \"Services/Resource\",\n  \"log-mapped-shares\" : true,\n  \"log-access-violation\" : false,\n  \"block-remote-registry-access\" : true,\n  \"allowed-disk-and-print-shares\" : [ {\n    \"server-name\" : \"server20\",\n    \"share-name\" : \"share20\"\n  }, {\n    \"server-name\" : \"server3\",\n    \"share-name\" : \"share3\"\n  } ]\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:13.086060",
+    "source_file": "clone-resource-cifs.html"
+  }
+}
+```

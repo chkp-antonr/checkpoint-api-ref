@@ -1,0 +1,272 @@
+# add-data-center-server
+
+```json
+{
+  "command": "add-data-center-server",
+  "description": "Create new Data Center Server. Data Center Server represents the connection to a cloud environment. The Data Center Server contains Data Center Objects, these objects can be imported from it using the add-data-center-object command.Note: Each Data Center Server type uses additional dedicated arguments, see arguments per Data Center Server type.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/add-data-center-server",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "type",
+        "description": "Type of the Data Center Server.Note: Each Data Center Server type uses additional dedicated arguments, see arguments per Data Center Server type.",
+        "type": "string",
+        "required": true,
+        "valid_values": [
+          "aws",
+          "aci",
+          "ise",
+          "gcp",
+          "azure",
+          "nauge",
+          "openstack",
+          "nsx",
+          "oci",
+          "nsxt",
+          "globalnsxt",
+          "nutanix",
+          "vcenter",
+          "kubernetes",
+          "generic"
+        ]
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "task-id",
+        "description": "Data Center Operation task-id, use show-task command to check the progress of the task.",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "add-data-center-server type AWS": {
+      "description": "Add data center server of type AWS,Use the show-task command to check the progress of the task. Output below is the output of the show-task command.",
+      "request": "POST {{server}}/add-data-center-server\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"my_aws\",\n  \"type\" : \"aws\",\n  \"authentication-method\" : \"user-authentication\",\n  \"access-key-id\" : \"AWS_ACCESS_KEY\",\n  \"secret-access-key\" : \"AWS_SECRET_KEY\",\n  \"region\" : \"eu-west-1\"\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"Data Center Operation\",\n    \"task-id\" : \"01234567-89ab-cdef-b4ab-a5aefde29b2e\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"suppressed\" : false,\n    \"task-details\" : [ ]\n  } ]\n}"
+    },
+    "add-data-center-server type Cisco ACI": {
+      "description": "Add data center server of type Cisco ACI,Acceptable format(s) for the URLs argument: http(s)://<host>:<port>/<url>.Use the show-task command to check the progress of the task. Output below is the output of the show-task command.",
+      "request": "POST {{server}}/add-data-center-server\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"my_aci\",\n  \"type\" : \"aci\",\n  \"urls\" : [ \"https://1.1.1.1\" ],\n  \"username\" : \"admin\",\n  \"password-base64\" : \"YWRtaW4=\",\n  \"certificate-fingerprint\" : \"4f4f4676712a43460a7dbc2d343176dc1135a4d2\"\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"Data Center Operation\",\n    \"task-id\" : \"01234567-89ab-cdef-b4ab-a5aefde29b2e\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"suppressed\" : false,\n    \"task-details\" : [ ]\n  } ]\n}"
+    },
+    "add-data-center-server type Cisco ISE": {
+      "description": "Add data center server of type Cisco ISE,Use the show-task command to check the progress of the task. Output below is the output of the show-task command.",
+      "request": "POST {{server}}/add-data-center-server\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"my_ise\",\n  \"type\" : \"ise\",\n  \"hostnames\" : [ \"1.1.1.1\", \"2.2.2.2\", \"3.3.3.3\" ],\n  \"username\" : \"admin\",\n  \"password-base64\" : \"YWRtaW4=\",\n  \"certificate-fingerprint\" : \"4f4f4676712a43460a7dbc2d343176dc1135a4d2\"\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"Data Center Operation\",\n    \"task-id\" : \"01234567-89ab-cdef-b4ab-a5aefde29b2e\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"suppressed\" : false,\n    \"task-details\" : [ ]\n  } ]\n}"
+    },
+    "add-data-center-server type Google Cloud Platform": {
+      "description": "Add data center server of type Google Cloud Platform,Use the show-task command to check the progress of the task. Output below is the output of the show-task command.",
+      "request": "POST {{server}}/add-data-center-server\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"my_gcp\",\n  \"type\" : \"gcp\",\n  \"authentication-method\" : \"vm-instance-authentication\"\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"Data Center Operation\",\n    \"task-id\" : \"01234567-89ab-cdef-b4ab-a5aefde29b2e\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"suppressed\" : false,\n    \"task-details\" : [ ]\n  } ]\n}"
+    },
+    "add-data-center-server type Microsoft Azure": {
+      "description": "Add data center server of type Microsoft Azure,Use the show-task command to check the progress of the task. Output below is the output of the show-task command.",
+      "request": "POST {{server}}/add-data-center-server\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"my_azure\",\n  \"type\" : \"azure\",\n  \"authentication-method\" : \"service-principal-authentication\",\n  \"application-id\" : \"AZURE_APP_ID\",\n  \"application-key\" : \"AZURE_APP_KEY\",\n  \"directory-id\" : \"AZURE_TENANT_ID\"\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"Data Center Operation\",\n    \"task-id\" : \"01234567-89ab-cdef-b4ab-a5aefde29b2e\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"suppressed\" : false,\n    \"task-details\" : [ ]\n  } ]\n}"
+    },
+    "add-data-center-server type Nuage": {
+      "description": "Add data center server of type Nuage,Acceptable format for the hostname argument: https://<host>:<port>/nuage/api/<version>.Use the show-task command to check the progress of the task. Output below is the output of the show-task command.",
+      "request": "POST {{server}}/add-data-center-server\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"my_nuage\",\n  \"type\" : \"nuage\",\n  \"username\" : \"admin\",\n  \"password-base64\" : \"YWRtaW4=\",\n  \"hostname\" : \"https://1.2.3.4\",\n  \"organization\" : \"nuageOrganization\",\n  \"certificate-fingerprint\" : \"4f4f4676712a43460a7dbc2d343176dc1135a4d2\"\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"Data Center Operation\",\n    \"task-id\" : \"01234567-89ab-cdef-b4ab-a5aefde29b2e\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"suppressed\" : false,\n    \"task-details\" : [ ]\n  } ]\n}"
+    },
+    "add-data-center-server type Nutanix": {
+      "description": "Add data center server of type Nutanix,Use the show-task command to check the progress of the task. Output below is the output of the show-task command.",
+      "request": "POST {{server}}/add-data-center-server\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"my_nutanix\",\n  \"type\" : \"nutanix\",\n  \"username\" : \"admin\",\n  \"password\" : \"admin\",\n  \"hostname\" : \"127.0.0.1\",\n  \"certificate-fingerprint\" : \"4f4f4676712a43460a7dbc2d343176dc1135a4d2\"\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"Data Center Operation\",\n    \"task-id\" : \"01234567-89ab-cdef-b4ab-a5aefde29b2e\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"suppressed\" : false,\n    \"task-details\" : [ ]\n  } ]\n}"
+    },
+    "add-data-center-server type Oracle Cloud": {
+      "description": "Add data center server of type Oracle Cloud,Use the show-task command to check the progress of the task. Output below is the output of the show-task command.",
+      "request": "POST {{server}}/add-data-center-server\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"my_oci\",\n  \"type\" : \"oci\",\n  \"authentication-method\" : \"key-authentication\",\n  \"key-user\" : \"OCI_KEY\",\n  \"key-tenant\" : \"OCI_TENANT\",\n  \"key-region\" : \"eu-frankfurt-1\",\n  \"private-key\" : \"OCI_PRIVATE_KEY\"\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"Data Center Operation\",\n    \"task-id\" : \"01234567-89ab-cdef-b4ab-a5aefde29b2e\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"suppressed\" : false,\n    \"task-details\" : [ ]\n  } ]\n}"
+    },
+    "add-data-center-server type OpenStack": {
+      "description": "Add data center server of type OpenStack,Acceptable format for the hostname argument: http(s)://<host>:<port>/<version>.Use the show-task command to check the progress of the task. Output below is the output of the show-task command.",
+      "request": "POST {{server}}/add-data-center-server\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"my_openStack\",\n  \"type\" : \"openstack\",\n  \"username\" : \"domain1/username1\",\n  \"password-base64\" : \"YWRtaW4=\",\n  \"hostname\" : \"https://1.2.3.4\",\n  \"certificate-fingerprint\" : \"4f4f4676712a43460a7dbc2d343176dc1135a4d2\"\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"Data Center Operation\",\n    \"task-id\" : \"01234567-89ab-cdef-b4ab-a5aefde29b2e\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"suppressed\" : false,\n    \"task-details\" : [ ]\n  } ]\n}"
+    },
+    "add-data-center-server type VMware Global NSX-T": {
+      "description": "Add data center server of type VMware Global NSX-T,Use the show-task command to check the progress of the task. Output below is the output of the show-task command.",
+      "request": "POST {{server}}/add-data-center-server\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"my_global_nsxt\",\n  \"type\" : \"globalnsxt\",\n  \"username\" : \"admin\",\n  \"password-base64\" : \"YWRtaW4=\",\n  \"hostname\" : \"127.0.0.1\",\n  \"certificate-fingerprint\" : \"4f4f4676712a43460a7dbc2d343176dc1135a4d2\"\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"Data Center Operation\",\n    \"task-id\" : \"01234567-89ab-cdef-b4ab-a5aefde29b2e\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"suppressed\" : false,\n    \"task-details\" : [ ]\n  } ]\n}"
+    },
+    "add-data-center-server type VMware NSX-T": {
+      "description": "Add data center server of type VMware NSX-T,Use the show-task command to check the progress of the task. Output below is the output of the show-task command.",
+      "request": "POST {{server}}/add-data-center-server\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"my_nsxt\",\n  \"type\" : \"nsxt\",\n  \"username\" : \"admin\",\n  \"password-base64\" : \"YWRtaW4=\",\n  \"hostname\" : \"127.0.0.1\",\n  \"certificate-fingerprint\" : \"4f4f4676712a43460a7dbc2d343176dc1135a4d2\"\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"Data Center Operation\",\n    \"task-id\" : \"01234567-89ab-cdef-b4ab-a5aefde29b2e\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"suppressed\" : false,\n    \"task-details\" : [ ]\n  } ]\n}"
+    },
+    "add-data-center-server type VMware vCenter": {
+      "description": "Add data center server of type vCenter,Use the show-task command to check the progress of the task. Output below is the output of the show-task command.",
+      "request": "POST {{server}}/add-data-center-server\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"my_vcenter\",\n  \"type\" : \"vcenter\",\n  \"username\" : \"admin\",\n  \"password-base64\" : \"YWRtaW4=\",\n  \"hostname\" : \"127.0.0.1\",\n  \"certificate-fingerprint\" : \"4f4f4676712a43460a7dbc2d343176dc1135a4d2\"\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"Data Center Operation\",\n    \"task-id\" : \"01234567-89ab-cdef-b4ab-a5aefde29b2e\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"suppressed\" : false,\n    \"task-details\" : [ ]\n  } ]\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:06.761286",
+    "source_file": "add-data-center-server.html"
+  }
+}
+```

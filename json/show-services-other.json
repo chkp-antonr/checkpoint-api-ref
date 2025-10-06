@@ -1,0 +1,384 @@
+{
+  "command": "show-services-other",
+  "description": "Retrieve all objects.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/show-services-other",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "filter",
+        "description": "Search expression to filter objects by. The provided text should be exactly the same as it would be given in SmartConsole Object Explorer. The logical operators in the expression ('AND', 'OR') should be provided in capital letters. The search involves both a IP search and a textual search in name, comment, tags etc.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "limit",
+        "description": "The maximal number of returned results.",
+        "type": "integer",
+        "required": false,
+        "default": "50"
+      },
+      {
+        "name": "offset",
+        "description": "Number of the results to initially skip.",
+        "type": "integer",
+        "required": false,
+        "default": "0"
+      },
+      {
+        "name": "order",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "name"
+        ]
+      },
+      {
+        "name": "ASC",
+        "description": "Sorts results by the given field in ascending order.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "name"
+        ]
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "from",
+        "description": "From which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "objects",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "to",
+        "description": "To which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "total",
+        "description": "Total number of elements returned by the query.",
+        "type": "integer",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "show-services-other": {
+      "description": "",
+      "request": "POST {{server}}/show-services-other\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"limit\" : 50,\n  \"offset\" : 0,\n  \"details-level\" : \"standard\"\n}",
+      "response": "{\n  \"from\" : 1,\n  \"to\" : 42,\n  \"total\" : 42,\n  \"objects\" : [ {\n    \"uid\" : \"97aeb422-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"AH\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"ed761b22-2925-43e9-afa4-fa89dd9e93b3\",\n    \"name\" : \"AdamSerivce\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"domain\",\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\"\n    }\n  }, {\n    \"uid\" : \"97aeb423-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"ESP\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb447-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"FW1_Encapsulation\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb3f6-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"FreeTel-incoming\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb3f4-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"FreeTel-outgoing-client\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"636782bb-9181-402e-b0cf-c1af653937bb\",\n    \"name\" : \"HTTP_wo_SCV\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"be250879-9288-407a-b8d4-0a5b80cd0b2b\",\n    \"name\" : \"MGCP_dynamic_ports\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"7527142e-554e-4b1d-9639-6f800764dbcf\",\n    \"name\" : \"Mobility_Header\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"2b612f18-20d0-476b-bca1-c096d448beed\",\n    \"name\" : \"New_Service_3\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"domain\",\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\"\n    }\n  }, {\n    \"uid\" : \"cca09894-6a11-4063-9d2c-15191fc8758e\",\n    \"name\" : \"New_Service_7\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"domain\",\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\"\n    }\n  }, {\n    \"uid\" : \"3cc63160-8949-4482-8f4e-20272b539590\",\n    \"name\" : \"Partial-Destination-v6\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"c81be1c0-d147-437b-aa8f-11a6b0665d2d\",\n    \"name\" : \"Partial-Source-v6\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"840666af-ce3d-47b4-923a-7e32e642033d\",\n    \"name\" : \"SIT\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"6e289c30-76d8-4823-b9f2-c767c2ad69c3\",\n    \"name\" : \"SIT_with_Intra_Tunnel_Inspection\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb421-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"SKIP\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb430-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"Sitara\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"bb2d50dc-61e2-430e-aa92-0d527dd3b0e9\",\n    \"name\" : \"Snmp-Read-Only\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb3d8-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"X11-verify\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"2e6d3f79-cb0c-4600-acf2-2cf1a3704d10\",\n    \"name\" : \"ZSP\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb449-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"backweb\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"3ef69b0c-3ccc-4ac8-9dd0-d792dc1f34de\",\n    \"name\" : \"dhcp-reply\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"7e8246fb-cdc5-4896-b7cd-cb5c6ba85980\",\n    \"name\" : \"dhcp-request\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb3ca-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"egp\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"da123897-b250-11d5-a47a-0006294583c7\",\n    \"name\" : \"ftp_mapped\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb3c8-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"ggp\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb424-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"gre\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"35029b62-16b1-4d34-8004-410710dfd492\",\n    \"name\" : \"gtp_v0_path_mgmt\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"6106ffdd-a8fe-4b2e-8270-cb3435217427\",\n    \"name\" : \"gtp_v1_path_mgmt\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"7dd1933b-94e8-4770-9d45-f52b77faafb4\",\n    \"name\" : \"high_udp_for_secure_SCCP\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"da123892-b250-11d5-a47a-0006294583c7\",\n    \"name\" : \"http_mapped\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb405-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"icmp-proto\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb3cb-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"igmp\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb3c9-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"igrp\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb3c7-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"ospf\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"2f98c148-5884-44b2-a587-787361658d76\",\n    \"name\" : \"pim\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb3ce-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"rip-response\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"77d73484-9d79-497d-bbf6-4ca0eafd4d88\",\n    \"name\" : \"sip_dynamic_ports\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"da12389a-b250-11d5-a47a-0006294583c7\",\n    \"name\" : \"smtp_mapped\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb3e7-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"traceroute\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"38a8af07-d990-4178-aa8c-82e32066959c\",\n    \"name\" : \"tunnel_test_mapped\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  }, {\n    \"uid\" : \"97aeb3cc-9aea-11d5-bd16-0090272ccb30\",\n    \"name\" : \"vrrp\",\n    \"type\" : \"service-other\",\n    \"domain\" : {\n      \"domain-type\" : \"data domain\",\n      \"uid\" : \"a0bbbc99-adef-4ef8-bb6d-defdefdefdef\",\n      \"name\" : \"Check Point Data\"\n    }\n  } ]\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:27.721326",
+    "source_file": "show-services-other.html"
+  }
+}

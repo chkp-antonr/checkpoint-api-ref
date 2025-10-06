@@ -1,0 +1,910 @@
+# show-lsm-gateway-profile
+
+```json
+{
+  "command": "show-lsm-gateway-profile",
+  "description": "Show LSM Gateway Profile.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/show-lsm-gateway-profile",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": true
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "advanced-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "keep-all-connections",
+          "keep-data-connections",
+          "rematch-connections"
+        ]
+      },
+      {
+        "name": "connection-persistence",
+        "description": "Handling established connections when installing a new policy.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "keep-all-connections",
+          "keep-data-connections",
+          "rematch-connections"
+        ]
+      },
+      {
+        "name": "sam",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "ssl_clear_opsec",
+          "opsec",
+          "ssl_opsec",
+          "auth_opsec"
+        ]
+      },
+      {
+        "name": "forward-to-other-sam-servers",
+        "description": "Forward SAM clients' requests to other SAM servers.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "use-early-versions",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "ssl_clear_opsec",
+          "opsec",
+          "ssl_opsec",
+          "auth_opsec"
+        ]
+      },
+      {
+        "name": "enabled",
+        "description": "Use early versions compatibility mode.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "compatibility-mode",
+        "description": "Early versions compatibility mode.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "ssl_clear_opsec",
+          "opsec",
+          "ssl_opsec",
+          "auth_opsec"
+        ]
+      },
+      {
+        "name": "purge-sam-file",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "enabled",
+        "description": "Purge SAM File.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "purge-when-size-reaches-to",
+        "description": "Purge SAM File When it Reaches to.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "anti-bot",
+        "description": "Anti-Bot blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "anti-virus",
+        "description": "Anti-Virus blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "application-control",
+        "description": "Application Control blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "application-control-and-url-filtering-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "use_global_settings",
+          "override_global"
+        ]
+      },
+      {
+        "name": "global-settings-mode",
+        "description": "Whether to override global settings or not.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "use_global_settings",
+          "override_global"
+        ]
+      },
+      {
+        "name": "override-global-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "allow_all_requests",
+          "block_all_requests"
+        ]
+      },
+      {
+        "name": "fail-mode",
+        "description": "Fail mode - allow or block all requests.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "allow_all_requests",
+          "block_all_requests"
+        ]
+      },
+      {
+        "name": "website-categorization",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "hold",
+          "background",
+          "custom"
+        ]
+      },
+      {
+        "name": "mode",
+        "description": "Website categorization mode.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "hold",
+          "background",
+          "custom"
+        ]
+      },
+      {
+        "name": "custom-mode",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "hold",
+          "background"
+        ]
+      },
+      {
+        "name": "social-networking-widgets",
+        "description": "Social networking widgets mode.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "hold",
+          "background"
+        ]
+      },
+      {
+        "name": "url-filtering",
+        "description": "URL filtering mode.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "hold",
+          "background"
+        ]
+      },
+      {
+        "name": "content-awareness",
+        "description": "Content Awareness blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "data-loss-prevention",
+        "description": "Data Loss Prevention.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dynamic-ip",
+        "description": "Dynamic IP address.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "enable-https-inspection",
+        "description": "Enable HTTPS Inspection after defining an outbound inspection certificate. To define the outbound certificate use \"set outbound-inspection-certificate\".",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "firewall",
+        "description": "Firewall blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "groups",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "hit-count",
+        "description": "Hit count tracks the number of connections each rule matches.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "https-inspection",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "background",
+          "hold"
+        ]
+      },
+      {
+        "name": "bypass-on-failure",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "override-profile",
+        "description": "Override profile of global configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "profile-value",
+        "description": "Override profile value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "Override value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "site-categorization-allow-mode",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "background",
+          "hold"
+        ]
+      },
+      {
+        "name": "override-profile",
+        "description": "Override profile of global configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "profile-value",
+        "description": "Override profile value.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "background",
+          "hold"
+        ]
+      },
+      {
+        "name": "value",
+        "description": "Override value.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "background",
+          "hold"
+        ]
+      },
+      {
+        "name": "deny-untrusted-server-cert",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "override-profile",
+        "description": "Override profile of global configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "profile-value",
+        "description": "Override profile value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "Override value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "deny-revoked-server-cert",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "override-profile",
+        "description": "Override profile of global configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "profile-value",
+        "description": "Override profile value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "Override value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "deny-expired-server-cert",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "override-profile",
+        "description": "Override profile of global configuration.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "profile-value",
+        "description": "Override profile value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "value",
+        "description": "Override value.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "interfaces",
+        "description": "Cluster network interfaces.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "ips",
+        "description": "Intrusion Prevention System blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "nat-hide-internal-interfaces",
+        "description": "Hide internal networks behind the Gateway's external IP.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "nat-settings",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "gateway",
+          "ip-address"
+        ]
+      },
+      {
+        "name": "auto-rule",
+        "description": "Whether to add automatic address translation rules.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "hide-behind",
+        "description": "Hide behind method. This parameter is forbidden in case \"method\" parameter is \"static\".",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "gateway",
+          "ip-address"
+        ]
+      },
+      {
+        "name": "install-on",
+        "description": "Which gateway should apply the NAT translation.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv4-address",
+        "description": "IPv4 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "ipv6-address",
+        "description": "IPv6 address.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "method",
+        "description": "NAT translation method.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "hide",
+          "static"
+        ]
+      },
+      {
+        "name": "os-name",
+        "description": "Gateway platform operating system.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "proxy-settings",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "use-custom-proxy",
+        "description": "Use custom proxy settings for this network object.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "proxy-server",
+        "description": "N/A",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "port",
+        "description": "N/A",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "qos",
+        "description": "QoS.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "save-logs-locally",
+        "description": "Save logs locally on the gateway.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "send-alerts-to-server",
+        "description": "Server(s) to send alerts to.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "send-logs-to-backup-server",
+        "description": "Backup server(s) to send logs to.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "send-logs-to-server",
+        "description": "Servers(s) to send logs to.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "threat-emulation",
+        "description": "Threat Emulation blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "threat-extraction",
+        "description": "Threat Extraction blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "threat-prevention-mode",
+        "description": "The mode of Threat Prevention to use. When using Autonomous Threat Prevention, disabling the Threat Prevention blades is not allowed.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "autonomous",
+          "custom"
+        ]
+      },
+      {
+        "name": "url-filtering",
+        "description": "URL Filtering blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "version",
+        "description": "Gateway platform version.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "vpn",
+        "description": "VPN blade enabled.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "zero-phishing",
+        "description": "Zero Phishing blade enabled.",
+        "type": "boolean",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "show-lsm-gateway-profile": {
+      "description": "",
+      "request": "POST {{server}}/show-lsm-gateway-profile\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"gateway_profile\"\n}",
+      "response": "{\n  \"uid\" : \"93861c4f-9933-4250-9f3b-7475624e6d07\",\n  \"name\" : \"gateway_profile\",\n  \"type\" : \"lsm-gateway-profile\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"meta-info\" : {\n    \"lock\" : \"unlocked\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1629728256658,\n      \"iso-8601\" : \"2021-08-23T17:17+0300\"\n    },\n    \"last-modifier\" : \"aa\",\n    \"creation-time\" : {\n      \"posix\" : 1629728256658,\n      \"iso-8601\" : \"2021-08-23T17:17+0300\"\n    },\n    \"creator\" : \"aa\"\n  },\n  \"tags\" : [ ],\n  \"read-only\" : false,\n  \"comments\" : \"\",\n  \"color\" : \"black\",\n  \"icon\" : \"Profiles/lsm_profile\",\n  \"groups\" : [ {\n    \"uid\" : \"c7364594-7d60-4931-aac5-369dddb35a83\",\n    \"name\" : \"gw1\",\n    \"type\" : \"lsm-gateway\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    },\n    \"icon\" : \"NetworkObjects/ROBO/ROBO_CP\",\n    \"color\" : \"black\"\n  } ],\n  \"dynamic-ip\" : false,\n  \"version\" : \"R77.20\",\n  \"os-name\" : \"Gaia Embedded\",\n  \"firewall\" : true,\n  \"vpn\" : true,\n  \"application-control\" : true,\n  \"url-filtering\" : true,\n  \"content-awareness\" : false,\n  \"threat-prevention-mode\" : \"custom\",\n  \"ips\" : false,\n  \"anti-bot\" : false,\n  \"anti-virus\" : false,\n  \"threat-emulation\" : false,\n  \"threat-extraction\" : false,\n  \"identity-awareness\" : true,\n  \"save-logs-locally\" : false,\n  \"send-alerts-to-server\" : [ ],\n  \"send-logs-to-server\" : [ ],\n  \"send-logs-to-backup-server\" : [ ]\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:25.947360",
+    "source_file": "show-lsm-gateway-profile.html"
+  }
+}
+```

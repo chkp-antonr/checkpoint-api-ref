@@ -1,0 +1,388 @@
+# show-if-map-servers
+
+```json
+{
+  "command": "show-if-map-servers",
+  "description": "Retrieve all IF-MAP servers.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/show-if-map-servers",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "filter",
+        "description": "Search expression to filter objects by. The provided text should be exactly the same as it would be given in SmartConsole Object Explorer. The logical operators in the expression ('AND', 'OR') should be provided in capital letters. The search involves both a IP search and a textual search in name, comment, tags etc.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "limit",
+        "description": "The maximal number of returned results.",
+        "type": "integer",
+        "required": false,
+        "default": "50"
+      },
+      {
+        "name": "offset",
+        "description": "Number of the results to initially skip.",
+        "type": "integer",
+        "required": false,
+        "default": "0"
+      },
+      {
+        "name": "order",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "name"
+        ]
+      },
+      {
+        "name": "ASC",
+        "description": "Sorts results by the given field in ascending order.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "name"
+        ]
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "from",
+        "description": "From which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "objects",
+        "description": "",
+        "type": "array",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "color",
+        "description": "Color of the object. Should be one of existing colors.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "aquamarine",
+          "black",
+          "blue",
+          "crete blue",
+          "burlywood",
+          "cyan",
+          "dark green",
+          "khaki",
+          "orchid",
+          "dark orange",
+          "dark sea green",
+          "pink",
+          "turquoise",
+          "dark blue",
+          "firebrick",
+          "brown",
+          "forest green",
+          "gold",
+          "dark gold",
+          "gray",
+          "dark gray",
+          "light green",
+          "lemon chiffon",
+          "coral",
+          "sea green",
+          "sky blue",
+          "magenta",
+          "purple",
+          "slate blue",
+          "violet red",
+          "navy blue",
+          "olive",
+          "orange",
+          "red",
+          "sienna",
+          "yellow",
+          "none"
+        ]
+      },
+      {
+        "name": "domain",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "domain-type",
+        "description": "Domain type.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "mds",
+          "data domain",
+          "domain",
+          "global domain"
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Object icon.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "to",
+        "description": "To which element number the query was done.",
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "total",
+        "description": "Total number of elements returned by the query.",
+        "type": "integer",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "show if-map-servers": {
+      "description": "Shows all IF-MAP servers.",
+      "request": "POST {{server}}/show-if-map-servers\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"limit\" : 5,\n  \"offset\" : 0,\n  \"details-level\" : \"full\"\n}",
+      "response": "{\n  \"from\" : 1,\n  \"to\" : 3,\n  \"total\" : 3,\n  \"objects\" : [ {\n    \"uid\" : \"7ac821ea-ee1b-4bbd-a45a-ec9e7782876e\",\n    \"name\" : \"TestIfMap\",\n    \"type\" : \"if-map-server\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    },\n    \"meta-info\" : {\n      \"lock\" : \"locked by other session\",\n      \"validation-state\" : \"ok\",\n      \"last-modify-time\" : {\n        \"posix\" : 1746427298675,\n        \"iso-8601\" : \"2025-05-05T09:41+0300\"\n      },\n      \"last-modifier\" : \"aa\",\n      \"creation-time\" : {\n        \"posix\" : 1746420979851,\n        \"iso-8601\" : \"2025-05-05T07:56+0300\"\n      },\n      \"creator\" : \"aa\",\n      \"locking-admin\" : \"aa\",\n      \"locking-session-id\" : \"c1dbc2b5-dc9b-4628-b52b-4de66a59fde8\"\n    },\n    \"available-actions\" : {\n      \"edit\" : \"false\",\n      \"delete\" : \"false\",\n      \"clone\" : \"true\"\n    },\n    \"tags\" : [ ],\n    \"read-only\" : true,\n    \"comments\" : \"\",\n    \"color\" : \"black\",\n    \"icon\" : \"Objects/account_unit\",\n    \"version\" : \"2.0\",\n    \"host\" : {\n      \"uid\" : \"4a2f8b82-4ac0-0644-91ca-ad8bfd2a67e8\",\n      \"name\" : \"mgmt_172.23.48.145mgmt_vs_8210_take_83MGMTdorbe\",\n      \"type\" : \"checkpoint-host\",\n      \"domain\" : {\n        \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n        \"name\" : \"SMC User\",\n        \"domain-type\" : \"domain\"\n      },\n      \"meta-info\" : {\n        \"lock\" : \"locked by other session\",\n        \"validation-state\" : \"ok\",\n        \"last-modify-time\" : {\n          \"posix\" : 1746451707203,\n          \"iso-8601\" : \"2025-05-05T16:28+0300\"\n        },\n        \"last-modifier\" : \"aa\",\n        \"creation-time\" : {\n          \"posix\" : 1743103852340,\n          \"iso-8601\" : \"2025-03-27T21:30+0200\"\n        },\n        \"creator\" : \"System\",\n        \"locking-admin\" : \"aa\",\n        \"locking-session-id\" : \"795b39da-7246-4832-8ee1-6a8332da840f\"\n      },\n      \"available-actions\" : {\n        \"edit\" : \"true\",\n        \"delete\" : \"false\",\n        \"clone\" : \"not_supported\"\n      },\n      \"tags\" : [ ],\n      \"read-only\" : false,\n      \"comments\" : \"\",\n      \"color\" : \"black\",\n      \"icon\" : \"NetworkObjects/management\",\n      \"groups\" : [ ],\n      \"nat-settings\" : {\n        \"enable-address-translation\" : false\n      },\n      \"ipv4-address\" : \"172.23.48.145\",\n      \"interfaces\" : [ {\n        \"uid\" : \"a0d11d97-3602-43d3-bb52-a96dcee74753\",\n        \"name\" : \"eth0\",\n        \"type\" : \"CpmiInterface\",\n        \"domain\" : {\n          \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n          \"name\" : \"SMC User\",\n          \"domain-type\" : \"domain\"\n        },\n        \"tags\" : [ ],\n        \"comments\" : \"\",\n        \"color\" : \"black\",\n        \"icon\" : \"Unknown\",\n        \"subnet4\" : \"172.23.48.145\",\n        \"subnet-mask\" : \"255.255.252.0\",\n        \"mask-length4\" : 22\n      } ],\n      \"version\" : \"R82.10\",\n      \"os\" : \"Gaia\",\n      \"hardware\" : \"Open server\",\n      \"sic-name\" : \"cn=cp_mgmt,o=172.23.48.145mgmt_vs_8210_take_83MGMTdorbe.checkpoint.com.wt2usw\",\n      \"sic-state\" : \"communicating\",\n      \"management-blades\" : {\n        \"logging-and-status\" : true,\n        \"smart-event-server\" : false,\n        \"smart-event-correlation\" : false,\n        \"network-policy-management\" : true,\n        \"user-directory\" : false,\n        \"compliance\" : true,\n        \"endpoint-policy\" : false,\n        \"secondary\" : false,\n        \"identity-logging\" : false\n      },\n      \"logs-settings\" : {\n        \"rotate-log-by-file-size\" : false,\n        \"rotate-log-file-size-threshold\" : 1000,\n        \"rotate-log-on-schedule\" : false,\n        \"alert-when-free-disk-space-below-metrics\" : \"mbytes\",\n        \"alert-when-free-disk-space-below\" : true,\n        \"alert-when-free-disk-space-below-threshold\" : 3000,\n        \"alert-when-free-disk-space-below-type\" : \"popup alert\",\n        \"delete-when-free-disk-space-below-metrics\" : \"mbytes\",\n        \"delete-when-free-disk-space-below\" : true,\n        \"delete-when-free-disk-space-below-threshold\" : 5000,\n        \"before-delete-keep-logs-from-the-last-days\" : false,\n        \"before-delete-keep-logs-from-the-last-days-threshold\" : 3664,\n        \"before-delete-run-script\" : false,\n        \"before-delete-run-script-command\" : \"\",\n        \"stop-logging-when-free-disk-space-below-metrics\" : \"mbytes\",\n        \"stop-logging-when-free-disk-space-below\" : false,\n        \"stop-logging-when-free-disk-space-below-threshold\" : 100,\n        \"delete-index-files-older-than-days\" : false,\n        \"delete-index-files-older-than-days-threshold\" : 14,\n        \"forward-logs-to-log-server\" : false,\n        \"update-account-log-every\" : 3600,\n        \"detect-new-citrix-ica-application-names\" : false,\n        \"turn-on-qos-logging\" : true,\n        \"enable-log-indexing\" : true,\n        \"smart-event-intro-correlation-unit\" : false,\n        \"accept-syslog-messages\" : false,\n        \"distribute-logs-between-all-active-servers\" : false\n      },\n      \"firewall\" : false\n    },\n    \"port\" : 1,\n    \"path\" : \"path\",\n    \"monitored-ips\" : [ {\n      \"first-ip\" : \"1.0.0.0\",\n      \"last-ip\" : \"1.1.0.0\"\n    } ],\n    \"query-whole-ranges\" : true,\n    \"authentication\" : { }\n  }, {\n    \"uid\" : \"8bfafa52-0d11-4a3e-aee7-f9237c92d006\",\n    \"name\" : \"TestIfMapServer\",\n    \"type\" : \"if-map-server\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    },\n    \"meta-info\" : {\n      \"lock\" : \"unlocked\",\n      \"validation-state\" : \"ok\",\n      \"last-modify-time\" : {\n        \"posix\" : 1746517085082,\n        \"iso-8601\" : \"2025-05-06T10:38+0300\"\n      },\n      \"last-modifier\" : \"WEB_API\",\n      \"creation-time\" : {\n        \"posix\" : 1746516237698,\n        \"iso-8601\" : \"2025-05-06T10:23+0300\"\n      },\n      \"creator\" : \"WEB_API\"\n    },\n    \"available-actions\" : {\n      \"edit\" : \"true\",\n      \"delete\" : \"true\",\n      \"clone\" : \"true\"\n    },\n    \"tags\" : [ ],\n    \"read-only\" : false,\n    \"comments\" : \"\",\n    \"color\" : \"black\",\n    \"icon\" : \"Objects/account_unit\",\n    \"version\" : \"1.1\",\n    \"host\" : {\n      \"uid\" : \"8907f785-4b06-4f0d-82df-d19ea1ecf68a\",\n      \"name\" : \"TestHost2\",\n      \"type\" : \"host\",\n      \"domain\" : {\n        \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n        \"name\" : \"SMC User\",\n        \"domain-type\" : \"domain\"\n      },\n      \"meta-info\" : {\n        \"lock\" : \"unlocked\",\n        \"validation-state\" : \"ok\",\n        \"last-modify-time\" : {\n          \"posix\" : 1746517081334,\n          \"iso-8601\" : \"2025-05-06T10:38+0300\"\n        },\n        \"last-modifier\" : \"WEB_API\",\n        \"creation-time\" : {\n          \"posix\" : 1746517081334,\n          \"iso-8601\" : \"2025-05-06T10:38+0300\"\n        },\n        \"creator\" : \"WEB_API\"\n      },\n      \"available-actions\" : {\n        \"edit\" : \"true\",\n        \"delete\" : \"true\",\n        \"clone\" : \"true\"\n      },\n      \"tags\" : [ ],\n      \"read-only\" : false,\n      \"comments\" : \"\",\n      \"color\" : \"black\",\n      \"icon\" : \"Objects/host\",\n      \"groups\" : [ ],\n      \"nat-settings\" : {\n        \"auto-rule\" : false\n      },\n      \"ipv4-address\" : \"2.2.2.2\",\n      \"interfaces\" : [ ]\n    },\n    \"port\" : 2,\n    \"path\" : \"newPath\",\n    \"monitored-ips\" : [ {\n      \"first-ip\" : \"3.1.1.1\",\n      \"last-ip\" : \"3.1.1.2\"\n    } ],\n    \"query-whole-ranges\" : false,\n    \"authentication\" : { }\n  }, {\n    \"uid\" : \"77f493f1-884d-4a74-9b17-d5753478cc38\",\n    \"name\" : \"TestIfMapServer_Clone\",\n    \"type\" : \"if-map-server\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    },\n    \"meta-info\" : {\n      \"lock\" : \"unlocked\",\n      \"validation-state\" : \"ok\",\n      \"last-modify-time\" : {\n        \"posix\" : 1746516481888,\n        \"iso-8601\" : \"2025-05-06T10:28+0300\"\n      },\n      \"last-modifier\" : \"WEB_API\",\n      \"creation-time\" : {\n        \"posix\" : 1746516481888,\n        \"iso-8601\" : \"2025-05-06T10:28+0300\"\n      },\n      \"creator\" : \"WEB_API\"\n    },\n    \"available-actions\" : {\n      \"edit\" : \"true\",\n      \"delete\" : \"true\",\n      \"clone\" : \"true\"\n    },\n    \"tags\" : [ ],\n    \"read-only\" : false,\n    \"comments\" : \"\",\n    \"color\" : \"black\",\n    \"icon\" : \"Objects/account_unit\",\n    \"version\" : \"2.0\",\n    \"host\" : {\n      \"uid\" : \"1e35d71c-c1d8-4f5c-928a-0d9214be10fc\",\n      \"name\" : \"TestHost\",\n      \"type\" : \"host\",\n      \"domain\" : {\n        \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n        \"name\" : \"SMC User\",\n        \"domain-type\" : \"domain\"\n      },\n      \"meta-info\" : {\n        \"lock\" : \"unlocked\",\n        \"validation-state\" : \"ok\",\n        \"last-modify-time\" : {\n          \"posix\" : 1746516171385,\n          \"iso-8601\" : \"2025-05-06T10:22+0300\"\n        },\n        \"last-modifier\" : \"WEB_API\",\n        \"creation-time\" : {\n          \"posix\" : 1746516171385,\n          \"iso-8601\" : \"2025-05-06T10:22+0300\"\n        },\n        \"creator\" : \"WEB_API\"\n      },\n      \"available-actions\" : {\n        \"edit\" : \"true\",\n        \"delete\" : \"true\",\n        \"clone\" : \"true\"\n      },\n      \"tags\" : [ ],\n      \"read-only\" : false,\n      \"comments\" : \"\",\n      \"color\" : \"black\",\n      \"icon\" : \"Objects/host\",\n      \"groups\" : [ ],\n      \"nat-settings\" : {\n        \"auto-rule\" : false\n      },\n      \"ipv4-address\" : \"1.1.1.1\",\n      \"interfaces\" : [ ]\n    },\n    \"port\" : 1,\n    \"path\" : \"path\",\n    \"monitored-ips\" : [ {\n      \"first-ip\" : \"1.1.1.1\",\n      \"last-ip\" : \"1.1.1.2\"\n    }, {\n      \"first-ip\" : \"2.1.1.1\",\n      \"last-ip\" : \"2.1.1.2\"\n    } ],\n    \"query-whole-ranges\" : true,\n    \"authentication\" : { }\n  } ]\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:25.427633",
+    "source_file": "show-if-map-servers.html"
+  }
+}
+```

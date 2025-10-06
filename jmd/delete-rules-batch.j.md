@@ -1,0 +1,212 @@
+# delete-rules-batch
+
+```json
+{
+  "command": "delete-rules-batch",
+  "description": "Delete rules in batch from the same layer. Use this API to achieve optimum performance when removing more than one rule. Note: Warnings are ignored when using this API, operation will apply changes while ignoring warnings. Supported rules types: access-rule, nat-rule, https-rule and threat-exception.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/delete-rules-batch",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "objects",
+        "description": "",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "layer",
+        "description": "Layer name or uid.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "type",
+        "description": "Type of rules to be deleted. Only types from above are supported.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "list",
+        "description": "List of rules from the same type to be deleted. Use the \"delete\" API reference documentation for a single rule command to find the expected fields for the request.For example: to delete access-rule, use the \"delete-access-rule\" command found in the API reference documentation (under Access Control & NAT). Note: \"ignore-errors\", \"ignore-warnings\" and \"details-level\" options are not supported when deleting a batch of objects.",
+        "type": "array",
+        "required": true
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "task-id",
+        "description": "Batch task UID. Use show-task command to check the progress of the task.",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "delete rules-batch": {
+      "description": "Delete two access rules, two nat rules and two https rules",
+      "request": "POST {{server}}/delete-rules-batch\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"objects\" : [ {\n    \"type\" : \"access-rule\",\n    \"layer\" : \"Network\",\n    \"list\" : [ {\n      \"rule-number\" : 1\n    }, {\n      \"rule-number\" : 2\n    } ]\n  }, {\n    \"type\" : \"nat-rule\",\n    \"layer\" : \"Standard\",\n    \"list\" : [ {\n      \"rule-number\" : 1\n    }, {\n      \"rule-number\" : 2\n    } ]\n  }, {\n    \"type\" : \"https-rule\",\n    \"layer\" : \"Default Layer\",\n    \"list\" : [ {\n      \"rule-number\" : 1\n    }, {\n      \"rule-number\" : 2\n    } ]\n  } ]\n}",
+      "response": "{\n  \"tasks\" : [ {\n    \"task-name\" : \"delete-rules-batch\",\n    \"task-id\" : \"abcdef01-2345-6789-b8b5-8421f09bcf82\",\n    \"status\" : \"succeeded\",\n    \"progress-percentage\" : 100,\n    \"progress-description\" : \"Operation Complete\",\n    \"suppressed\" : false,\n    \"task-details\" : [ {\n      \"status\" : \"Batch operation completed successfully\"\n    } ]\n  } ]\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:14.952266",
+    "source_file": "delete-rules-batch.html"
+  }
+}
+```

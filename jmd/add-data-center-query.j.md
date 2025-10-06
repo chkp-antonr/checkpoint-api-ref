@@ -1,0 +1,290 @@
+# add-data-center-query
+
+```json
+{
+  "command": "add-data-center-query",
+  "description": "Add new data center query.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/add-data-center-query",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "query-rules",
+        "description": "",
+        "type": "array",
+        "required": true,
+        "valid_values": [
+          "predefined",
+          "tag"
+        ]
+      },
+      {
+        "name": "key-type",
+        "description": "The type of the \"key\" parameter.Use \"predefined\" for these keys: type-in-data-center, name-in-data-center, and ip-address.Use \"tag\" to query the Data Center tag's property.",
+        "type": "string",
+        "required": true,
+        "valid_values": [
+          "predefined",
+          "tag"
+        ]
+      },
+      {
+        "name": "key",
+        "description": "Defines in which Data Center property to query.For key-type \"predefined\", use these keys: type-in-data-center, name-in-data-center, and ip-address.For key-type \"tag\", use the Data Center tag key to query.Keys are case-insensitive.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "values",
+        "description": "The value(s) of the Data Center property to match the Query Rule.Values are case-insensitive.There is an 'OR' operation between multiple values.For key-type \"predefined\" and key 'ip-address', the values must be an IPv4 or IPv6 address.For key-type \"tag\", the values must be the Data Center tag values.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "key-type",
+        "description": "The type of the \"key\" parameter.Use \"predefined\" for these keys: type-in-data-center, name-in-data-center, and ip-address.Use \"tag\" to query the Data Center tag's property.",
+        "type": "string",
+        "required": true,
+        "valid_values": [
+          "predefined",
+          "tag"
+        ]
+      },
+      {
+        "name": "key",
+        "description": "Defines in which Data Center property to query.For key-type \"predefined\", use these keys: type-in-data-center, name-in-data-center, and ip-address.For key-type \"tag\", use the Data Center tag key to query.Keys are case-insensitive.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "values",
+        "description": "The value(s) of the Data Center property to match the Query Rule.Values are case-insensitive.There is an 'OR' operation between multiple values.For key-type \"predefined\" and key 'ip-address', the values must be an IPv4 or IPv6 address.For key-type \"tag\", the values must be the Data Center tag values.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "data-centers",
+        "description": "Collection of Data Center servers identified by the name or UID. Use \"All\" to select all data centers.",
+        "type": "string",
+        "required": false,
+        "default": "All"
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "data-centers",
+        "description": "Data Center Servers.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "query-rules",
+        "description": "Data Center Query Rules.",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "using-all-data-center",
+        "description": "Using all Data Centers.",
+        "type": "boolean",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "add-data-center-query key-type predefined": {
+      "description": "Adds new data center query with predefined query rule",
+      "request": "POST {{server}}/add-data-center-query\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"data-center-query1\",\n  \"query-rules\" : {\n    \"key-type\" : \"predefined\",\n    \"key\" : \"name-in-data-center\",\n    \"values\" : [ \"myName\" ]\n  }\n}",
+      "response": "{\n  \"uid\" : \"f7db4afb-94a6-4bd2-b22f-8a77d6d4b9e1\",\n  \"name\" : \"data-center-query1\",\n  \"type\" : \"data-center-query\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"meta-info\" : {\n    \"lock\" : \"unlocked\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1592390598511,\n      \"iso-8601\" : \"2020-06-17T13:43+0300\"\n    },\n    \"last-modifier\" : \"WEB_API\",\n    \"creation-time\" : {\n      \"posix\" : 1592390598511,\n      \"iso-8601\" : \"2020-06-17T13:43+0300\"\n    },\n    \"creator\" : \"WEB_API\"\n  },\n  \"tags\" : [ ],\n  \"read-only\" : true,\n  \"comments\" : \"\",\n  \"color\" : \"black\",\n  \"icon\" : \"NetworkObjects/ExternalDataQuery\",\n  \"query-rules\" : [ {\n    \"uid\" : \"973d064c-9df6-4b24-8b5b-a2e2db5ef60b\",\n    \"type\" : \"DataCenterQueryRule\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    },\n    \"meta-info\" : {\n      \"lock\" : \"unlocked\",\n      \"validation-state\" : \"ok\"\n    },\n    \"tags\" : [ ],\n    \"read-only\" : true,\n    \"comments\" : \"\",\n    \"color\" : \"black\",\n    \"icon\" : \"NetworkObjects/ExternalDataQuery\",\n    \"key-type\" : \"PREDEFINED\",\n    \"key\" : \"Name in Data Center\",\n    \"values\" : [ \"myName\" ]\n  } ],\n  \"data-centers\" : [ ],\n  \"using-all-data-center\" : true\n}"
+    },
+    "add-data-center-query key-type tag": {
+      "description": "Adds new data center query with tag query rule",
+      "request": "POST {{server}}/add-data-center-query\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"data-center-query1\",\n  \"query-rules\" : {\n    \"key-type\" : \"tag\",\n    \"key\" : \"tag key\",\n    \"values\" : [ \"tag value\" ]\n  }\n}",
+      "response": "{\n  \"uid\" : \"08a3d6c6-0253-4f41-9e83-611690b3af24\",\n  \"name\" : \"data-center-query1\",\n  \"type\" : \"data-center-query\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"meta-info\" : {\n    \"lock\" : \"unlocked\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1592390781091,\n      \"iso-8601\" : \"2020-06-17T13:46+0300\"\n    },\n    \"last-modifier\" : \"WEB_API\",\n    \"creation-time\" : {\n      \"posix\" : 1592390781091,\n      \"iso-8601\" : \"2020-06-17T13:46+0300\"\n    },\n    \"creator\" : \"WEB_API\"\n  },\n  \"tags\" : [ ],\n  \"read-only\" : true,\n  \"comments\" : \"\",\n  \"color\" : \"black\",\n  \"icon\" : \"NetworkObjects/ExternalDataQuery\",\n  \"query-rules\" : [ {\n    \"uid\" : \"c59a085c-5025-49a7-a887-db34eb25d1ad\",\n    \"type\" : \"DataCenterQueryRule\",\n    \"domain\" : {\n      \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n      \"name\" : \"SMC User\",\n      \"domain-type\" : \"domain\"\n    },\n    \"meta-info\" : {\n      \"lock\" : \"unlocked\",\n      \"validation-state\" : \"ok\"\n    },\n    \"tags\" : [ ],\n    \"read-only\" : true,\n    \"comments\" : \"\",\n    \"color\" : \"black\",\n    \"icon\" : \"NetworkObjects/ExternalDataQuery\",\n    \"key-type\" : \"TAG\",\n    \"key\" : \"tag key\",\n    \"values\" : [ \"tag value\" ]\n  } ],\n  \"data-centers\" : [ ],\n  \"using-all-data-center\" : true\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:06.748546",
+    "source_file": "add-data-center-query.html"
+  }
+}
+```

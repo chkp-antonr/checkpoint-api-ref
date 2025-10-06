@@ -1,0 +1,1522 @@
+# set-domain-permissions-profile
+
+```json
+{
+  "command": "set-domain-permissions-profile",
+  "description": "Edit existing Domain Permissions Profile using object name or uid.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/set-domain-permissions-profile",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ],
+    "body": [
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "permission-type",
+        "description": "The type of the Permissions Profile.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read write all",
+          "read only all",
+          "customized"
+        ]
+      },
+      {
+        "name": "edit-common-objects",
+        "description": "Define and manage objects in the Check Point database: Network Objects, Services, Custom Application Site, VPN Community, Users, Servers, Resources, Time, UserCheck, and Limit.Only a 'Customized' permission-type profile can edit this permission.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "access-control",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "By Software Blades",
+          "By Selected Profile In A Layer Editor"
+        ]
+      },
+      {
+        "name": "show-policy",
+        "description": "Select to let administrators work with Access Control rules and NAT rules. If not selected, administrators cannot see these rules.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "policy-layers",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "By Software Blades",
+          "By Selected Profile In A Layer Editor"
+        ]
+      },
+      {
+        "name": "edit-layers",
+        "description": "\"By Software Blades\" - Edit Access Control layers that contain the blades enabled in the Permissions Profile.\"By Selected Profile In A Layer Editor\" - Administrators can only edit the layer if the Access Control layer editor gives editing permission to their profiles.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "By Software Blades",
+          "By Selected Profile In A Layer Editor"
+        ]
+      },
+      {
+        "name": "app-control-and-url-filtering",
+        "description": "Use Application and URL Filtering in Access Control rules.Available only if edit-layers is set to \"By Software Blades\".",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "content-awareness",
+        "description": "Use specified data types in Access Control rules.Available only if edit-layers is set to \"By Software Blades\".",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "firewall",
+        "description": "Work with Access Control and other Software Blades that do not have their own Policies.Available only if edit-layers is set to \"By Software Blades\".",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "mobile-access",
+        "description": "Work with Mobile Access rules.Available only if edit-layers is set to \"By Software Blades\".",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dlp-policy",
+        "description": "Configure DLP rules and Policies.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "geo-control-policy",
+        "description": "Work with Access Control rules that control traffic to and from specified countries.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "nat-policy",
+        "description": "Work with NAT in Access Control rules.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "qos-policy",
+        "description": "Work with QoS Policies and rules.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "access-control-objects-and-settings",
+        "description": "Allow editing of the following objet types: VPN Community, Access Role, Custom application group, Custom application, Custom category, Limit, Application - Match Settings, Application Category - Match Settings, Override Categorization, Application and URL filtering blade - Advanced Settings, Content Awareness blade - Advanced Settings.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "app-control-and-url-filtering-update",
+        "description": "Install Application and URL Filtering updates.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "install-policy",
+        "description": "Install Access Control Policies.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "endpoint",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "manage-policies-and-software-deployment",
+        "description": "The administrator can work with policies, rules and actions.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "edit-endpoint-policies",
+        "description": "Available only if manage-policies-and-software-deployment is set to true.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "policies-installation",
+        "description": "The administrator can install policies on endpoint computers.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "edit-software-deployment",
+        "description": "The administrator can define deployment rules, create packages for export, and configure advanced package settings.Available only if manage-policies-and-software-deployment is set to true.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "software-deployment-installation",
+        "description": "The administrator can deploy packages and install endpoint clients.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-executing-push-operations",
+        "description": "The administrator can start operations that the Security Management Server pushes directly to client computers with no policy installation required.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "authorize-preboot-users",
+        "description": "The administrator can add and remove the users who are permitted to log on to Endpoint Security client computers with Full Disk Encryption.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "recovery-media",
+        "description": "The administrator can create recovery media on endpoint computers and devices.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "remote-help",
+        "description": "The administrator can use the Remote Help feature to reset user passwords and give access to locked out users.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "reset-computer-data",
+        "description": "The administrator can reset a computer, which deletes all information about the computer from the Security Management Server.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "events-and-reports",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "custom",
+          "app control and url filtering reports only"
+        ]
+      },
+      {
+        "name": "smart-event",
+        "description": "'Custom' - Configure SmartEvent permissions.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "custom",
+          "app control and url filtering reports only"
+        ]
+      },
+      {
+        "name": "events",
+        "description": "Work with event queries on the Events tab. Create custom event queries.Available only if smart-event is set to 'Custom'.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "policy",
+        "description": "Configure SmartEvent Policy rules and install SmartEvent Policies.Available only if smart-event is set to 'Custom'.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "reports",
+        "description": "Create and run SmartEvent reports.Available only if smart-event is set to 'Custom'.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "gateways",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "smart-update",
+        "description": "Install, update and delete Check Point licenses. This includes permissions to use SmartUpdate to manage licenses.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "lsm-gw-db",
+        "description": "Access to objects defined in LSM gateway tables. These objects are managed in the SmartProvisioning GUI or LSMcli command-line.Note: 'Write' permission on lsm-gw-db allows administrator to run a script on SmartLSM gateway in Expert mode.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "manage-provisioning-profiles",
+        "description": "Administrator can add, edit, delete, and assign provisioning profiles to gateways (both LSM and non-LSM).Available for edit only if lsm-gw-db is set with 'Write' permission.Note: 'Read' permission on lsm-gw-db enables 'Read' permission for manage-provisioning-profiles.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "vsx-provisioning",
+        "description": "Create and configure Virtual Systems and other VSX virtual objects.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "system-backup",
+        "description": "Backup Security Gateways.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "system-restore",
+        "description": "Restore Security Gateways from saved backups.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "open-shell",
+        "description": "Use the SmartConsole CLI to run commands.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "run-one-time-script",
+        "description": "Run user scripts from the command line.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "run-repository-script",
+        "description": "Run scripts from the repository.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "manage-repository-scripts",
+        "description": "Add, change and remove scripts in the repository.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "management",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "cme-operations",
+        "description": "Permission to read / edit the Cloud Management Extension (CME) configuration.Not supported for Multi-Domain Servers.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "manage-admins",
+        "description": "Controls the ability to manage Administrators, Permission Profiles, Trusted clients,API settings and Policy settings.Only a \"Read Write All\" permission-type profile can edit this permission.Not supported for Multi-Domain Servers.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "management-api-login",
+        "description": "Permission to log in to the Security Management Server and run API commands using these tools: mgmt_cli (Linux and Windows binaries), Gaia CLI (clish) and Web Services (REST). Useful if you want to prevent administrators from running automatic scripts on the Management.Note: This permission is not required to run commands from within the API terminal in SmartConsole.Not supported for Multi-Domain Servers.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "manage-sessions",
+        "description": "Lets you disconnect, discard, publish, or take over other administrator sessions.Only a \"Read Write All\" permission-type profile can edit this permission.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "high-availability-operations",
+        "description": "Configure and work with Domain High Availability.Only a 'Customized' permission-type profile can edit this permission.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "approve-or-reject-sessions",
+        "description": "Approve / reject other sessions.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "publish-sessions",
+        "description": "Allow session publishing without an approval.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "manage-integration-with-cloud-services",
+        "description": "Manage integration with Cloud Services.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "monitoring-and-logging",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "monitoring",
+        "description": "See monitoring views and reports.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "management-logs",
+        "description": "See Multi-Domain Server audit logs.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "track-logs",
+        "description": "Use the log tracking features in SmartConsole.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "app-and-url-filtering-logs",
+        "description": "Work with Application and URL Filtering logs.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "https-inspection-logs",
+        "description": "See logs generated by HTTPS Inspection.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "packet-capture-and-forensics",
+        "description": "See logs generated by the IPS and Forensics features.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "show-packet-capture-by-default",
+        "description": "Enable packet capture by default.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "identities",
+        "description": "Show user and computer identity information in logs.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "show-identities-by-default",
+        "description": "Show user and computer identity information in logs by default.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dlp-logs-including-confidential-fields",
+        "description": "Show DLP logs including confidential fields.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "manage-dlp-messages",
+        "description": "View/Release/Discard DLP messages.Available only if dlp-logs-including-confidential-fields is set to true.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "new-name",
+        "description": "New name of the object.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "threat-prevention",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "policy-layers",
+        "description": "Configure Threat Prevention Policy rules.Note: To have policy-layers permissions you must set policy-exceptions and profiles permissions. To have 'Write' permissions for policy-layers, policy-exceptions must be set with 'Write' permission as well.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "edit-layers",
+        "description": "'ALL' - Gives permission to edit all layers.\"By Selected Profile In A Layer Editor\" - Administrators can only edit the layer if the Threat Prevention layer editor gives editing permission to their profiles.Available only if policy-layers is set to 'Write'.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "By Selected Profile In A Layer Editor",
+          "All"
+        ]
+      },
+      {
+        "name": "edit-settings",
+        "description": "Work with general Threat Prevention settings.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "policy-exceptions",
+        "description": "Configure exceptions to Threat Prevention rules.Note: To have policy-exceptions you must set the protections permission.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "profiles",
+        "description": "Configure Threat Prevention profiles.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "protections",
+        "description": "Work with malware protections.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "install-policy",
+        "description": "Install Policies.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "ips-update",
+        "description": "Update IPS protections.Note: You do not have to log into the User Center to receive IPS updates.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "others",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "client-certificates",
+        "description": "Create and manage client certificates for Mobile Access.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "edit-cp-users-db",
+        "description": "Work with user accounts and groups.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "https-inspection",
+        "description": "Enable and configure HTTPS Inspection rules.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "ldap-users-db",
+        "description": "Work with the LDAP database and user accounts, groups and OUs.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "user-authority-access",
+        "description": "Work with Check Point User Authority authentication.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "user-device-mgmt-conf",
+        "description": "Gives access to the UDM (User & Device Management) web-based application that handles security challenges in a \"bring your own device\" (BYOD) workspace.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "name",
+        "description": "Object name. Must be unique in the domain.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "permission-type",
+        "description": "The type of the Permission Profile.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read write all",
+          "read only all",
+          "customized"
+        ]
+      },
+      {
+        "name": "edit-common-objects",
+        "description": "Define and manage objects in the Check Point database: Network Objects, Services, Custom Application Site, VPN Community, Users, Servers, Resources, Time, UserCheck, and Limit.Only a 'Customized' permission-type profile can edit this permission.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "access-control",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "By Software Blades",
+          "By Selected Profile In A Layer Editor"
+        ]
+      },
+      {
+        "name": "show-policy",
+        "description": "Select to let administrators work with Access Control rules and NAT rules. If not selected, administrators cannot see these rules.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "policy-layers",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "By Software Blades",
+          "By Selected Profile In A Layer Editor"
+        ]
+      },
+      {
+        "name": "edit-layers",
+        "description": "\"By Software Blades\" - Edit Access Control layers that contain the blades enabled in the Permissions Profile.\"By Selected Profile In A Layer Editor\" - Administrators can only edit the layer if the Access Control layer editor gives editing permission to their profiles.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "By Software Blades",
+          "By Selected Profile In A Layer Editor"
+        ]
+      },
+      {
+        "name": "app-control-and-url-filtering",
+        "description": "Use Application and URL Filtering in Access Control rules.Available only if edit-layers is set to \"By Software Blades\".",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "content-awareness",
+        "description": "Use specified data types in Access Control rules.Available only if edit-layers is set to \"By Software Blades\".",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "firewall",
+        "description": "Work with Access Control and other Software Blades that do not have their own Policies.Available only if edit-layers is set to \"By Software Blades\".",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "mobile-access",
+        "description": "Work with Mobile Access rules.Available only if edit-layers is set to \"By Software Blades\".",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dlp-policy",
+        "description": "Configure DLP rules and Policies.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "geo-control-policy",
+        "description": "Work with Access Control rules that control traffic to and from specified countries.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "nat-policy",
+        "description": "Work with NAT in Access Control rules.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "qos-policy",
+        "description": "Work with QoS Policies and rules.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "access-control-objects-and-settings",
+        "description": "Allow editing of the following objet types: VPN Community, Access Role, Custom application group, Custom application, Custom category, Limit, Application - Match Settings, Application Category - Match Settings, Override Categorization, Application and URL filtering blade - Advanced Settings, Content Awareness blade - Advanced Settings.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "app-control-and-url-filtering-update",
+        "description": "Install Application and URL Filtering updates.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "install-policy",
+        "description": "Install Access Control Policies.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "endpoint",
+        "description": "",
+        "type": "Object",
+        "required": false
+      },
+      {
+        "name": "manage-policies-and-software-deployment",
+        "description": "The administrator can work with policies, rules and actions.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "edit-endpoint-policies",
+        "description": "Available only if manage-policies-and-software-deployment is set to true.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "policies-installation",
+        "description": "The administrator can install policies on endpoint computers.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "edit-software-deployment",
+        "description": "The administrator can define deployment rules, create packages for export, and configure advanced package settings.Available only if manage-policies-and-software-deployment is set to true.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "software-deployment-installation",
+        "description": "The administrator can deploy packages and install endpoint clients.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "allow-executing-push-operations",
+        "description": "The administrator can start operations that the Security Management Server pushes directly to client computers with no policy installation required.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "authorize-preboot-users",
+        "description": "The administrator can add and remove the users who are permitted to log on to Endpoint Security client computers with Full Disk Encryption.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "recovery-media",
+        "description": "The administrator can create recovery media on endpoint computers and devices.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "remote-help",
+        "description": "The administrator can use the Remote Help feature to reset user passwords and give access to locked out users.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "reset-computer-data",
+        "description": "The administrator can reset a computer, which deletes all information about the computer from the Security Management Server.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "events-and-reports",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "custom",
+          "app control and url filtering reports only"
+        ]
+      },
+      {
+        "name": "smart-event",
+        "description": "'Custom' - Configure SmartEvent permissions.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "custom",
+          "app control and url filtering reports only"
+        ]
+      },
+      {
+        "name": "events",
+        "description": "Work with event queries on the Events tab. Create custom event queries.Available only if smart-event is set to 'Custom'.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "policy",
+        "description": "Configure SmartEvent Policy rules and install SmartEvent Policies.Available only if smart-event is set to 'Custom'.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "reports",
+        "description": "Create and run SmartEvent reports.Available only if smart-event is set to 'Custom'.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "gateways",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "smart-update",
+        "description": "Install, update and delete Check Point licenses. This includes permissions to use SmartUpdate to manage licenses.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "lsm-gw-db",
+        "description": "Access to objects defined in LSM gateway tables. These objects are managed in the SmartProvisioning GUI or LSMcli command-line.Note: 'Write' permission on lsm-gw-db allows administrator to run a script on LSM gateway in Expert mode.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "manage-provisioning-profiles",
+        "description": "Administrator can add, edit, delete, and assign provisioning profiles to gateways (both LSM and non-LSM).Available for edit only if lsm-gw-db is set with 'Write' permission.Note: 'Read' permission on lsm-gw-db enables 'Read' permission for manage-provisioning-profiles.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "vsx-provisioning",
+        "description": "Create and configure Virtual Systems and other VSX virtual objects.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "system-backup",
+        "description": "Backup Security Gateways.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "system-restore",
+        "description": "Restore Security Gateways from saved backups.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "open-shell",
+        "description": "Use the SmartConsole CLI to run commands.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "run-one-time-script",
+        "description": "Run user scripts from the command line.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "run-repository-script",
+        "description": "Run scripts from the repository.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "manage-repository-scripts",
+        "description": "Add, change and remove scripts in the repository.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "management",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "cme-operations",
+        "description": "Permission to read / edit the Cloud Management Extension (CME) configuration.Not supported for Multi-Domain Servers.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "manage-admins",
+        "description": "Controls the ability to manage Administrators, Permission Profiles, Trusted clients,API settings and Policy settings.Only a \"Read Write All\" permission-type profile can edit this permission.Not supported for Multi-Domain Servers.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "management-api-login",
+        "description": "Permission to log in to the Security Management Server and run API commands using these tools: mgmt_cli (Linux and Windows binaries), Gaia CLI (clish) and Web Services (REST). Useful if you want to prevent administrators from running automatic scripts on the Management.Note: This permission is not required to run commands from within the API terminal in SmartConsole.Not supported for Multi-Domain Servers.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "manage-sessions",
+        "description": "Lets you disconnect, discard, publish, or take over other administrator sessions.Only a \"Read Write All\" permission-type profile can edit this permission.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "high-availability-operations",
+        "description": "Configure and work with Domain High Availability.Only a 'Customized' permission-type profile can edit this permission.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "approve-or-reject-sessions",
+        "description": "Approve / reject other sessions.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "publish-sessions",
+        "description": "Allow session publishing without an approval.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "manage-integration-with-cloud-services",
+        "description": "Manage integration with Cloud Services.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "monitoring-and-logging",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "monitoring",
+        "description": "See monitoring views and reports.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "management-logs",
+        "description": "See Multi-Domain Server audit logs.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "track-logs",
+        "description": "Use the log tracking features in SmartConsole.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "app-and-url-filtering-logs",
+        "description": "Work with Application and URL Filtering logs.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "https-inspection-logs",
+        "description": "See logs generated by HTTPS Inspection.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "packet-capture-and-forensics",
+        "description": "See logs generated by the IPS and Forensics features.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "show-packet-capture-by-default",
+        "description": "Enable packet capture by default.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "identities",
+        "description": "Show user and computer identity information in logs.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "show-identities-by-default",
+        "description": "Show user and computer identity information in logs by default.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dlp-logs-including-confidential-fields",
+        "description": "Show DLP logs including confidential fields.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "manage-dlp-messages",
+        "description": "View/Release/Discard DLP messages.Available only if dlp-logs-including-confidential-fields is set to true.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "threat-prevention",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "policy-layers",
+        "description": "Configure Threat Prevention Policy rules.Note: To have policy-layers permissions you must set policy-exceptions and profiles permissions. To have 'Write' permissions for policy-layers, policy-exceptions must be set with 'Write' permission as well.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "edit-layers",
+        "description": "'ALL' - Gives permission to edit all layers.\"By Selected Profile In A Layer Editor\" - Administrators can only edit the layer if the Threat Prevention layer editor gives editing permission to their profiles.Available only if policy-layers is set to 'Write'.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "By Selected Profile In A Layer Editor",
+          "All"
+        ]
+      },
+      {
+        "name": "edit-settings",
+        "description": "Work with general Threat Prevention settings.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "policy-exceptions",
+        "description": "Configure exceptions to Threat Prevention rules.Note: To have policy-exceptions you must set the protections permission.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "profiles",
+        "description": "Configure Threat Prevention profiles.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "protections",
+        "description": "Work with malware protections.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "install-policy",
+        "description": "Install Policies.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "ips-update",
+        "description": "Update IPS protections.Note: You do not have to log into the User Center to receive IPS updates.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "others",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "edit-cp-users-db",
+        "description": "Work with user accounts and groups.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "client-certificates",
+        "description": "Create and manage client certificates for Mobile Access.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "https-inspection",
+        "description": "Enable and configure HTTPS Inspection rules.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "ldap-users-db",
+        "description": "Work with the LDAP database and user accounts, groups and OUs.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "user-authority-access",
+        "description": "Work with Check Point User Authority authentication.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      },
+      {
+        "name": "user-device-mgmt-conf",
+        "description": "Gives access to the UDM (User & Device Management) web-based application that handles security challenges in a \"bring your own device\" (BYOD) workspace.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "read",
+          "write",
+          "disabled"
+        ]
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "set-domain-permissions-profile": {
+      "description": "Change permission-type and Access Control Policy Layers editing permissions",
+      "request": "POST {{server}}/set-domain-permissions-profile\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{\n  \"name\" : \"read profile\",\n  \"new-name\" : \"customized profile\",\n  \"permission-type\" : \"customized\",\n  \"access-control.policy-layers\" : \"By Selected Profile In A Layer Editor\"\n}\n\n \u2022 This command is available only after logging in to the System Data domain.",
+      "response": ""
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:16.611682",
+    "source_file": "set-domain-permissions-profile.html"
+  }
+}
+```

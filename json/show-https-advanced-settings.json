@@ -1,0 +1,361 @@
+{
+  "command": "show-https-advanced-settings",
+  "description": "Show advanced settings for HTTPS Inspection.",
+  "request": {
+    "url": "POST https://<mgmt-server>:<port>/web_api/show-https-advanced-settings",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "description": "Send JSON object to use the API Web Services"
+      },
+      {
+        "name": "X-chkp-sid",
+        "value": "string token",
+        "description": "Session unique identifier as it returned by the login request"
+      }
+    ]
+  },
+  "response": {
+    "success": [
+      {
+        "name": "uid",
+        "description": "Object unique identifier.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "bypass-on-client-failure",
+        "description": "Whether all requests should be bypassed or blocked-in case of client errors (Client closes the connection due to authentication issues during handshake)true - Fail-open (bypass all requests).false - Fail-close (block all requests..",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "bypass-on-failure",
+        "description": "Whether all requests should be bypassed or blocked-in case of server errors (for example validation error during GW-Server authentication)true - Fail-open (bypass all requests).false - Fail-close (block all requests..",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "bypass-under-load",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "popup alert",
+          "mail alert",
+          "snmp trap alert",
+          "user defined alert no.1",
+          "user defined alert no.2",
+          "user defined alert no.3"
+        ]
+      },
+      {
+        "name": "track",
+        "description": "Whether to log and send a notification for the bypass under load:None - Does not record the event.Log - Records the event details. Use SmartConsole or SmartView to see the logs.Alert - Logs the event and executes a command you configured.Mail - Sends an email to the administrator.SNMP Trap - Sends an SNMP alert to the configured SNMP Management Server.User Defined Alert - Sends a custom alert..",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "popup alert",
+          "mail alert",
+          "snmp trap alert",
+          "user defined alert no.1",
+          "user defined alert no.2",
+          "user defined alert no.3"
+        ]
+      },
+      {
+        "name": "type",
+        "description": "Object type.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "site-categorization-allow-mode",
+        "description": "Whether all requests should be allowed or blocked until categorization is complete.Background - to allow requests until categorization is complete.Hold- to block requests until categorization is complete..",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "background",
+          "hold"
+        ]
+      },
+      {
+        "name": "server-certificate-validation-actions",
+        "description": "",
+        "type": "Object",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "popup alert",
+          "mail alert",
+          "snmp trap alert",
+          "user defined alert no.1",
+          "user defined alert no.2",
+          "user defined alert no.3"
+        ]
+      },
+      {
+        "name": "block-expired",
+        "description": "Set to be true in order to drop traffic from servers with expired server certificate.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "block-revoked",
+        "description": "Set to be true in order to drop traffic from servers with revoked server certificate (validate CRL).",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "block-untrusted",
+        "description": "Set to be true in order to drop traffic from servers with untrusted server certificate.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "track-errors",
+        "description": "Whether to log and send a notification for the server validation errors:None - Does not record the event.Log - Records the event details in SmartView.Alert - Logs the event and executes a command.Mail - Sends an email to the administrator.SNMP Trap - Sends an SNMP alert to the SNMP GU.User Defined Alert - Sends customized alerts..",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "popup alert",
+          "mail alert",
+          "snmp trap alert",
+          "user defined alert no.1",
+          "user defined alert no.2",
+          "user defined alert no.3"
+        ]
+      },
+      {
+        "name": "retrieve-intermediate-ca-certificates",
+        "description": "Configure the value \"true\" to use the \"Certificate Authority Information Access\" extension to retrieve certificates that are missing from the certificate chain.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "blocked-certificates",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "name",
+        "description": "Describes the name, cannot be overridden.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "cert-serial-number",
+        "description": "Certificate Serial Number (unique) in hexadecimal format HH:HH.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "comments",
+        "description": "Describes the certificate by default, can be overridden by any text.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocked-certificate-tracking",
+        "description": "Controls whether to log and send a notification for dropped traffic.None - Does not record the event.Log - Records the event details in SmartView.Alert - Logs the event and executes a command.Mail - Sends an email to the administrator.SNMP Trap - Sends an SNMP alert to the SNMP GU.User Defined Alert - Sends customized alerts..",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "none",
+          "log",
+          "popup alert",
+          "mail alert",
+          "snmp trap alert",
+          "user defined alert no.1",
+          "user defined alert no.2",
+          "user defined alert no.3"
+        ]
+      },
+      {
+        "name": "bypass-update-services",
+        "description": "Configure the value \"true\" to bypass traffic to well-known software update services.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "certificate-pinned-apps-action",
+        "description": "Configure the value \"bypass\" to bypass traffic from certificate-pinned applications approved by Check Point.HTTPS Inspection cannot inspect connections initiated by certificate-pinned applications.Configure the value \"detect\" to send logs for traffic from certificate-pinned applications approved by Check Point.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "bypass",
+          "detect",
+          "none"
+        ]
+      },
+      {
+        "name": "log-sessions",
+        "description": "The value \"true\" configures the Security Gateway to send HTTPS Inspection session logs.",
+        "type": "boolean",
+        "required": false
+      }
+    ],
+    "failure": [
+      {
+        "name": "message",
+        "description": "Operation status.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "warnings",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blocking-errors",
+        "description": "",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "current-session",
+        "description": "Validation related to the current session.",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "message",
+        "description": "Validation message.",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "code",
+        "description": "Error code.",
+        "type": "string",
+        "required": false,
+        "valid_values": [
+          "generic_error",
+          "generic_err_invalid_syntax",
+          "generic_err_invalid_parameter_name",
+          "not_implemented",
+          "generic_internal_error",
+          "generic_server_error",
+          "generic_server_initializing",
+          "generic_err_command_not_found",
+          "generic_err_command_version_not_found",
+          "generic_err_invalid_api_type",
+          "generic_err_invalid_api_object_feature",
+          "generic_err_missing_required_parameters",
+          "generic_err_missing_required_header",
+          "generic_err_invalid_header",
+          "generic_err_invalid_parameter",
+          "generic_err_normalize",
+          "err_bad_url",
+          "err_unknown_api_version",
+          "err_login_failed_wrong_username_or_password",
+          "err_login_failed_more_than_one_opened_session",
+          "err_login_failed",
+          "err_already_connected",
+          "err_normalization_failed",
+          "err_validation_failed",
+          "err_submit_failed",
+          "err_publish_failed",
+          "generic_err_missing_session_id",
+          "generic_err_wrong_session_id",
+          "generic_err_session_expired",
+          "generic_err_session_in_use",
+          "err_switch_session_failed",
+          "err_connect_session_failed",
+          "err_assign_session_failed",
+          "err_take_over_session_failed",
+          "generic_err_no_permissions",
+          "err_forbidden",
+          "err_not_a_system_domain_session",
+          "err_inappropriate_domain_type",
+          "generic_err_object_not_found",
+          "generic_err_object_field_not_unique",
+          "generic_err_object_type_wrong",
+          "generic_err_object_locked",
+          "generic_err_object_deletion",
+          "err_ha_invalid_operation",
+          "err_policy_installation_failed",
+          "err_policy_verification_failed",
+          "err_rulebase_invalid_operation",
+          "err_installed_policy_mismatch",
+          "err_server_certificate_operation_failed",
+          "err_outbound_inspection_certificate_operation_failed",
+          "err_gaia_api_login_failed",
+          "err_gaia_api_send_command_failed",
+          "err_cme_api_send_command_failed",
+          "err_cme_api_not_running_failure",
+          "err_infinity_unauthorized",
+          "err_infinity_network",
+          "err_too_many_requests"
+        ]
+      }
+    ],
+    "http_codes": {
+      "success": [
+        200
+      ],
+      "failure": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        500,
+        501
+      ]
+    }
+  },
+  "examples": {
+    "show-https-advanced-settings": {
+      "description": "",
+      "request": "POST {{server}}/show-https-advanced-settings\nContent-Type: application/json\nX-chkp-sid: {{session}}\n\n{ }",
+      "response": "{\n  \"uid\" : \"d8fa1329-a1c4-44fd-9bc0-6e4835994425\",\n  \"type\" : \"https-advanced-settings\",\n  \"domain\" : {\n    \"uid\" : \"41e821a0-3720-11e3-aa6e-0800200c9fde\",\n    \"name\" : \"SMC User\",\n    \"domain-type\" : \"domain\"\n  },\n  \"meta-info\" : {\n    \"lock\" : \"locked by other session\",\n    \"validation-state\" : \"ok\",\n    \"last-modify-time\" : {\n      \"posix\" : 1713462417163,\n      \"iso-8601\" : \"2024-04-18T20:46+0300\"\n    },\n    \"last-modifier\" : \"System\",\n    \"creation-time\" : {\n      \"posix\" : 1713462417163,\n      \"iso-8601\" : \"2024-04-18T20:46+0300\"\n    },\n    \"creator\" : \"System\",\n    \"locking-admin\" : \"aa\",\n    \"locking-session-id\" : \"d55cbcc3-bd62-41b6-a101-4d5b55f23749\"\n  },\n  \"available-actions\" : {\n    \"edit\" : \"false\",\n    \"delete\" : \"false\",\n    \"clone\" : \"false\"\n  },\n  \"read-only\" : true,\n  \"bypass-on-failure\" : true,\n  \"bypass-on-client-failure\" : true,\n  \"site-categorization-allow-mode\" : \"hold\",\n  \"server-certificate-validation-actions\" : {\n    \"block-untrusted\" : false,\n    \"block-revoked\" : true,\n    \"block-expired\" : false,\n    \"track-errors\" : \"log\"\n  },\n  \"blocked-certificates\" : [ {\n    \"name\" : \"BlackListed_01C27AA7-9E28-4B80-B02F-6D5C18359BCC\",\n    \"cert-serial-number\" : \"00:b0:b7:13:3e:d0:96:f9:b5:6f:ae:91:c8:74:bd:3a:c0\",\n    \"comments\" : \"login.live.com\"\n  }, {\n    \"name\" : \"BlackListed_0469FE14-751B-4C12-9215-3B5806295B8C\",\n    \"cert-serial-number\" : \"00:e9:02:8b:95:78:e4:15:dc:1a:71:0a:2b:88:15:44:47\",\n    \"comments\" : \"login.skype.com\"\n  }, {\n    \"name\" : \"BlackListed_17880364-603F-4D8D-8B10-30BE164811EE\",\n    \"cert-serial-number\" : \"00:f5:c8:6a:f3:61:62:f1:3a:64:f5:4f:6d:c9:58:7c:06\",\n    \"comments\" : \"www.google.com\"\n  }, {\n    \"name\" : \"BlackListed_362DB435-B2D0-4C68-85DC-1D4EE60FD89D\",\n    \"cert-serial-number\" : \"72:03:21:05:c5:0c:08:57:3d:8e:a5:30:4e:fe:e8:b0\",\n    \"comments\" : \"kuix.de\"\n  }, {\n    \"name\" : \"BlackListed_3A1FAC50-E997-4CBA-A80A-21A20A053737\",\n    \"cert-serial-number\" : \"08:64\",\n    \"comments\" : \"e-islem.kktcmerkezbankasi.org\"\n  }, {\n    \"name\" : \"BlackListed_603F13AB-9648-451E-8ADA-443AEBCF2DFE\",\n    \"cert-serial-number\" : \"39:2a:43:4f:0e:07:df:1f:8a:a3:05:de:34:e0:c2:29\",\n    \"comments\" : \"login.yahoo.com\"\n  }, {\n    \"name\" : \"BlackListed_690C8C66-3F59-4657-8272-7194F0D69A48\",\n    \"cert-serial-number\" : \"00:d8:f3:5f:4e:b7:87:2b:2d:ab:06:92:e3:15:38:2f:b0\",\n    \"comments\" : \"Global Trustee\"\n  }, {\n    \"name\" : \"BlackListed_7CE5028E-F13D-42A7-9DD7-499BB78FCE79\",\n    \"cert-serial-number\" : \"04:7e:cb:e9:fc:a5:5f:7b:d0:9e:ae:36:e1:0c:ae:1e\",\n    \"comments\" : \"mail.google.com\"\n  }, {\n    \"name\" : \"BlackListed_864D1792-5448-4469-A853-08ABE3E2D857\",\n    \"cert-serial-number\" : \"00:92:39:d5:34:8f:40:d1:69:5a:74:54:70:e1:f2:3f:43\",\n    \"comments\" : \"addons.mozilla.org\"\n  }, {\n    \"name\" : \"BlackListed_A2B37A3D-53F9-4A24-AD09-D96272CA1710\",\n    \"cert-serial-number\" : \"00:d7:55:8f:da:f5:f1:10:5b:b2:13:28:2b:70:77:29:a3\",\n    \"comments\" : \"login.yahoo.com\"\n  }, {\n    \"name\" : \"BlackListed_A71D5266-7EF0-42CF-AE9C-409CD4093879\",\n    \"cert-serial-number\" : \"3e:75:ce:d4:6b:69:30:21:21:88:30:ae:86:a8:2a:71\",\n    \"comments\" : \"login.yahoo.com\"\n  }, {\n    \"name\" : \"BlackListed_D6943330-F264-4EDD-A1BC-CEE3BECC8F8E\",\n    \"cert-serial-number\" : \"08:27\",\n    \"comments\" : \"*.EGO.GOV.TR\"\n  }, {\n    \"name\" : \"BlackListed_E869326A-EAD9-4335-AB89-ABF4116A748E\",\n    \"cert-serial-number\" : \"49:33:00:8e\",\n    \"comments\" : \"MCS Holdings\"\n  } ],\n  \"bypass-update-services\" : true,\n  \"certificate-pinned-apps-action\" : \"bypass\",\n  \"retrieve-intermediate-ca-certificates\" : true,\n  \"blocked-certificate-tracking\" : \"log\",\n  \"bypass-under-load\" : {\n    \"track\" : \"popup alert\"\n  },\n  \"log-sessions\" : false\n}"
+    }
+  },
+  "metadata": {
+    "version": "2.0.1",
+    "extracted_at": "2025-10-05T21:36:25.055342",
+    "source_file": "show-https-advanced-settings.html"
+  }
+}
