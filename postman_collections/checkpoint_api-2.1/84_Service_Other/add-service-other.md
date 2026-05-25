@@ -1,0 +1,84 @@
+# add-service-other
+
+**Collection:** Web API (version 2.1) > 84 Service Other
+**Method:** `POST`
+**URL:** `{{server}}/v2.1/add-service-other`
+
+## Request Headers
+
+| Header | Value |
+|--------|-------|
+| Content-Type |  application/json |
+| X-chkp-sid |  {{session}} |
+
+## Request Body
+
+**Mode:** `raw`
+
+```json
+{
+  "name": "New_Service_1",
+  "keep-connections-open-after-policy-installation": false,
+  "session-timeout": 0,
+  "match-for-any": true,
+  "sync-connections-on-cluster": true,
+  "ip-protocol": 51,
+  "aggressive-aging": {
+    "enable": true,
+    "timeout": 360,
+    "use-default-timeout": false
+  }
+}
+```
+
+## Example Responses
+
+### Example 1: add-service-other
+**Status:** `200 OK`
+
+**Body:**
+```javascript
+{
+  "uid": "42f2b86e-09ee-415c-a6ae-75556c6c70e0",
+  "name": "New_Service_1",
+  "type": "service-other",
+  "domain": {
+    "uid": "41e821a0-3720-11e3-aa6e-0800200c9fde",
+    "name": "SMC User",
+    "domain-type": "domain"
+  },
+  "meta-info": {
+    "lock": "unlocked",
+    "validation-state": "ok",
+    "last-modify-time": {
+      "posix": 1479721379028,
+      "iso-8601": "2016-11-21T11:42+0200"
+    },
+    "last-modifier": "aa",
+    "creation-time": {
+      "posix": 1479721379028,
+      "iso-8601": "2016-11-21T11:42+0200"
+    },
+    "creator": "aa"
+  },
+  "tags": [],
+  "read-only": true,
+  "comments": "",
+  "color": "black",
+  "icon": "Services/OtherService",
+  "groups": [],
+  "keep-connections-open-after-policy-installation": false,
+  "session-timeout": 0,
+  "use-default-session-timeout": true,
+  "match-for-any": true,
+  "sync-connections-on-cluster": true,
+  "aggressive-aging": {
+    "enable": true,
+    "timeout": 360,
+    "use-default-timeout": false,
+    "default-timeout": 0
+  },
+  "ip-protocol": 51,
+  "accept-replies": false
+}
+```

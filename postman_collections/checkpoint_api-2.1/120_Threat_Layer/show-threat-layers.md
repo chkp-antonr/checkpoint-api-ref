@@ -1,0 +1,128 @@
+# show-threat-layers
+
+**Collection:** Web API (version 2.1) > 120 Threat Layer
+**Method:** `POST`
+**URL:** `{{server}}/v2.1/show-threat-layers`
+
+## Description
+
+Show threat layers
+
+## Request Headers
+
+| Header | Value |
+|--------|-------|
+| Content-Type |  application/json |
+| X-chkp-sid |  {{session}} |
+
+## Request Body
+
+**Mode:** `raw`
+
+```json
+{
+  "limit": 50,
+  "offset": 0,
+  "details-level": "standard"
+}
+```
+
+## Example Responses
+
+### Example 1: show-threat-layers
+**Status:** `200 OK`
+
+**Body:**
+```javascript
+{
+  "from": 1,
+  "to": 6,
+  "total": 6,
+  "threat-layers": [
+    {
+      "folder": {
+        "uid": "3b1764a5-363a-4f63-a2ab-2ef90746c70c",
+        "name": "/Global Objects"
+      },
+      "domain": {
+        "domain-type": "local domain",
+        "uid": "41e821a0-3720-11e3-aa6e-0800200c9fde",
+        "name": "SMC User"
+      },
+      "type": "threat-layer",
+      "name": "IPS",
+      "uid": "c6e44726-5195-4c04-a1a8-c4be143118c0"
+    },
+    {
+      "folder": {
+        "uid": "3b1764a5-363a-4f63-a2ab-2ef90746c70c",
+        "name": "/Global Objects"
+      },
+      "domain": {
+        "domain-type": "local domain",
+        "uid": "41e821a0-3720-11e3-aa6e-0800200c9fde",
+        "name": "SMC User"
+      },
+      "type": "threat-layer",
+      "name": "L1",
+      "uid": "ec5e08b2-27f3-4099-8965-7d9cd4a48139"
+    },
+    {
+      "folder": {
+        "uid": "3b1764a5-363a-4f63-a2ab-2ef90746c70c",
+        "name": "/Global Objects"
+      },
+      "domain": {
+        "domain-type": "local domain",
+        "uid": "41e821a0-3720-11e3-aa6e-0800200c9fde",
+        "name": "SMC User"
+      },
+      "type": "threat-layer",
+      "name": "MyGuiLayer",
+      "uid": "04684635-005a-49fa-8ae4-04bac5f28584"
+    },
+    {
+      "folder": {
+        "uid": "3b1764a5-363a-4f63-a2ab-2ef90746c70c",
+        "name": "/Global Objects"
+      },
+      "domain": {
+        "domain-type": "local domain",
+        "uid": "41e821a0-3720-11e3-aa6e-0800200c9fde",
+        "name": "SMC User"
+      },
+      "type": "threat-layer",
+      "name": "New Threat Layer 1",
+      "uid": "0b741d95-77cb-42a7-996a-6239ae9cedef"
+    },
+    {
+      "folder": {
+        "uid": "3b1764a5-363a-4f63-a2ab-2ef90746c70c",
+        "name": "/Global Objects"
+      },
+      "domain": {
+        "domain-type": "local domain",
+        "uid": "41e821a0-3720-11e3-aa6e-0800200c9fde",
+        "name": "SMC User"
+      },
+      "type": "threat-layer",
+      "name": "Threat Prevention",
+      "uid": "5899dde7-559b-46f4-bf54-0606e307047d"
+    },
+    {
+      "folder": {
+        "uid": "3b1764a5-363a-4f63-a2ab-2ef90746c70c",
+        "name": "/Global Objects"
+      },
+      "domain": {
+        "domain-type": "local domain",
+        "uid": "41e821a0-3720-11e3-aa6e-0800200c9fde",
+        "name": "SMC User"
+      },
+      "type": "threat-layer",
+      "name": "Threat Prevention",
+      "uid": "7c69ed00-4f6d-4215-aa65-abcb4ed2a205"
+    }
+  ]
+}
+```

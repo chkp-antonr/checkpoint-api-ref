@@ -1,0 +1,110 @@
+# show-dynamic-objects
+
+**Collection:** Web API (version 2.1) > 18 Dynamic Object
+**Method:** `POST`
+**URL:** `{{server}}/v2.1/show-dynamic-objects`
+
+## Description
+
+Show all the dynamic objects
+
+## Request Headers
+
+| Header | Value |
+|--------|-------|
+| Content-Type |  application/json |
+| X-chkp-sid |  {{session}} |
+
+## Request Body
+
+**Mode:** `raw`
+
+```json
+{}
+```
+
+## Example Responses
+
+### Example 1: show-dynamic-objects
+**Status:** `200 OK`
+
+**Body:**
+```javascript
+{
+  "from": 1,
+  "to": 7,
+  "total": 7,
+  "objects": [
+    {
+      "uid": "cac127fb-24f5-4079-9404-be5c00d11393",
+      "name": "AuxiliaryNet",
+      "type": "dynamic-object",
+      "domain": {
+        "domain-type": "data domain",
+        "uid": "a0bbbc99-adef-4ef8-bb6d-defdefdefdef",
+        "name": "Check Point Data"
+      }
+    },
+    {
+      "uid": "fe9b9103-f1c0-499e-985a-d15ccc7ebaab",
+      "name": "CPDShield",
+      "type": "dynamic-object",
+      "domain": {
+        "domain-type": "data domain",
+        "uid": "a0bbbc99-adef-4ef8-bb6d-defdefdefdef",
+        "name": "Check Point Data"
+      }
+    },
+    {
+      "uid": "8a883654-cdd4-45a8-b079-d4e476a70ad6",
+      "name": "DMZNet",
+      "type": "dynamic-object",
+      "domain": {
+        "domain-type": "data domain",
+        "uid": "a0bbbc99-adef-4ef8-bb6d-defdefdefdef",
+        "name": "Check Point Data"
+      }
+    },
+    {
+      "uid": "5d98de8f-722d-4560-ae65-829ef2bffd15",
+      "name": "Dynamic_Object_1",
+      "type": "dynamic-object",
+      "domain": {
+        "domain-type": "domain",
+        "uid": "41e821a0-3720-11e3-aa6e-0800200c9fde",
+        "name": "SMC User"
+      }
+    },
+    {
+      "uid": "5e414bec-4a61-4675-a980-4841a1f5a0be",
+      "name": "InternalNet",
+      "type": "dynamic-object",
+      "domain": {
+        "domain-type": "data domain",
+        "uid": "a0bbbc99-adef-4ef8-bb6d-defdefdefdef",
+        "name": "Check Point Data"
+      }
+    },
+    {
+      "uid": "97aeb36b-9aea-11d5-bd16-0090272ccb30",
+      "name": "LocalMachine",
+      "type": "dynamic-object",
+      "domain": {
+        "domain-type": "data domain",
+        "uid": "a0bbbc99-adef-4ef8-bb6d-defdefdefdef",
+        "name": "Check Point Data"
+      }
+    },
+    {
+      "uid": "d67128b1-bdba-4724-93e8-336e45853b0a",
+      "name": "LocalMachine_All_Interfaces",
+      "type": "dynamic-object",
+      "domain": {
+        "domain-type": "data domain",
+        "uid": "a0bbbc99-adef-4ef8-bb6d-defdefdefdef",
+        "name": "Check Point Data"
+      }
+    }
+  ]
+}
+```

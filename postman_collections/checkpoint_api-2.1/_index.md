@@ -1,0 +1,196 @@
+# Web API (version 2.1)
+
+**Schema:** https://schema.getpostman.com/json/collection/v2.0.0/collection.json
+
+## Contents
+
+- [01 Session Management](./01_Session_Management/_index.md) *(folder)*
+- [02 Session](./02_Session/_index.md) *(folder)*
+- [03 Login Message](./03_Login_Message/_index.md) *(folder)*
+- [04 Automatic Purge](./04_Automatic_Purge/_index.md) *(folder)*
+- [05 Host](./05_Host/_index.md) *(folder)*
+- [06 Network](./06_Network/_index.md) *(folder)*
+- [07 Wildcard](./07_Wildcard/_index.md) *(folder)*
+- [08 Group](./08_Group/_index.md) *(folder)*
+- [09 GSN Handover Group](./09_GSN_Handover_Group/_index.md) *(folder)*
+- [10 Address Range](./10_Address_Range/_index.md) *(folder)*
+- [11 Multicast Address Range](./11_Multicast_Address_Range/_index.md) *(folder)*
+- [12 Group with exclusion](./12_Group_with_exclusion/_index.md) *(folder)*
+- [13 Interoperable Device](./13_Interoperable_Device/_index.md) *(folder)*
+- [14 Check Point Host](./14_Check_Point_Host/_index.md) *(folder)*
+- [15 Security Zone](./15_Security_Zone/_index.md) *(folder)*
+- [16 Time](./16_Time/_index.md) *(folder)*
+- [17 Time Group](./17_Time_Group/_index.md) *(folder)*
+- [18 Dynamic Object](./18_Dynamic_Object/_index.md) *(folder)*
+- [19 Tags](./19_Tags/_index.md) *(folder)*
+- [20 DNS Domain](./20_DNS_Domain/_index.md) *(folder)*
+- [21 LSV Profile](./21_LSV_Profile/_index.md) *(folder)*
+- [22 Access Point Name](./22_Access_Point_Name/_index.md) *(folder)*
+- [23 Network Feed](./23_Network_Feed/_index.md) *(folder)*
+- [24 Logical Server](./24_Logical_Server/_index.md) *(folder)*
+- [25 VoIP Domain SIP Proxy](./25_VoIP_Domain_SIP_Proxy/_index.md) *(folder)*
+- [26 VoIP Domain MGCP Call Agent](./26_VoIP_Domain_MGCP_Call_Agent/_index.md) *(folder)*
+- [27 VoIP Domain SCCP Call Manager](./27_VoIP_Domain_SCCP_Call_Manager/_index.md) *(folder)*
+- [28 VoIP Domain H.323 Gatekeeper](./28_VoIP_Domain_H.323_Gatekeeper/_index.md) *(folder)*
+- [29 VoIP Domain H.323 Gateway](./29_VoIP_Domain_H.323_Gateway/_index.md) *(folder)*
+- [30 TACACS Server](./30_TACACS_Server/_index.md) *(folder)*
+- [31 TACACS Group](./31_TACACS_Group/_index.md) *(folder)*
+- [32 RADIUS Server](./32_RADIUS_Server/_index.md) *(folder)*
+- [33 RADIUS Group](./33_RADIUS_Group/_index.md) *(folder)*
+- [34 Log Exporter](./34_Log_Exporter/_index.md) *(folder)*
+- [35 Syslog Server](./35_Syslog_Server/_index.md) *(folder)*
+- [36 OPSEC Application](./36_OPSEC_Application/_index.md) *(folder)*
+- [37 SMTP Server](./37_SMTP_Server/_index.md) *(folder)*
+- [38 Trusted CA](./38_Trusted_CA/_index.md) *(folder)*
+- [39 Internal Trusted CA](./39_Internal_Trusted_CA/_index.md) *(folder)*
+- [40 External Trusted CA](./40_External_Trusted_CA/_index.md) *(folder)*
+- [41 OPSEC Trusted CA](./41_OPSEC_Trusted_CA/_index.md) *(folder)*
+- [42 SecuRemote DNS Server](./42_SecuRemote_DNS_Server/_index.md) *(folder)*
+- [43 SecurID Server](./43_SecurID_Server/_index.md) *(folder)*
+- [44 IF-MAP Server](./44_IF-MAP_Server/_index.md) *(folder)*
+- [45 Subordinate CA](./45_Subordinate_CA/_index.md) *(folder)*
+- [46 Resource URI](./46_Resource_URI/_index.md) *(folder)*
+- [47 Resource SMTP](./47_Resource_SMTP/_index.md) *(folder)*
+- [48 Resource FTP](./48_Resource_FTP/_index.md) *(folder)*
+- [49 Resource CIFS](./49_Resource_CIFS/_index.md) *(folder)*
+- [50 Resource MMS](./50_Resource_MMS/_index.md) *(folder)*
+- [51 Resource URI For QOS](./51_Resource_URI_For_QOS/_index.md) *(folder)*
+- [52 Resource TCP](./52_Resource_TCP/_index.md) *(folder)*
+- [53 Data Type Keywords](./53_Data_Type_Keywords/_index.md) *(folder)*
+- [54 Data Type File Attributes](./54_Data_Type_File_Attributes/_index.md) *(folder)*
+- [55 Data Type Weighted-Keywords](./55_Data_Type_Weighted-Keywords/_index.md) *(folder)*
+- [56 Data Type Patterns](./56_Data_Type_Patterns/_index.md) *(folder)*
+- [57 Data Type Traditional Group](./57_Data_Type_Traditional_Group/_index.md) *(folder)*
+- [58 Data Type Group](./58_Data_Type_Group/_index.md) *(folder)*
+- [59 Data Type Compound Group](./59_Data_Type_Compound_Group/_index.md) *(folder)*
+- [60 Data Type File Group](./60_Data_Type_File_Group/_index.md) *(folder)*
+- [61 Gateways & Clusters](./61_Gateways__Clusters/_index.md) *(folder)*
+- [62 Simple Gateway](./62_Simple_Gateway/_index.md) *(folder)*
+- [63 Simple Cluster](./63_Simple_Cluster/_index.md) *(folder)*
+- [64 Network Interface](./64_Network_Interface/_index.md) *(folder)*
+- [65 LSM Gateway](./65_LSM_Gateway/_index.md) *(folder)*
+- [66 LSM Cluster](./66_LSM_Cluster/_index.md) *(folder)*
+- [67 Trust](./67_Trust/_index.md) *(folder)*
+- [68 Compliance](./68_Compliance/_index.md) *(folder)*
+- [69 Best Practice](./69_Best_Practice/_index.md) *(folder)*
+- [70 Gaia Best Practice](./70_Gaia_Best_Practice/_index.md) *(folder)*
+- [71 Settings](./71_Settings/_index.md) *(folder)*
+- [72 Data Center](./72_Data_Center/_index.md) *(folder)*
+- [73 Data Center Server](./73_Data_Center_Server/_index.md) *(folder)*
+- [74 Data Center Object](./74_Data_Center_Object/_index.md) *(folder)*
+- [75 Data Center Query](./75_Data_Center_Query/_index.md) *(folder)*
+- [76 Azure Active Directory](./76_Azure_Active_Directory/_index.md) *(folder)*
+- [77 Updatable Objects Repository](./77_Updatable_Objects_Repository/_index.md) *(folder)*
+- [78 Updatable Object](./78_Updatable_Object/_index.md) *(folder)*
+- [79 Service TCP](./79_Service_TCP/_index.md) *(folder)*
+- [80 Service UDP](./80_Service_UDP/_index.md) *(folder)*
+- [81 Service ICMP](./81_Service_ICMP/_index.md) *(folder)*
+- [82 Service ICMP6](./82_Service_ICMP6/_index.md) *(folder)*
+- [83 Service SCTP](./83_Service_SCTP/_index.md) *(folder)*
+- [84 Service Other](./84_Service_Other/_index.md) *(folder)*
+- [85 Service Group](./85_Service_Group/_index.md) *(folder)*
+- [86 Application](./86_Application/_index.md) *(folder)*
+- [87 Application Category](./87_Application_Category/_index.md) *(folder)*
+- [88 Application Group](./88_Application_Group/_index.md) *(folder)*
+- [89 Application Control & URL Filtering Update](./89_Application_Control__URL_Filtering_Update/_index.md) *(folder)*
+- [90 Override Categorization](./90_Override_Categorization/_index.md) *(folder)*
+- [91 Service DCE-RPC](./91_Service_DCE-RPC/_index.md) *(folder)*
+- [92 Service RPC](./92_Service_RPC/_index.md) *(folder)*
+- [93 Service GTP](./93_Service_GTP/_index.md) *(folder)*
+- [94 Service Citrix TCP](./94_Service_Citrix_TCP/_index.md) *(folder)*
+- [95 Service Compound TCP](./95_Service_Compound_TCP/_index.md) *(folder)*
+- [96 Mobile Profile](./96_Mobile_Profile/_index.md) *(folder)*
+- [97 Passcode Profile](./97_Passcode_Profile/_index.md) *(folder)*
+- [98 Mobile Access Profile Rule](./98_Mobile_Access_Profile_Rule/_index.md) *(folder)*
+- [99 Mobile Access Profile Section](./99_Mobile_Access_Profile_Section/_index.md) *(folder)*
+- [100 Mobile Access Rule](./100_Mobile_Access_Rule/_index.md) *(folder)*
+- [101 Mobile Access Section](./101_Mobile_Access_Section/_index.md) *(folder)*
+- [102 Access Rule](./102_Access_Rule/_index.md) *(folder)*
+- [103 Access Section](./103_Access_Section/_index.md) *(folder)*
+- [104 Access Layer](./104_Access_Layer/_index.md) *(folder)*
+- [105 NAT Rule](./105_NAT_Rule/_index.md) *(folder)*
+- [106 NAT Section](./106_NAT_Section/_index.md) *(folder)*
+- [107 VPN Community Meshed](./107_VPN_Community_Meshed/_index.md) *(folder)*
+- [108 VPN Community Star](./108_VPN_Community_Star/_index.md) *(folder)*
+- [109 VPN Community Remote Access](./109_VPN_Community_Remote_Access/_index.md) *(folder)*
+- [110 Network Probe](./110_Network_Probe/_index.md) *(folder)*
+- [111 Multiple Key Exchanges](./111_Multiple_Key_Exchanges/_index.md) *(folder)*
+- [112 VSX](./112_VSX/_index.md) *(folder)*
+- [113 Threat Rule](./113_Threat_Rule/_index.md) *(folder)*
+- [114 Threat Exception](./114_Threat_Exception/_index.md) *(folder)*
+- [115 Threat Exception Group](./115_Threat_Exception_Group/_index.md) *(folder)*
+- [116 Threat Protection](./116_Threat_Protection/_index.md) *(folder)*
+- [117 Threat Profile](./117_Threat_Profile/_index.md) *(folder)*
+- [118 Threat Indicator](./118_Threat_Indicator/_index.md) *(folder)*
+- [119 Threat IOC feed](./119_Threat_IOC_feed/_index.md) *(folder)*
+- [120 Threat Layer](./120_Threat_Layer/_index.md) *(folder)*
+- [121 IPS](./121_IPS/_index.md) *(folder)*
+- [122 Anti-Malware](./122_Anti-Malware/_index.md) *(folder)*
+- [123 IPS Extended Attributes](./123_IPS_Extended_Attributes/_index.md) *(folder)*
+- [124 Threat Emulation](./124_Threat_Emulation/_index.md) *(folder)*
+- [125 Threat Advanced Settings](./125_Threat_Advanced_Settings/_index.md) *(folder)*
+- [126 HTTPS Rule](./126_HTTPS_Rule/_index.md) *(folder)*
+- [127 HTTPS Section](./127_HTTPS_Section/_index.md) *(folder)*
+- [128 HTTPS Layer](./128_HTTPS_Layer/_index.md) *(folder)*
+- [129 Server Certificate](./129_Server_Certificate/_index.md) *(folder)*
+- [130 Outbound Inspection Certificate](./130_Outbound_Inspection_Certificate/_index.md) *(folder)*
+- [131 Trusted CA Certificate](./131_Trusted_CA_Certificate/_index.md) *(folder)*
+- [132 HTTPS Advanced Settings](./132_HTTPS_Advanced_Settings/_index.md) *(folder)*
+- [133 Policy](./133_Policy/_index.md) *(folder)*
+- [134 Policy Package](./134_Policy_Package/_index.md) *(folder)*
+- [135 Domain](./135_Domain/_index.md) *(folder)*
+- [136 Global Domain](./136_Global_Domain/_index.md) *(folder)*
+- [137 Multi-Domain Server (MDS)](./137_Multi-Domain_Server_MDS/_index.md) *(folder)*
+- [138 Placeholder](./138_Placeholder/_index.md) *(folder)*
+- [139 Global Assignment](./139_Global_Assignment/_index.md) *(folder)*
+- [140 Dynamic Global Network Object](./140_Dynamic_Global_Network_Object/_index.md) *(folder)*
+- [141 Global Use](./141_Global_Use/_index.md) *(folder)*
+- [142 Migration](./142_Migration/_index.md) *(folder)*
+- [143 SmartTasks](./143_SmartTasks/_index.md) *(folder)*
+- [144 Triggers](./144_Triggers/_index.md) *(folder)*
+- [145 Repository Scripts](./145_Repository_Scripts/_index.md) *(folder)*
+- [146 Package Deployment](./146_Package_Deployment/_index.md) *(folder)*
+- [147 Users](./147_Users/_index.md) *(folder)*
+- [148 Access Role](./148_Access_Role/_index.md) *(folder)*
+- [149 Identity Tag](./149_Identity_Tag/_index.md) *(folder)*
+- [150 User Template](./150_User_Template/_index.md) *(folder)*
+- [151 User Group](./151_User_Group/_index.md) *(folder)*
+- [152 Identity Provider](./152_Identity_Provider/_index.md) *(folder)*
+- [153 LDAP Group](./153_LDAP_Group/_index.md) *(folder)*
+- [154 High Availability](./154_High_Availability/_index.md) *(folder)*
+- [155 Administrator](./155_Administrator/_index.md) *(folder)*
+- [156 Identity Provider Administrator Group](./156_Identity_Provider_Administrator_Group/_index.md) *(folder)*
+- [157 Trusted Client](./157_Trusted_Client/_index.md) *(folder)*
+- [158 Domain Permissions Profile](./158_Domain_Permissions_Profile/_index.md) *(folder)*
+- [159 Multi Domain Permissions Profile](./159_Multi_Domain_Permissions_Profile/_index.md) *(folder)*
+- [160 API Key](./160_API_Key/_index.md) *(folder)*
+- [161 Identity Provider To Domain Assignment](./161_Identity_Provider_To_Domain_Assignment/_index.md) *(folder)*
+- [162 Identity Provider Default Assignment](./162_Identity_Provider_Default_Assignment/_index.md) *(folder)*
+- [163 API Settings](./163_API_Settings/_index.md) *(folder)*
+- [164 Default Administrator Settings](./164_Default_Administrator_Settings/_index.md) *(folder)*
+- [165 Check Point Password Requirements](./165_Check_Point_Password_Requirements/_index.md) *(folder)*
+- [166 Change Password on Next Login](./166_Change_Password_on_Next_Login/_index.md) *(folder)*
+- [167 SmartConsole Idle Timeout](./167_SmartConsole_Idle_Timeout/_index.md) *(folder)*
+- [168 Login Restrictions](./168_Login_Restrictions/_index.md) *(folder)*
+- [169 Client Login Option](./169_Client_Login_Option/_index.md) *(folder)*
+- [170 Policy Settings](./170_Policy_Settings/_index.md) *(folder)*
+- [171 Global Properties](./171_Global_Properties/_index.md) *(folder)*
+- [172 Sync With User Center](./172_Sync_With_User_Center/_index.md) *(folder)*
+- [173 Logs](./173_Logs/_index.md) *(folder)*
+- [174 Cloud Services](./174_Cloud_Services/_index.md) *(folder)*
+- [175 Infinity Identity Providers](./175_Infinity_Identity_Providers/_index.md) *(folder)*
+- [176 Provisioning](./176_Provisioning/_index.md) *(folder)*
+- [177 LSM Gateway Profile](./177_LSM_Gateway_Profile/_index.md) *(folder)*
+- [178 LSM Cluster Profile](./178_LSM_Cluster_Profile/_index.md) *(folder)*
+- [179 Provisioning Profile](./179_Provisioning_Profile/_index.md) *(folder)*
+- [180 Policy Insights](./180_Policy_Insights/_index.md) *(folder)*
+- [181 Misc.](./181_Misc./_index.md) *(folder)*
+- [182 Task](./182_Task/_index.md) *(folder)*
+- [183 Object](./183_Object/_index.md) *(folder)*
+- [184 Objects Batch](./184_Objects_Batch/_index.md) *(folder)*
+- [185 Rules Batch](./185_Rules_Batch/_index.md) *(folder)*
+- [186 Limit](./186_Limit/_index.md) *(folder)*
+- [187 Application Ctrl & URL Filtering Advanced Settings](./187_Application_Ctrl__URL_Filtering_Advanced_Settings/_index.md) *(folder)*
+- [188 Content Awareness Advanced Settings](./188_Content_Awareness_Advanced_Settings/_index.md) *(folder)*
+- [189 Licenses](./189_Licenses/_index.md) *(folder)*
+- [190 >> MISSING APIs <<](./190_-_MISSING_APIs/_index.md) *(folder)*

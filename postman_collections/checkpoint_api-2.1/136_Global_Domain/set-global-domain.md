@@ -1,0 +1,28 @@
+# set-global-domain
+
+**Collection:** Web API (version 2.1) > 136 Global Domain
+**Method:** `POST`
+**URL:** `{{server}}/v2.1/set-global-domain`
+
+## Request Headers
+
+| Header | Value |
+|--------|-------|
+| Content-Type |  application/json |
+| X-chkp-sid |  {{session}} |
+
+## Request Body
+
+**Mode:** `raw`
+
+```json
+{
+  "name": "Global2",
+  "comments": "this is my Global domain"
+}
+```
+
+## Example Responses
+
+### Example 1: set-global-domain
+**Status:** `200 OK`

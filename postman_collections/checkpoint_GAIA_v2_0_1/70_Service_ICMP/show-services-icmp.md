@@ -1,0 +1,79 @@
+# show-services-icmp
+
+**Collection:** Web API (version 2.0.1) > 70 Service ICMP
+**Method:** `POST`
+**URL:** `{{server}}/v2.0.1/show-services-icmp`
+
+## Request Headers
+
+| Header | Value |
+|--------|-------|
+| Content-Type |  application/json |
+| X-chkp-sid |  {{session}} |
+
+## Request Body
+
+**Mode:** `raw`
+
+```json
+{
+  "limit": 4,
+  "offset": 3
+}
+```
+
+## Example Responses
+
+### Example 1: show-services-icmp
+**Status:** `200 OK`
+
+**Body:**
+```javascript
+{
+  "from": 4,
+  "to": 7,
+  "total": 14,
+  "objects": [
+    {
+      "uid": "22c8faba-3a24-4e99-ae6f-e798014facc2",
+      "name": "icmp3",
+      "type": "service-icmp",
+      "domain": {
+        "domain-type": "domain",
+        "uid": "41e821a0-3720-11e3-aa6e-0800200c9fde",
+        "name": "SMC User"
+      }
+    },
+    {
+      "uid": "97aeb410-9aea-11d5-bd16-0090272ccb30",
+      "name": "info-reply",
+      "type": "service-icmp",
+      "domain": {
+        "domain-type": "data domain",
+        "uid": "a0bbbc99-adef-4ef8-bb6d-defdefdefdef",
+        "name": "Check Point Data"
+      }
+    },
+    {
+      "uid": "97aeb40f-9aea-11d5-bd16-0090272ccb30",
+      "name": "info-req",
+      "type": "service-icmp",
+      "domain": {
+        "domain-type": "data domain",
+        "uid": "a0bbbc99-adef-4ef8-bb6d-defdefdefdef",
+        "name": "Check Point Data"
+      }
+    },
+    {
+      "uid": "97aeb412-9aea-11d5-bd16-0090272ccb30",
+      "name": "mask-reply",
+      "type": "service-icmp",
+      "domain": {
+        "domain-type": "data domain",
+        "uid": "a0bbbc99-adef-4ef8-bb6d-defdefdefdef",
+        "name": "Check Point Data"
+      }
+    }
+  ]
+}
+```

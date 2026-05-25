@@ -1,0 +1,70 @@
+# set-threat-indicator
+
+**Collection:** Web API (version 2.1) > 118 Threat Indicator
+**Method:** `POST`
+**URL:** `{{server}}/v2.1/set-threat-indicator`
+
+## Description
+
+Setting a threat indicator
+
+## Request Headers
+
+| Header | Value |
+|--------|-------|
+| Content-Type |  application/json |
+| X-chkp-sid |  {{session}} |
+
+## Request Body
+
+**Mode:** `raw`
+
+```json
+{
+  "name": "My_Indicator",
+  "action": "prevent",
+  "profile-overrides": {
+    "remove": "My_Profile"
+  },
+  "ignore-warnings": true
+}
+```
+
+## Example Responses
+
+### Example 1: set-threat-indicator
+**Status:** `200 OK`
+
+**Body:**
+```javascript
+{
+  "uid": "7c00fba4-978e-4769-acbf-46909b88f45d",
+  "name": "My_Indicator",
+  "type": "threat-indicator",
+  "domain": {
+    "uid": "41e821a0-3720-11e3-aa6e-0800200c9fde",
+    "name": "SMC User",
+    "domain-type": "domain"
+  },
+  "meta-info": {
+    "lock": "locked by current session",
+    "validation-state": "ok",
+    "last-modify-time": {
+      "posix": 1493293547036,
+      "iso-8601": "2017-04-27T14:45+0300"
+    },
+    "last-modifier": "aa",
+    "creation-time": {
+      "posix": 1493293547036,
+      "iso-8601": "2017-04-27T14:45+0300"
+    },
+    "creator": "aa"
+  },
+  "tags": [],
+  "read-only": false,
+  "comments": "",
+  "icon": "General/Node",
+  "action": "Prevent",
+  "number-of-observables": 1
+}
+```

@@ -1,0 +1,31 @@
+# show-mobile-access-profile-section
+
+**Collection:** Web API (version 2.1) > 99 Mobile Access Profile Section
+**Method:** `POST`
+**URL:** `{{server}}/v2.1/show-mobile-access-profile-section`
+
+## Description
+
+Showing the Mobile Access Profile sections
+
+## Request Headers
+
+| Header | Value |
+|--------|-------|
+| Content-Type |  application/json |
+| X-chkp-sid |  {{session}} |
+
+## Request Body
+
+**Mode:** `raw`
+
+```json
+{
+  "name": "New Section 1"
+}
+```
+
+## Example Responses
+
+### Example 1: show-mobile-access-profile-section
+**Status:** `200 OK`

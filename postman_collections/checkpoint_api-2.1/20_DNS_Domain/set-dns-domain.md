@@ -1,0 +1,63 @@
+# set-dns-domain
+
+**Collection:** Web API (version 2.1) > 20 DNS Domain
+**Method:** `POST`
+**URL:** `{{server}}/v2.1/set-dns-domain`
+
+## Request Headers
+
+| Header | Value |
+|--------|-------|
+| Content-Type |  application/json |
+| X-chkp-sid |  {{session}} |
+
+## Request Body
+
+**Mode:** `raw`
+
+```json
+{
+  "name": ".www.example.com",
+  "new-name": ".example.com",
+  "is-sub-domain": true
+}
+```
+
+## Example Responses
+
+### Example 1: set-dns-domain
+**Status:** `200 OK`
+
+**Body:**
+```javascript
+{
+  "uid": "ea6b168b-87d8-4ab6-9a8c-89c422dbde88",
+  "name": ".example.com",
+  "type": "dns-domain",
+  "domain": {
+    "uid": "41e821a0-3720-11e3-aa6e-0800200c9fde",
+    "name": "SMC User",
+    "domain-type": "domain"
+  },
+  "meta-info": {
+    "lock": "unlocked",
+    "validation-state": "ok",
+    "last-modify-time": {
+      "posix": 1478675752543,
+      "iso-8601": "2016-11-09T09:15+0200"
+    },
+    "last-modifier": "aa",
+    "creation-time": {
+      "posix": 1478675596098,
+      "iso-8601": "2016-11-09T09:13+0200"
+    },
+    "creator": "aa"
+  },
+  "tags": [],
+  "read-only": true,
+  "comments": "",
+  "color": "black",
+  "icon": "Objects/domain",
+  "is-sub-domain": true
+}
+```

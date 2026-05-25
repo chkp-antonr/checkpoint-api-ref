@@ -1,0 +1,32 @@
+# set-nat-rule
+
+**Collection:** Web API (version 2.1) > 105 NAT Rule
+**Method:** `POST`
+**URL:** `{{server}}/v2.1/set-nat-rule`
+
+## Request Headers
+
+| Header | Value |
+|--------|-------|
+| Content-Type |  application/json |
+| X-chkp-sid |  {{session}} |
+
+## Request Body
+
+**Mode:** `raw`
+
+```json
+{
+  "rule-number": 1,
+  "package": "standard",
+  "enabled": false,
+  "original-service": "ssh_version_2",
+  "original-source": "Any",
+  "comments": "rule for RND members  RNDNetwork-> RND to Internal Network"
+}
+```
+
+## Example Responses
+
+### Example 1: set-nat-rule
+**Status:** `200 OK`
